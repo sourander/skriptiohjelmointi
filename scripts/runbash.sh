@@ -1,0 +1,91 @@
+#!/bin/bash
+#: Title:      : runbash.sh
+#: Date:       : 2025-01-31
+#: Author      : Jani Sourander
+#: Version     : 1.0
+#: Description : Run a script inside a Docker container or 
+#                interactive shell session. The script must be
+#                located in the "scripts" directory relative to
+#                current working directory.
+#
+#                The script directory is mounted as READ-ONLY, 
+#                thus protecting your host's file system from  
+#                script logic mistakes.
+#: Options     : [script_name] [image_name]
+#
+#: === Examples ====
+#:   runbash.sh
+#:   runbash.sh '' ubuntu:20.04
+#:   runbash.sh hello.sh
+#:   runbash.sh hello.sh ubuntu:20.04
+
+# Global static var
+SCRIPT_DIR="scripts"
+DEFAULT_IMAGE="ubuntu:24.04"
+
+check_directory_exists() {
+    if [ ! -d $1 ]; then
+        echo "[ERROR] Directory '${1}' does not exist." >&2
+        exit 1
+    fi
+}
+
+check_script_exists() {
+    if [ ! -f "$1" ]; then
+        echo "[ERROR] Script '${1}' does not exist." >&2
+        exit 1
+    fi
+}
+
+check_script_no_whitespace() {
+    if [[ "$1" =~ [[:space:]] ]]; then
+        echo "[ERROR] Script name cannot contain whitespace." >&2
+        exit 1
+    fi
+}
+
+make_script_executable() {
+    if [ ! -x "$1" ]; then
+        echo "[INFO] Making '${1}' executable."
+        chmod +x "$1"
+    fi
+}
+
+run_docker_container() {
+    local cmd="${1}"
+    local image="${2}"
+    
+    docker container run --rm \
+      -it \
+      --name skriptiohjelmointi-bash \
+      --mount type=bind,source="$(pwd)/${SCRIPT_DIR}",target=/app,readonly \
+      $image \
+      $cmd
+}
+
+main() {
+    # Default to Dockerfile CMD (e.g. /bin/bash)
+    # You can check it with: docker inspect <image_name>
+    docker_command=""
+
+    # Get arguments
+    script=${1:-''}
+    
+    if [[ $script ]]; then
+        script_fullpath="$SCRIPT_DIR/$script"
+
+        check_directory_exists "$SCRIPT_DIR"
+        check_script_exists "$script_fullpath"
+        check_script_no_whitespace "$script"
+        make_script_executable "$script_fullpath"
+        
+        # Set the command to run inside the container
+        docker_command="/app/$script"
+    fi
+
+    image_name=${2:-$DEFAULT_IMAGE}
+    run_docker_container "${docker_command}" "${image_name}"
+}
+
+# Run the main function with all script arguments
+main "$@"
