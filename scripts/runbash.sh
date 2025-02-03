@@ -16,8 +16,8 @@
 #: === Examples ====
 #:   runbash.sh
 #:   runbash.sh '' ubuntu:20.04
-#:   runbash.sh hello.sh
-#:   runbash.sh hello.sh ubuntu:20.04
+#:   runbash.sh scripts/hello.sh
+#:   runbash.sh scripts/hello.sh ubuntu:20.04
 
 # Global static var
 SCRIPT_DIR="scripts"
@@ -64,23 +64,25 @@ run_docker_container() {
 }
 
 main() {
+    # Check if the script directory exists
+    check_directory_exists "$SCRIPT_DIR"
+
     # Default to Dockerfile CMD (e.g. /bin/bash)
     # You can check it with: docker inspect <image_name>
     docker_command=""
 
     # Get arguments
-    script=${1:-''}
+    script=${1:-}
     
     if [[ $script ]]; then
-        script_fullpath="$SCRIPT_DIR/$script"
 
-        check_directory_exists "$SCRIPT_DIR"
-        check_script_exists "$script_fullpath"
+        check_script_exists "$script"
         check_script_no_whitespace "$script"
-        make_script_executable "$script_fullpath"
+        make_script_executable "$script"
         
         # Set the command to run inside the container
-        docker_command="/app/$script"
+        script_basename=$(basename "$script")
+        docker_command="/app/$script_basename"
     fi
 
     image_name=${2:-$DEFAULT_IMAGE}
