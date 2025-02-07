@@ -45,10 +45,18 @@ check_script_no_whitespace() {
 }
 
 make_script_executable() {
-    if [ ! -x "$1" ]; then
+    local filepath="$1"
+    if [[ ! -x $filepath ]]; then
         echo "[INFO] Making '${1}' executable."
         chmod +x "$1"
     fi
+}
+
+make_all_scripts_executable() {
+    local filespec="$1"
+    for script in $filespec; do
+        make_script_executable "$script"
+    done
 }
 
 run_docker_container() {
@@ -64,8 +72,9 @@ run_docker_container() {
 }
 
 main() {
-    # Check if the script directory exists
+    # Handle scripts directory  
     check_directory_exists "$SCRIPT_DIR"
+    make_all_scripts_executable "${SCRIPT_DIR}/*.sh"
 
     # Default to Dockerfile CMD (e.g. /bin/bash)
     # You can check it with: docker inspect <image_name>
@@ -78,7 +87,6 @@ main() {
 
         check_script_exists "$script"
         check_script_no_whitespace "$script"
-        make_script_executable "$script"
         
         # Set the command to run inside the container
         script_basename=$(basename "$script")
