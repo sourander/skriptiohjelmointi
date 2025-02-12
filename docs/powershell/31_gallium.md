@@ -96,9 +96,17 @@ $ErrorActionPreference = "Stop"
 
     Luo myös tiedosto `preference_continue.ps1`, joka on muutoin identtinen, mutta muokkaa riviä yksi. Aseta se muotoon `$ErrorActionPreference = "Continue"`. Aja molemmat tiedostot ja vertaa tuloksia.
 
-### Write-Host
+### Write-Something
 
-Yksi luonnollinen tapa debugata lähes mitä tahansa ohjelmointikieltä on tulostaa muuttujien arvo kesken skriptin terminaaliin. Tämä ei kuulosta rakettitieteeltä, mutta voi olla hyvin tehokas tapa debugata.
+Yksi luonnollinen tapa debugata lähes mitä tahansa ohjelmointikieltä on tulostaa muuttujien arvo kesken skriptin terminaaliin. Tämä ei kuulosta rakettitieteeltä, mutta voi olla hyvin tehokas tapa debugata. Bashin kanssa ehkä opit, että `echo`-komentoja on ärsyttävä lisätä ja poistaa tarpeen mukaan. Käsin lisätty `-v` option (verbose) auttaa, mutta vaatii argumenttien parsimista ja if-lausekkeita. Yksi tapa on ohjata komennot `stderr`-virtaan, mutta se on sinänsä vääräoppista, että debug-viestit eivät varsinaisesti ole virheitä.
+
+PowerShell tarjoaa tähän ratkaisun tukemalla useita eri virtoja. Näitä on useita. Alla olevassa esimerkissä käytämme virtoja: Success (1), Verbose (4) ja Warning(3). Verbose ei tulostu ruudulle tavallisesti, mutta jos asetat preference variablen `VerbosePreference` arvoksi `Continue`, näet myös Debug-virran tulosteet. Lue lisää ohjeista about_Output_Streams sekä about_Preference_Variables.
+
+```powershell title="streams.ps1"
+Write-Output "I am typical output!"
+Write-Verbose "Ah, you must have VerbosePreference set up properly! 🕵️‍♀️"
+Write-Warning "Warning! Warning! 🚨"
+```
 
 ### Debuggaus
 
@@ -167,6 +175,7 @@ Tutustumme tämän käyttöön live-tunneilla.
 
     * tulostaa absoluuttinen polku työhakemistoon
     * tulostaa absoluuttinen polku skriptin sijaintiin
+    * tulostaa `PSEdition`-muuttujan arvon, mutta vain Debug-virtaan.
     * tukea `Get-Help`-komentoa. Implementoi ainakin:
         * Synopsis (yllä)
         * Description
@@ -186,6 +195,7 @@ Tutustumme tämän käyttöön live-tunneilla.
 
     ```plaintext title="🐳 PowerShell" 
     cd root
+    $VerbosePreference = "Continue"
     pwsh /app/scripts/hello_turbo.ps1
     ```
 
@@ -193,6 +203,7 @@ Tutustumme tämän käyttöön live-tunneilla.
     ========= Turbo Hello World! =========
     Current working directory:     /root
     Script directory:              /app/scripts
+    VERBOSE: Your PowerShell Edition:       Core
     ```
 
     Varmista, että osaat tulostaa komennon helpin termiinaaliin.
