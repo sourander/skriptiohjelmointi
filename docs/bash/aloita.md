@@ -70,9 +70,9 @@ Huomaa, että komentotulkki itsessään on jo "ohjelmointikieli", joten voit kir
 
 **Kuva 1:** Yksinkertainen for-loop Bashissa ilman erillistä skriptitiedostoa. Komento on ajettu kontissa. Yksinkertainen prompt johtuu aiemmin ajetusta komennosta: `PS1='\u$ '`.
 
-Skripti on tiedosto, joka sisältää yhden tai useamman komennon. Kyseessä on siis yhä sama komentotulkki, mutta interaktiivisen promptin sijaan komentotulkki lukee komentoja tiedostosta. Tiedosto voi olla mikä tahansa, mutta yleensä se on `.sh`-päätteinen.
-
 ### Sisältö
+
+Skripti on tiedosto, joka sisältää yhden tai useamman komennon. Kyseessä on siis yhä sama komentotulkki, mutta interaktiivisen promptin sijaan komentotulkki lukee komentoja tiedostosta. Tiedosto voi olla mikä tahansa, mutta yleensä se on `.sh`-päätteinen.
 
 ```bash title="hello-bad-example.sh"
 echo "Hello World"

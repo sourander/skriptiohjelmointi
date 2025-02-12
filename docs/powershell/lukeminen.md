@@ -42,6 +42,36 @@ Itse skripti löytyy: [https://ohmyposh.dev/install.ps1](https://ohmyposh.dev/in
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
 
+### Docker PowerShell
+
+Tällä kurssilla käytetty `mcr.microsoft.com/powershell` Docker-image käännetään PowerShell-skriptillä CI/CD-automatisaation toimesta. Skripti on pitkä, mutta siitä huolimatta uniikit syntaksinpalat ovat helppoja tunnistaa.
+
+Itse skripti löyty: [gh:PowerShell/PowerShell-Docker/build.ps1](https://github.com/PowerShell/PowerShell-Docker/blob/master/build.ps1)
+
 ### Kokoelmat
 
 Voit tutustua myös Markus Fleschutzin kokoelmaan PowerShell-skriptejä [gh:fleschutz/PowerShell/](https://github.com/fleschutz/PowerShell/). Repositoriosta löytyvät skriptit ovat tyypillisesti huomattavasti lyhyempiä kuin ylemmät, joten jos parsit näitä, niin parsi ainakin 5 kappaletta läpi.
+
+
+
+## Tehtävät
+
+!!! question "Tehtävä: Parsi PowerShell-skripti"
+
+    Tee sama kuin teit Bashin vastaavassa tehtävässä. Valitse yllä olevista skripteistä yksi (tai monta, jos parsit kokoelman). Kirjoita ylös löytämäsi syntaksin palaset, jotka ovat uniikkeja. Voit noudattaa samaa prosessia kuin Bashin vastaavassa tehtävässä:
+
+    1. Lataa tiedosto: `curl -sSLf https://example.com/install.ps1 > to-inspect.ps1`
+    2. Avaa Visual Studio Codessa: `code to-inspect.ps1`
+    3. Aloita tiedoston ylhäältä ja prosessoi se rivi riviltä.
+   
+    Tee seuraavat toimenpiteet **jokaiselle koodiriville**:
+
+    * ✅ Jos koodirivi sisältää entuudestaan vierasta syntaksia: dokumentoi se. 📄
+    * 🔁 Jos koodirivin syntaksi on jo esiintynyt aiemmin scriptissä: unohda rivi. 🫳
+    * Tämän jälkeen poista kyseinen koodirivi tiedostosta.
+ 
+    Tämän pitäisi olla sinulle tuttua Bash-osuudesta.
+
+    !!! tip "Ajansäästöä tekoälyllä! 🤖"
+
+        Tässä tehtävässä on suorastaan suositeltua käyttää tekoälyä apuna selittämään, mitä kyseiset Powershell-kielen entuudestaan tuntemattomat koodirimpsut tekevät. Promptia muotoillessa kannattaa harkita Bash-osaamisesi esittely: kielimalli voi selittää sinulle termejä siten, että se vertaa niitä Bashin vastaaviin.

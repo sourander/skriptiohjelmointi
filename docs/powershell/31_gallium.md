@@ -1,0 +1,264 @@
+---
+priority: 231
+---
+
+# 💡 Gallium
+
+## Komennot
+
+Aivan kuten Bashissä, myös PowerShellissä on varattuja sanoja, joita ei voi käyttää muuttujaniminä. Tässä on lista niistä:
+
+```plaintext
+The following are the reserved words in PowerShell:
+
+    assembly         exit            process
+    base             filter          public
+    begin            finally         return
+    break            for             sequence
+    catch            foreach         static
+    class            from (*)        switch
+    command          function        throw
+    configuration    hidden          trap
+    continue         if              try
+    data             in              type
+    define (*)       inlinescript    until
+    do               interface       using
+    dynamicparam     module          var (*)
+    else             namespace       while
+    elseif           parallel        workflow
+    end              param
+    enum             private
+
+    (*) These keywords are reserved for future use.
+```
+
+!!! tip "Mistä nämä löytyivät?"
+
+    Olettaen että Help on päivitetty, saat nämä auki komennolla:
+
+    ```powershell
+    help about_reserved_words
+    ```
+
+    Komennon help löytyy online: [about_Reserved_Words](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_reserved_words).
+
+## Muuttujan asettaminen
+
+TODO!
+
+## Vianetsintä
+
+Voimme käyttää Bash-kielestä tuttuja tapoja, mutta luonnolliseti niille on eri syntaksi. Tuttu `set -x` korvautuu StrictMode-asetuksella ja `set -e` korvautuu ErrorActionPreference-asetuksella.
+
+### StrictMode
+
+PowerShellin StrictMode on hieman monimutkaisempi kuin Bashin `set -x`. Käytännössä se kuitenkin esimerkiksi tarkistaa, että et yritä kutsua käyttämättömiä muuttujia. Voit kytkeä skriptissä sen päälle näin:
+
+```powershell
+Set-StrictMode -Version 2.0
+```
+
+Voit käyttää myös muita versioita, 1.0 tai 3.0. Tutustu niiden dokumentaatioon: [Set-StrictMode](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-strictmode)
+
+??? note "Kuinka testata?"
+
+    Luo ja aja tiedosto:
+
+    ```powershell title="stictmode_yes.ps1"
+    Set-StrictMode -Version 2.0
+
+    Write-Host "Starting script with strict mode enabled..."
+    Write-Host "We are referencing: $undefinedVar"
+    Write-Host "This will never print."
+    ```
+
+    Luo myös tiedosto `strictmode_no.ps1`, joka on muutoin identtinen, mutta muokkaa riviä yksi. Aseta se muotoon `Set-StrictMode -Off`. Aja molemmat tiedostot ja vertaa tuloksia.
+
+### ErrorActionPreference
+
+PowerShellissä on useita preference-muuttujia (ks. about_Preference_Variables), joilla voit säätää, kuinka PowerShell käyttäytyy. Näistä `set -x`:ää eli "exit on error"-toiminnallisuutta vastaa parhaiten `ErrorActionPreference`. Voit asettaa sen arvoksi `Stop`, jolloin skripti pysähtyy ensimmäiseen virheeseen. Vakioarvo on `Continue`, jolloin skripti jatkaa virheistä huolimatta.
+
+```powershell
+$ErrorActionPreference = "Stop"
+```
+
+??? note "Kuinka testata?"
+
+    Luo ja aja tiedosto:
+
+    ```powershell title="preference_stop.ps1"
+    $ErrorActionPreference = "Stop"
+
+    Write-Host "Starting script with ErrorActionPreference set to Stop..."
+    Set-Location -Path "/thisdoesnotexist" 2>$null
+    Write-Host "This will never print."
+    ```
+
+    Luo myös tiedosto `preference_continue.ps1`, joka on muutoin identtinen, mutta muokkaa riviä yksi. Aseta se muotoon `$ErrorActionPreference = "Continue"`. Aja molemmat tiedostot ja vertaa tuloksia.
+
+### Write-Host
+
+Yksi luonnollinen tapa debugata lähes mitä tahansa ohjelmointikieltä on tulostaa muuttujien arvo kesken skriptin terminaaliin. Tämä ei kuulosta rakettitieteeltä, mutta voi olla hyvin tehokas tapa debugata.
+
+### Debuggaus
+
+PowerShellissä on myös debugger, joka on käytettävissä Visual Studion Code -editorissa, olettaen, että PowerShell Extension on asennettuna. Voit käynnistää sen painamalla `F5`. Se on erityisen hyödyllinen breakpoint-toiminnon avulla esimerkiksi silmukoiden debuggaamisessa.
+
+Tutustumme tämän käyttöön live-tunneilla.
+
+## Tehtävät
+
+??? question "Tehtävä: Devausympäristö ja runpwsh.sh"
+
+    !!! warning
+
+        Huomaa, että jos työskentelet siten, että Windows on host-käyttöjärjestelmäsi, voit kirjoittaa tämän saman skriptin PowerShell-kielellä. Tässä esimerkissä käytetään Bashia, koska kurssin oletuksena on Linux-host.
+
+    PowerShell-osion ensimmäisessä koodaustehtävässä luot itsellesi devausympäristön. Pohja tätä varten sinulla pitäisi olla jo olemassa Bash-osiosta. Käytännössä luot:
+
+    *  Hakemistorakenteen tehtävien vastauksia varten
+    *  Skriptin `runpwsh.sh`, joka joko:
+        *  Ajaa valitun skriptin kontissa
+        *  Käynnistää interaktiivisen shellin (pwsh)
+    *  Varmistat, että kaikki on versionhallinnassa
+  
+    Jatka samassa repositoriossa työskentelyä, missä olet jo aiemmin työskenenlly. Jatka rakennetta seuraavanalaisesti:
+
+    ```plaintext
+    johnanderton
+    ├── README.md
+    ├── bash/
+    ├── pwsh
+    |   ├── README.md
+    │   ├── runpwsh.sh  # Uusi tiedosto
+    │   ├── .help/      # Uusi hakemisto
+    │   └── scripts/    # Uusi hakemisto
+    └── python
+        └── .gitkeep
+    ```
+
+    Tiedoston `runpwsh.sh` luominen olisi hyvää kertausta Bash-osiosta, mutta jotta voimme keskittyä PowerShell-osioon, voit ladata skriptin tämän repositorion polusta: [gh:sourander/skriptiohjelmointi/scripts/runpwsh.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/scripts/runpwsh.sh)
+
+??? question "Tehtävä: PowerShell Hello World"
+
+    Luo skripti `hello.ps1, joka tulostaa terminaaliin tekstin "Hello World!".
+
+    Sijoita se repositorion juuresta lukien relatiiviseen polkuun `pwsh/scripts/hello.ps1`. Aja skripti `./runpwsh.sh scripts/hello.ps1` ja varmista, että se tulostaa "Hello World!". Käytä alla olevaa templaattia:
+
+    ```powershell title="hello.ps1"
+    # IMPLEMENT
+    ```
+
+
+??? question "Tehtävä: PowerShell Turboahdettu Hello World"
+
+    ```powershell title="hello_turbo.ps1"
+    <#
+    .SYNOPSIS
+        Prints "Hello World!" to the terminal.
+
+    ... ADD MORE HELP HERE ...
+    #>
+
+    # IMPLEMENT
+    ```
+
+    Jalosta yllä näkyvää skriptin alkua. Lopullisen skriptin tulisi:
+
+    * tulostaa absoluuttinen polku työhakemistoon
+    * tulostaa absoluuttinen polku skriptin sijaintiin
+    * tukea `Get-Help`-komentoa. Implementoi ainakin:
+        * Synopsis (yllä)
+        * Description
+        * Example
+
+    Ohjelman tulosteen pitäisi käyttäytyä seuraavanlaisesti:
+
+    ```plaintext title="🐳 PowerShell"
+    pwsh /app/scripts/hello_turbo.ps1
+    ```
+
+    ```plaintext title="🐳 stdout"
+    ========= Turbo Hello World! =========
+    Current working directory:     /
+    Script directory:              /app/scripts
+    ```
+
+    ```plaintext title="🐳 PowerShell" 
+    cd root
+    pwsh /app/scripts/hello_turbo.ps1
+    ```
+
+    ```plaintext title="🐳 stdout"
+    ========= Turbo Hello World! =========
+    Current working directory:     /root
+    Script directory:              /app/scripts
+    ```
+
+    Varmista, että osaat tulostaa komennon helpin termiinaaliin.
+
+    ??? tip "Vinkki: Get-Help"
+
+        Huomaa `<# ... #>` tiedoston alussa. Tämä on monirivinen kommentti.
+
+    ??? tip "Vinkki: src_path"
+
+        Katso `about_automatic_variables` ja `$MyInvocation`.
+
+
+
+??? question "Tehtävä: Save-Help"
+
+    Tehtävänäsi on tallentaa `.help/powershell-help`-hakemistoon PowerShellin help-tiedostot.
+
+    Jos ajoit [PowerShell 101](aloita.md)-osion komentoja, huomasit varmasti, että `Update-Help`-komennon suorittamisessa kestää tovin. Se lataa Help-tiedostot verkosta. Tämä pitäisi ajaa joka kerta uusiksi, kun avaamme PowerShellin konttiin. Nopeutetaan tätä siten, että tallennetaan meille lokaali offline-kopio helpistä.
+
+    Skriptissä `runpwsh.sh` on määritetty bind mount read-write oikeuksin seuraavasti:
+
+    | Host                    | Container              |
+    | ----------------------- | ---------------------- |
+    | `.help/powershell-help` | `/srv/powershell-help` |
+
+
+    Nyt tehtävänäsi on tallentaa help-tiedostot kontin hakemistoon, joka on bind-mountattu sinun host-koneellesi. Alla on ajettavat komennot. Huomaa, että komennot tulee ajaa kontissa, ei sinun host-koneellasi.
+
+    ```powershell title="🐳 PowerShell"
+    # Create the directory
+    New-Item -ItemType Directory -Path /.help/PowerShellHelp
+
+    # Save the help files
+    Save-Help -DestinationPath /.help/PowerShellHelp
+    ```
+
+    !!! tip
+
+        Vaihtoehtoinen tapa tälle tehtävälle olisi luoda oma Dockerfile ja rakentaa siltä pohjalta image, joka sisältää päivitetyn helpin. Vältellään kuitenkin `docker buildx`:ää tällä kursilla ja pysytään skriptien ajamisen parissa.
+
+
+??? question "Tehtävä: gitignore .help"
+
+    Lisää lopuksi `.help/`-hakemisto sinun `.gitignore`-tiedostoon. Tiedostot ovat aina ladattavissa netistä, joten niiden säilöminen pitkäaikaisesti omana kopiona Gitlabiin olisi turhuutta.
+
+    ```bash title=".gitignore"
+    # ...ehkä jotain muuta...
+
+    # PowerShell help
+    .help/
+    ```
+
+
+??? question "Tehtävä: localhelp.ps1"
+
+    Jatkossa voit instansoida uuden kontin ja ottaa lokaalisti tallennetun helpin käyttöön näin:
+
+    ```powershell title="🐳 PowerShell"
+    Update-Help -SourcePath /srv/powershell-help
+    ```
+
+    Hakemisto on kuitenkin `.gitignore`-tiedostossa, joten voi olla, että päädyt ajamaan tätä koodia uudella koneella. Siispä on tarpeellista luoda `localhelp.ps1`-skripti, joka:
+
+    * Päivittää helpin aina, jos `-Update`-parametri on annettu
+        * Ajaa: `Save-Help -DestinationPath /var/powershell-help`
+    * Lataa helpin, päivittyi se tai ei.
+        * Ajaa: `Update-Help -SourcePath /var/powershell-help`
+

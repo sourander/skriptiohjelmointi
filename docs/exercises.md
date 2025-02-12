@@ -49,10 +49,32 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Einstein-level Oppimispäiväkirja
 - [ ] Tehtävä: Oppimispäiväkirjan jatkot
 
+## 👨‍🔬 Einsteinium (199)
+
+- [ ] Tehtävä: PowerShell Docker Wrapper
+
 ## PowerShell 101 (200)
 
 - [ ] Tehtävä: PowerShell Hello World
 - [ ] Tehtävä: PowerShell informaatiohaku
+
+## Lukeminen (210)
+
+- [ ] Tehtävä: Parsi PowerShell-skripti
+
+## 💡 Gallium (231)
+
+- [ ] Tehtävä: Devausympäristö ja runpwsh.sh
+- [ ] Tehtävä: PowerShell Hello World
+- [ ] Tehtävä: PowerShell Turboahdettu Hello World
+- [ ] Tehtävä: Save-Help
+- [ ] Tehtävä: gitignore .help
+- [ ] Tehtävä: localhelp.ps1
+
+## 🎆 Strontium (238)
+
+- [ ] Tehtävä: Verb-Noun generaattori
+- [ ] Tehtävä: Staattinen analyysi (PSScriptAnalyzer)
 
 
 ```
