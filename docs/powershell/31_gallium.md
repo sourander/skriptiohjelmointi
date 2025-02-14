@@ -4,7 +4,9 @@ priority: 231
 
 # 💡 Gallium
 
-## Komennot
+## Tärpit
+
+### Komennot
 
 Aivan kuten Bashissä, myös PowerShellissä on varattuja sanoja, joita ei voi käyttää muuttujaniminä. Tässä on lista niistä:
 
@@ -42,9 +44,86 @@ The following are the reserved words in PowerShell:
 
     Komennon help löytyy online: [about_Reserved_Words](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_reserved_words).
 
-## Muuttujan asettaminen
+### Muuttujat
 
-TODO!
+Koko totuus löytyy PowerShellin dokumentaatiosta (esim. [about_Variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables)), mutta alla on pikaohje, jolla pääset alkuun.
+
+#### Dynaaminen
+
+PowerShell on dynaamisesti tyypitetty kieli. Tämä tarkoittaa, että sama muuttuja voi vaihtua kokoluvusta merkkijonoksi ja niin edelleen. Tämän lisäksi PowerShell päättelee tyypin `=` merkin oikealla puolella olevan komennon palautuvasta tyypistä. Alla on esimerkkejä, joissa muuttuja saa jonkin literaalin arvon tyypin.
+
+```powershell
+$x = 1            # Kokonaisluku (Int32)
+$x = 3.12         # Desimaaliluku (Double)
+$x = "abc"        # Merkkijono (String)
+$x = @("abc", 42) # Taulukko (Array)
+$x = @{a=1;b=2}   # Hajautustaulu (Hash table)
+```
+
+#### Castaaminen
+
+Tyypin voi myös itse määrätä, jolloin se käytännössä castataan kyseiseksi muuttujaksi. Huomaa, että itse muuttuja on kuitenkin yhä dynaaminen:
+
+```powershell
+$x = [byte] 255      # Nyt se onkin tavu (Byte)
+$x = [int] 255       # ... eiku kokonaisluku (Int32)
+$x = [string] "abc"  # ... eiku merkkijono (String)
+
+# Huomaa myös -as operaattori, joka palauttaa null jos castaus ei onnistu
+$y = $x -as [int] # ... null, koska "abc" ei taivu luvuksi
+```
+
+#### Tyypittäminen
+
+Voit myös käskeä muuttujan käyttämään tiettyä tyyppiä nyt ja jatkossa. Kaikki muuttujaan sijoitetut arvot pyritään jatkossa muuttamaan tähän tyyppiin. Jos muutos ei onnistu, saat virheen.
+
+```powershell
+[string]$x = 1      # Kerran merkkijono, aina merkkijono
+$x = "Kissa"        # ... ja yhä
+$x = 1              # ... ja yhä
+
+[int]$y = 12 # Nro
+$y = "Koira" # Virhe
+```
+
+Skriptejä kirjoittaessa tuskin tarvitset muita *simple typejä* kuin yllä listatut, mutta loput löytyvät esimerkiksi [C# Docs: Simple Types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#835-simple-types) tai [DevBlogs: Understanding Numbers in PowerShell](https://devblogs.microsoft.com/scripting/understanding-numbers-in-powershell/). Näiltä sivuilta selviää myös numeraalisten tyyppien minimi- ja maksimiarvot, mikäli tarvitset kertausta asiasta.
+
+#### Selvittäminen
+
+Jos olet epävarma, mitä jotakin cmdlet palauttaa, voit aina selvittää sen näin:
+
+```powershell
+# Näin saat myös metodit esille. 
+# Ei toimi arraylle. Kokeile ihmeessä!
+Get-Location | Get-Member
+
+# Näin saat tyypin tiedot
+(Get-Location).GetType()      # itsessään System.RuntimeType
+(Get-Location).GetType().Name # itsessään String
+
+# Jos palautunut arvo on jo muuttujassa
+$var | Get-Member
+# tai
+$var.GetType()
+```
+
+
+
+### Drives
+
+PowerShellissä on käsite "drive", joka on hieman erilainen kuin Linuxin tiedostojärjestelmä. Drive on käytännössä jokin abstrakti käsite, joka voi olla esimerkiksi tiedostojärjestelmä, rekisteri tai jokin muu. Voit listata kaikki drive-tyypit komennolla `Get-PSDrive`. Voit vaihtaa driveä komennolla `Set-Location`. Alla on komentoja, joissa aloitetaan /home/-hakemistosta, vaihdetaan env:-driveen ja listataan muuttujia, josta vaihdetaan Variable:-driveen, ja lopulta takaisin kotoisin tieodstojärjestelmän puolelle.
+
+```powershell
+cd /home            # Aloitetaan tästä (1)
+
+cd env:   # Vaihdetaan env:-driveen (0) 
+Get-ChildItem       # Listataan muuttujat
+Set-Location Variable:  # Vaihdetaan Variable:-driveen
+Set-Location /       # Vaihdetaan takaisin kotihakemistoon
+```
+
+1. Huomaa, että `cd` on Alias `Set-Location`-komentoon.
+2. `env:`-drive sisältää ympäristömuuttujat. Huomaa, että Bashissä nämä ovat ihan vain muuttujia samassa namespacessa (esim. `$PATH`). PowerShell abstrahoi nämä omaksi drivekseen.
 
 ## Vianetsintä
 

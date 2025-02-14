@@ -42,7 +42,7 @@ Itse skripti löytyy: [https://ohmyposh.dev/install.ps1](https://ohmyposh.dev/in
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
 
-### Docker PowerShell
+### Docker Build Script
 
 Tällä kurssilla käytetty `mcr.microsoft.com/powershell` Docker-image käännetään PowerShell-skriptillä CI/CD-automatisaation toimesta. Skripti on pitkä, mutta siitä huolimatta uniikit syntaksinpalat ovat helppoja tunnistaa.
 

@@ -45,11 +45,11 @@ PowerShell on Microsoftin kehittämä skriptauskieli ja komentotulkki. Se on suu
 
 ### Entäpä .NET?
 
-Dotnet (.NET) on kehitysympäristö (engl. *developer platform*), jolla on useita tehtäviä ja joka koostuu useista eri osista. Ekosysteemiin kuuluu esimerkiksi ajoympäristö (engl. *runtime envinronment*) Common Language Runtime (CLR), joka on vastuussa koodin suorittamisesta Java virtuaalikoneen tapaan. Suoritettava koodi on Common Intermediate Language (CIL) tavukoodia. Ekosysteemi sisältää näiden lisäksi kirjastoja, kääntäjän, SDK ja muuta. Varsinaiset CIL-kieleksi käännettävät dotnet-ohjelmointikielet ovat C# ja F#. PowerShell on sekä tulkki (komentokehote, CLI) että skriptauskieli, joka käyttää .NETin kirjastoja. Sitä ei luonnollisesti käännetä, vaan sitä tulkataan dynaamisesti ajon aikana PowerShell runtimen toimesta. [^introdotnet]
+Dotnet (.NET) on kehitysympäristö (engl. *developer platform*), jolla on useita tehtäviä ja joka koostuu useista eri osista. Ekosysteemiin kuuluu esimerkiksi ajoympäristö (engl. *runtime envinronment*) Common Language Runtime (CLR), joka on vastuussa koodin suorittamisesta Java-virtuaalikoneen tapaan. Suoritettava koodi on Common Intermediate Language (CIL) tavukoodia. Ekosysteemi sisältää näiden lisäksi kirjastoja, kääntäjän, SDK ja muuta. Varsinaiset CIL-kieleksi käännettävät dotnet-ohjelmointikielet ovat C# ja F#. PowerShell on sekä tulkki (komentokehote, CLI) että skriptauskieli, joka käyttää .NETin kirjastoja. Sitä ei käännetä, vaan sitä tulkataan dynaamisesti ajon aikana PowerShell runtimen toimesta. [^introdotnet]
 
 [^introdotnet]: Microsoft. Introduction to .NET. https://learn.microsoft.com/en-us/dotnet/core/introduction
 
-Jos ylempi kappale meni aivan ohi, niin tärkeää on sisäistää, että .NET kirjastoja voi kutsua PowerShellistä, koska se on .NET-ympäristössä toimiva kieli. PowerShellin cmdletit ovat käärittyjä .NET-kirjastojen kutsuja. Käytännössä seuraavat kaksi tekevät jossain määrin saman asian, joskin muotoilu on erilainen:
+Jos ylempi kappale meni aivan ohi, niin tärkeää on sisäistää, että .NET kirjastoja voi kutsua PowerShellistä, koska se on .NET-ympäristössä toimiva kieli. PowerShellin cmdletit ovat käännettyjä .NET-kirjastojen kutsuja. Käytännössä seuraavat kaksi tekevät jossain määrin saman asian, joskin alempaa muotoa on luonteva käyttää vain silloin, kun sopivaa cmdletiä ei ole olemassa:
 
 ```pwsh
 # PowerShell cmdlet
@@ -66,13 +66,8 @@ Get-Process
 Dotnet-kirjastojen avulla voi saada C#:stä tuttuja toiminnallisuuksia työkalupakkiisi. Esimerkkinä tästä olkoot luvun korottaminen potenssiin, joka hoituu PowerShellissä näin:
 
 ```pwsh title="PowerShell"
-# Näin
 $result = [Math]::Pow(10, 2)
 
-# Ja tulosta
-[Console]::WriteLine($result)
-
-# ...tai lyhyemmin
 Write-Host $result
 ```
 
@@ -97,7 +92,7 @@ PowerShellissä käsitellään pääasiassa objekteja. Tämä tulee jatkumaan my
 
 [^learn_pwsh_in_y_minutes]: Schandevijl et. al. 2025. Learning PowerShell in Y Minutes. https://learnxinyminutes.com/powershell/
 
-Käytännössä tämä tarkoittaa sitä, että esimerkiksi kokonaisluku on objekti, ja objektilla on metodeja. 
+Käytännössä tämä tarkoittaa sitä, että esimerkiksi kokonaisluku on objekti, ja objektilla on metodeja. Kärjistettynä Bashissä kaikki on vain tekstiä, eli merkkijonoa, jota voidaan *tulkita* esimerkiksi lukuja aritmeettisissa operaatioissa (`let` tai ``$(( expression ))``). PowerShellissä luku on luku, merkkijono on merkkijono ja eismerkiksi IP-osoite on IP-osoite. Kaikilla niillä on omat metodinsa. Jos putkitat yhden komennon tulostan toisen komennon syötteeksi, niin kyseinen komentoketju (engl. *command chain*) sisältää useita eri objekteja listana. Bashistä tuttu `grep`, `awk` tai `sed` parsiminen vaihtuu objektien käsittelyksi. Tulet tutustumaan tähän myöhemmin harjoitusten muodossa.
 
 !!! tip 
 
