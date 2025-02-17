@@ -54,7 +54,7 @@ PowerShell on dynaamisesti tyypitetty kieli. Tämä tarkoittaa, että sama muutt
 
 ```powershell
 $x = 1            # Kokonaisluku (Int32)
-$x = 3.12         # Desimaaliluku (Double)
+$x = 3.12         # Liukuluku (Double)
 $x = "abc"        # Merkkijono (String)
 $x = @("abc", 42) # Taulukko (Array)
 $x = @{a=1;b=2}   # Hajautustaulu (Hash table)

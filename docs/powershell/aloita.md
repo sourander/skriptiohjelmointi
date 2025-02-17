@@ -209,7 +209,7 @@ Skripti on tiedosto, joka sisältää yhden tai useamman komennon. Tämä on sin
 Write-Host "Hello, World!"
 ```
 
-### Skriptien suorituspolitiikka (Ⓜ️ Windows)
+### Suorituspolitiikka (Ⓜ️ Win)
 
 On tärkeää huomata, että jos ajat PowerShelliä Windows-ympäristössä, sinun tulee ottaa huomioon execution policy. Kyseinen asetus säätää sitä, missä tapauksissa skriptejä saa suorittaa. Tavallisessa Windows Home/Pro -ympäristössä execution policy on **Restricted**, joka tarkoittaa, että mitään skriptejä ei saa ajaa. Yleisesti suositeltu asetus on **RemoteSigned**.
 
