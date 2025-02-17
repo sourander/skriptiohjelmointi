@@ -73,8 +73,17 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## 🎆 Strontium (238)
 
+- [ ] Tehtävä: Arvaa numero
+- [ ] Tehtävä: Reminder
 - [ ] Tehtävä: Verb-Noun generaattori
 - [ ] Tehtävä: Staattinen analyysi (PSScriptAnalyzer)
+
+## 👩‍🔬 Curium (296)
+
+- [ ] Tehtävä: Pingviinien laskeminen
+- [ ] Tehtävä: Suurimmat ohjelmat
+- [ ] Tehtävä: Duplikaattitiedostojen luominen
+- [ ] Tehtävä: Duplikaattien tunnistaminen
 
 
 ```

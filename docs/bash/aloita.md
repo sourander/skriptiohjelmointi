@@ -46,11 +46,8 @@ Alla olevan `docker container run` komennon voi ajaa lähes missä tahansa komen
 docker container run --rm -it ubuntu:24.04
 ```
 
-```bash title="🐳 Bash"
-bash --version
-```
-
-```plaintext title="🐳 stdout"
+```console title="🐳 Bash"
+$ bash --version
 GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)
 Copyright (C) 2022 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>

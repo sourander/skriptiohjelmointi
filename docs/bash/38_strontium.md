@@ -70,7 +70,7 @@ Viime luvussa opimme debuggausta bash:n optioneilla. Nyt käytämme lintteriä. 
 
 ## Tehtävät
 
-!!! question "Tehtävä: Arvaa numero"
+??? question "Tehtävä: Arvaa numero"
 
     Luo ohjelma, joka generoi luvun väliltä 1-1000 ja pyytää käyttäjää arvaamaan sen. Ohjelma antaa vihjeen, onko arvattu luku suurempi vai pienempi kuin generoitu luku. Ohjelma lopettaa, kun käyttäjä arvaa oikein.
 
@@ -90,7 +90,7 @@ Viime luvussa opimme debuggausta bash:n optioneilla. Nyt käytämme lintteriä. 
 
     Kannattaa tutkia, minkä arvon kokonaisluku `guess`saa, jos syöte on jotain muuta kuin validi numero.
 
-!!! question "Tehtävä: Reminder"
+??? question "Tehtävä: Reminder"
 
     Tämän tehtävän idean pohjana toimii Dave Taylorin ja Brandon Perryn [Wicked Cool Shell Scripts, 2nd Edition](https://nostarch.com/wcss2). Luo kaksi ohjelmaa, jotka toimivat yhdessä. Toinen luo, toinen näyttää muistiinpanoja.
 
@@ -134,7 +134,7 @@ Viime luvussa opimme debuggausta bash:n optioneilla. Nyt käytämme lintteriä. 
     
     Komennoissa on UNIX-timetamp eli sekunteja 1970-luvun alusta, joten olisi täysin mahdollista toteuttaa ohjelma, joka poistaa yli n viikkoa vanhat muistutukset. Vaihtoehtoisesti olisi tehtävissä menu, joka kysyy, mitkä muistutukset halutaan poistaa. Emme kuitenkaan toteuta näitä tässä tehtävässä.
 
-!!! question "Tehtävä: Staattinen analyysi (Shellcheck)"
+??? question "Tehtävä: Staattinen analyysi (Shellcheck)"
 
     Latasit aiemmassa luvussa `readbash.sh`-skriptin. Ota siitä ja [ShellCheck GitHub repositoriosta](https://github.com/koalaman/shellcheck) mallia. Luo skripti, jolla voit ajaa ShellCheckin valitsemillesi skripteille. 
     
@@ -166,7 +166,7 @@ Viime luvussa opimme debuggausta bash:n optioneilla. Nyt käytämme lintteriä. 
     # ... IMPLEMENT !
     ```
 
-!!! question "Tehtävä: Korjaa skriptit"
+??? question "Tehtävä: Korjaa skriptit"
 
     Aja yllä luomasi skripti kaikkia `scripts/`-hakemiston skriptejä vasten — eli testaa kaikki kurssin skriptit. Korjaa virheet, joita ShellCheck löytää. Löydät virheistä lisätietoa [ShellCheck Wikistä](https://www.shellcheck.net/wiki/SC2162). Korvaa urlissa viimeinen `SCxxxx`-osa oikealla virhekoodilla.
 

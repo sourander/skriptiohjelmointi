@@ -66,14 +66,14 @@ done        in          function    time
 
     Tämä ei riko skriptin ulkopuolista `cd`-komennon toimintaa, paitsi jos sen tuo kyseiseen namespaceen `source`-komennolla. Tämän jälkeen hakemiston muuttuminen muuttuu merkittävän hankalaksi:
 
-    ```plaintext title="🐳 Bash"
-    root$ source /app/overwrite_cd.sh 
+    ```console title="🐳 Bash"
+    $ source /app/overwrite_cd.sh 
     .. by cd()
     
-    root$ cd /etc/
+    $ cd /etc/
     /etc/ by cd()
     
-    root$ cd $HOME
+    $ cd $HOME
     /root by cd()
     ```
 
@@ -220,7 +220,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
 
 ## Tehtävät
 
-!!! question "Tehtävä: Devausympäristö ja runbash.sh"
+??? question "Tehtävä: Devausympäristö ja runbash.sh"
 
     Kurssin ensimmäisenä tehtävänä luot itsellesi devausympäristön. Käytännössä luot:
 
@@ -259,10 +259,10 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
         └── .gitkeep
     ```
 
-    Tiedosto `runbash.sh`:n luominen olisi hyvä tehtävä viikon päästä, mutta tarvitset sitä jo nyt, joten tarjoan sen valmiina. Voit ladata sen tämän repositorion [gh:sourander/skriptiohjelmointi/scripts/runbash.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/scripts/runbash.sh). Lataa tiedosto ja sijoita se oikeaan hakemistoon.
+    Tiedosto `runbash.sh`:n luominen olisi hyvä tehtävä viikon päästä, mutta tarvitset sitä jo nyt, joten tarjoan sen valmiina. Voit ladata sen Githubista osoitteesta [gh:sourander/skriptiohjelmointi/scripts/runbash.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/scripts/runbash.sh). Lataa tiedosto ja sijoita se oikeaan hakemistoon.
 
 
-!!! question "Tehtävä: Bash Hello World"
+??? question "Tehtävä: Bash Hello World"
 
     Luo skripti `hello.sh`, joka tulostaa tekstin "Hello World". 
     
@@ -280,7 +280,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
     Hello World
     ```
 
-!!! question "Tehtävä: Turboahdettu Bash Hello World"
+??? question "Tehtävä: Turboahdettu Bash Hello World"
 
     Luo skripti, joka tulostaa absoluuttisen polun työhakemistoon ja siihen hakemistoon, missä skripti sijaitsee. Skriptin runko on alla:
 
@@ -311,7 +311,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
         src_path=$(readlink -? ????)
         ```
 
-!!! question "Tehtävä: Interaktiivinen Bash"
+??? question "Tehtävä: Interaktiivinen Bash"
 
     Harjoittele tässä tehtävässä interaktiivista Bashin käyttöä. Tämä on tarpeellista, jos haluat luoda kontin sisälle esimerkiksi testitiedostoja, tai haluat tarkkailla, mitä ajettu skripti oikeastaan tekikään. Tarvitset tässä tehtävässä ylempänä mainitun `runbash.sh`-skriptin. Huomaa, että se löytyy `/app/`-hakemistosta kontin sisällä. Tämä johtuu `runbash.sh`-skriptin rivistä: `--mount type=bind,source="$(pwd)/${SCRIPT_DIR}",target=/app,readonly`.
 
@@ -362,7 +362,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
 
         
 
-!!! question "Tehtävä: Bash vianetsintä"
+??? question "Tehtävä: Bash vianetsintä"
 
     Luo yllä esitellyt kolme skriptiä: `muuttuja_set_{none,u,ux}.sh`.
 

@@ -60,7 +60,7 @@ $x = @("abc", 42) # Taulukko (Array)
 $x = @{a=1;b=2}   # Hajautustaulu (Hash table)
 ```
 
-#### Castaaminen
+#### Vaihtaminen
 
 Tyypin voi myös itse määrätä, jolloin se käytännössä castataan kyseiseksi muuttujaksi. Huomaa, että itse muuttuja on kuitenkin yhä dynaaminen:
 
@@ -75,7 +75,7 @@ $y = $x -as [int] # ... null, koska "abc" ei taivu luvuksi
 
 #### Tyypittäminen
 
-Voit myös käskeä muuttujan käyttämään tiettyä tyyppiä nyt ja jatkossa. Kaikki muuttujaan sijoitetut arvot pyritään jatkossa muuttamaan tähän tyyppiin. Jos muutos ei onnistu, saat virheen.
+Voit myös käskeä muuttujan käyttämään tiettyä tyyppiä nyt ja jatkossa. Erona yllä olevaan on, että `[type]$variable` on nyt vasemmalla puolella `=`-merkkiä. Kaikki muuttujaan sijoitetut arvot pyritään jatkossa muuttamaan tähän tyyppiin. Jos muutos ei onnistu, saat virheen.
 
 ```powershell
 [string]$x = 1      # Kerran merkkijono, aina merkkijono
@@ -86,6 +86,15 @@ $x = 1              # ... ja yhä
 $y = "Koira" # Virhe
 ```
 
+Sokeasti automaattiseen tyypitykseen luottamisessa on omat riskinsä. Mieti tarkkaan, mitä seuraavassa tapahtuu:
+
+```powershell-session title="🐳 PowerShell"
+PS /> 4 + "2"
+6
+PS /> "4" + 2
+42
+```
+
 Skriptejä kirjoittaessa tuskin tarvitset muita *simple typejä* kuin yllä listatut, mutta loput löytyvät esimerkiksi [C# Docs: Simple Types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#835-simple-types) tai [DevBlogs: Understanding Numbers in PowerShell](https://devblogs.microsoft.com/scripting/understanding-numbers-in-powershell/). Näiltä sivuilta selviää myös numeraalisten tyyppien minimi- ja maksimiarvot, mikäli tarvitset kertausta asiasta.
 
 #### Selvittäminen
@@ -93,8 +102,7 @@ Skriptejä kirjoittaessa tuskin tarvitset muita *simple typejä* kuin yllä list
 Jos olet epävarma, mitä jotakin cmdlet palauttaa, voit aina selvittää sen näin:
 
 ```powershell
-# Näin saat myös metodit esille. 
-# Ei toimi arraylle. Kokeile ihmeessä!
+# Näin saat myös metodit ja parametrit esille
 Get-Location | Get-Member
 
 # Näin saat tyypin tiedot
@@ -111,15 +119,15 @@ $var.GetType()
 
 ### Drives
 
-PowerShellissä on käsite "drive", joka on hieman erilainen kuin Linuxin tiedostojärjestelmä. Drive on käytännössä jokin abstrakti käsite, joka voi olla esimerkiksi tiedostojärjestelmä, rekisteri tai jokin muu. Voit listata kaikki drive-tyypit komennolla `Get-PSDrive`. Voit vaihtaa driveä komennolla `Set-Location`. Alla on komentoja, joissa aloitetaan /home/-hakemistosta, vaihdetaan env:-driveen ja listataan muuttujia, josta vaihdetaan Variable:-driveen, ja lopulta takaisin kotoisin tieodstojärjestelmän puolelle.
+PowerShellissä on käsite "drive", joka on hieman erilainen kuin Linuxin tiedostojärjestelmä. Drive on käytännössä jokin abstrakti käsite, joka voi olla esimerkiksi tiedostojärjestelmä, rekisteri tai jokin muu. Voit listata kaikki drivet komennolla `Get-PSDrive`. Voit vaihtaa driveä komennolla `Set-Location`. Alla on komentoja, joissa aloitetaan /home/-hakemistosta, vaihdetaan env:-driveen ja listataan muuttujia, josta vaihdetaan Variable:-driveen, ja lopulta takaisin kotoisin tieodstojärjestelmän puolelle.
 
 ```powershell
-cd /home            # Aloitetaan tästä (1)
+cd /home         # Aloitetaan tästä (1)
 
-cd env:   # Vaihdetaan env:-driveen (0) 
-Get-ChildItem       # Listataan muuttujat
-Set-Location Variable:  # Vaihdetaan Variable:-driveen
-Set-Location /       # Vaihdetaan takaisin kotihakemistoon
+cd env:          # Vaihdetaan env:-driveen (2) 
+Get-ChildItem    # Listataan muuttujat
+cd Variable:     # Vaihdetaan Variable:-driveen
+cd /             # Vaihdetaan takaisin kotihakemistoon
 ```
 
 1. Huomaa, että `cd` on Alias `Set-Location`-komentoon.
@@ -262,23 +270,17 @@ Tutustumme tämän käyttöön live-tunneilla.
 
     Ohjelman tulosteen pitäisi käyttäytyä seuraavanlaisesti:
 
-    ```plaintext title="🐳 PowerShell"
-    pwsh /app/scripts/hello_turbo.ps1
-    ```
-
-    ```plaintext title="🐳 stdout"
+    ```pwsh-session title="🐳 PowerShell"
+    PS> pwsh /app/scripts/hello_turbo.ps1
     ========= Turbo Hello World! =========
     Current working directory:     /
     Script directory:              /app/scripts
-    ```
+    
+    PS> cd root
 
-    ```plaintext title="🐳 PowerShell" 
-    cd root
-    $VerbosePreference = "Continue"
-    pwsh /app/scripts/hello_turbo.ps1
-    ```
-
-    ```plaintext title="🐳 stdout"
+    PS> $VerbosePreference = "Continue"
+    
+    PS> pwsh /app/scripts/hello_turbo.ps1
     ========= Turbo Hello World! =========
     Current working directory:     /root
     Script directory:              /app/scripts
