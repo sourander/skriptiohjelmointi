@@ -158,8 +158,7 @@ Drive Path                        Provider
     
     SYNOPSIS
         Find duplicate files in a directory (or recursively in subdirectories).
-        
-        
+    
     SYNTAX
         /app/scripts/find_duplicates.ps1 [[-Path] <String>] [-Recurse] [<CommonParameters>]
     ```
@@ -180,3 +179,17 @@ Drive Path                        Provider
     !!! warning
 
         Varmista, että uniikit `/tmp/yyyymmdd_duplicates/unicorn_a.txt` ja `.../nested/unicorn_b.txt` eivät näy duplikaatteina.
+
+    !!! tip
+
+        Muistathan yhä ajaa `Invoke-ScriptAnalyzer`-komennon kaikille skripteillesi! Tämän skriptin kohdalla tulet huomaamaan varoituksen: `The Algorithm parameter of cmdlet 'Get-FileHash' was used with the broken algorithm 'MD5'.`
+
+        MD5 ei suinkaan ole *rikki*, mutta se ei ole kryptaukseen liittyvissä yhteyksissä riittävän vahva. Voit sivuuttaa tämän varoituksen lisäämällä seuraavat rivit skriptisi alkuun:
+
+        ```powershell
+        [Diagnostics.CodeAnalysis.SuppressMessage(
+        "PSAvoidUsingBrokenHashAlgorithms",
+        "",
+        Justification = "We are using MD5 for non-cryptographic purposes."
+        )]
+        ```

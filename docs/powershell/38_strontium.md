@@ -222,4 +222,14 @@ Pyörää ei kannata keksiä uusiksi. Yllä oleva prompt on muokattu [superuser:
 
     !!! tip
 
-        Huomaat, että analyzer löytää virheitä, joista PowerShell Extensionin tavallinen linter ei varoita.
+        Saatat huomata varoituksia, joiden kuvaus on: `Missing BOM encoding for non-ASCII encoded file 'some_file.ps1`.
+
+        Nämä liittyvät Windows PowerShell -yhteensopivuuteen. Tällä kurssilla helpoin tapa sivuuttaa ongelma on hiljentää nämä varoitukset. Tämä onnistuu helpoiten luomalla seuraava tiedosto skriptihakemistoon:
+
+        ```pwsh title="scripts/PSScriptAnalyzerSettings.psd1"
+        @{
+            ExcludeRules=@('PSUseBOMForUnicodeEncodedFile')
+        }
+        ```
+
+        Huomaa, että tiedoston nimen tulee olla juurikin tuo sama. Muutoin `Invoke-ScriptAnalyzer` ei osaa etsiä sitä.
