@@ -85,5 +85,14 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Duplikaattitiedostojen luominen
 - [ ] Tehtävä: Duplikaattien tunnistaminen
 
+## Python 101 (300)
+
+- [ ] Tehtävä: Python informaatiohaku
+
+## Lukeminen (310)
+
+- [ ] Tehtävä: Devausympäristö ja runbash.sh
+- [ ] Tehtävä: Parsi Python-skriptit
+
 
 ```

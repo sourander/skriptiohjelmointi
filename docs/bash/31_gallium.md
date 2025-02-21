@@ -222,7 +222,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
 
 ??? question "Tehtävä: Devausympäristö ja runbash.sh"
 
-    Kurssin ensimmäisenä tehtävänä luot itsellesi devausympäristön. Käytännössä luot:
+    Ensimmäisenä tehtävänä luot itsellesi devausympäristön. Käytännössä luot:
 
     * Hakemistorakenteen tehtävien vastauksia varten
     * Skriptin `runbash.sh`, joka joko:
