@@ -10,7 +10,7 @@ Kurssilla tutustutaan skriptiautomaatioon eri skriptauskielien kautta. Kurssin o
 
     Opettaja auttaa toki resurssien salliessa, mutta sinua on varoitettu!
 
-Kurssin tavoitteena on antaa opiskelijalle valmiudet lukea ja kirjoittaa skriptejä, jotka automatisoivat arkipäiväisiä tehtäviä. Tämä opetellaan siten, että skriptejä testataan lyhytikäisessä, väliaikaisessa ympäristössä, joka on helppo tuhota ja luoda uudelleen — eli konteissa ja virtuaalikoneissa. Skriptien käyttö edesauttaa automatisointia, vähentää inhimillisiä virheitä, mahdollistaa tehdyn työn toistettavuuden sekä muutosten jäljitettävyyden versionhallinnan avulla. Kurssi on vain pintaraapaisu: varsinaiset taidot karttuvat, kun otat nämä opit käyttöön tulevissa kursseissa, projekteissa ja työelämässä.
+Kurssin tavoitteena on antaa opiskelijalle valmiudet lukea ja kirjoittaa skriptejä, jotka automatisoivat arkipäiväisiä tehtäviä. Tämä opetellaan siten, että skriptejä testataan lyhytikäisessä, väliaikaisessa ympäristössä, joka on helppo tuhota ja luoda uudelleen – eli konteissa ja virtuaalikoneissa. Skriptien käyttö edesauttaa automatisointia, vähentää inhimillisiä virheitä, mahdollistaa tehdyn työn toistettavuuden sekä muutosten jäljitettävyyden versionhallinnan avulla. Kurssi on vain pintaraapaisu: varsinaiset taidot karttuvat, kun otat nämä opit käyttöön tulevissa kursseissa, projekteissa ja työelämässä.
 
 ![](images/automation-by-dalle.jpg)
 
@@ -23,7 +23,7 @@ Kurssin kukin osio (Bash, PowerShell, ...) rakentuu edellisen päälle siten, et
 
 > "At the same time, do not just copy and paste code from GitHub or StackOverflow into your script and expect everything to work. Instead, look at the code" 
 > 
-> — Matthew Dowst, Practical Automation with PowerShell
+> – Matthew Dowst, Practical Automation with PowerShell
 
 Skriptauskielten (Bash, PowerShell, Python) osiot käydään läpi seuraavanlaisesti:
 

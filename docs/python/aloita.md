@@ -10,7 +10,7 @@ priority: 300
 
 #### Docker
 
-Aivan kuten aiemmissa osioissa, myös Python-skriptit voidaan ajaa Docker-kontissa. Tämä on, aivan kuten ennenkin, kannattavaa jos teet jotakin riskialtista, kuten tuhoat tiedostoja. Tämä voi olla myös tarpeen, jos tarvitset ns. "clean slate" -ympäristön, jossa ei ole mitään ylimääräistä.
+Aivan kuten aiemmissa osioissa käsitellyt kielet, myös Python-kieliset skriptit voidaan ajaa Docker-kontissa. Tämä on, aivan kuten ennenkin, kannattavaa jos teet jotakin riskialtista, kuten tuhoat tiedostoja. Kontti mahdollistaa ns. "clean slate" -ympäristön, jossa ei ole mitään ylimääräistä.
 
 #### Lokaalisti
 
@@ -30,6 +30,8 @@ Python on monilta osin cross-platform, joten skriptit toimivat samalla tavalla r
 
     Eroja tosin silti löytyy! Esimerkiksi tiedostoja kirjoittaessa kannattaa olla skarppina, että määrität eksplitiittisesti tiedoston enkoodauksen, sillä Windowsissa oletusenkoodaus on `win-1252`, kun taas Linuxissa ja macOS:ssä se on `utf-8`.
 
+    Myös Linux-jakelut voivat yllättää muutoksillaan. Debianissa (ja myös Ubuntussa) on käytössä `dist-packages`-hakemisto, joka ei ole standardi Pythonin osalta. Tämä voi aiheuttaa esimerkiksi sen, että Ubuntu-käyttäjät luulevat `requests`-kirjaston olevan osa Pythonin Standard Libraryä.
+
 ### Mikä Python on?
 
 Vapaasti suomennettu What is Python? Executive Summary on seuraava: 
@@ -40,11 +42,11 @@ Vapaasti suomennettu What is Python? Executive Summary on seuraava:
 
 [^pythonsummary]: Python.org. *What is Python? Executive Summary*. https://www.python.org/doc/essays/blurb/
 
-Pythonin sijasta voisimme yhtä hyvin opiskella Perliä. Kumpikin kieli on samankaltaisesta historiasta eli Unix-skriptauksesta. Aivan kuten `python3`, myös `perl` on mitä todennäköisimmin valmiiksi asennettuna jakelussasi. Perl on kenties kotikentällä skriptauksessaan vahvemmassa asemassa. Pythonin oma dokumentaatio tiivistää sen näin: *"As a consequence, Python comes close to Perl but rarely beats it in its original application domain; however Python has an applicability well beyond Perl's niche [^pythoncompare]"* Me käytämme Pythonia monista syistä, joita yksi on se, että kurssilla käsitelty Ansible on kirjoitettu Pythonilla. Toinen on se, että opiskelijat ovat usein jo käyttäneet Pythonia jossain muussa yhteydessä.
+Pythonin sijasta voisimme yhtä hyvin opiskella Perliä. Kumpikin kieli ponnistaa samankaltaisesta historiasta eli Unix-skriptauksesta. Aivan kuten `python3`, myös `perl` on mitä todennäköisimmin valmiiksi asennettuna jakelussasi. Perl on kenties kotikentällä skriptauksessaan vahvemmassa asemassa. Pythonin oma dokumentaatio tiivistää sen näin: *"As a consequence, Python comes close to Perl but rarely beats it in its original application domain; however Python has an applicability well beyond Perl's niche [^pythoncompare]"* Me käytämme Pythonia monista syistä, joita yksi on se, että kurssilla käsitelty Ansible on kirjoitettu Pythonilla. Toinen on se, että opiskelijat ovat usein jo käyttäneet Pythonia jossain muussa yhteydessä. Jos halut lukea Pythonin oman näkemyksen kielen vahvuuksista, lue esimerkiksi [Python Docs: Whetting Your Appetite](https://docs.python.org/3/tutorial/appetite.html)
 
 [^pythoncompare]: Python.org. *Comparing Python to Other Languages*. https://www.python.org/doc/essays/comparisons/
 
-Alla on laskettu Python, Perl ja Shell-skriptien sekä Linux-binäärien määrä `/usr/bin`-hakemistossa.
+Alla on piirakkakuvaajaan laskettuna Python, Perl ja Shell-skriptien sekä Linux-binäärien määrä `/usr/bin`-hakemistossa.
 
 ```mermaid
 pie showData
@@ -77,11 +79,15 @@ pie showData
 
 ### Erot shelleihin
 
-Huomaa, että Python ei käyttäydy shellinä samalla tavalla kuin Bash tai PowerShell. Pythonissa toki on olemassa niin sanottu Python Shell, mutta se ei ole shell sanan samassa merkityksessä. Pythonin Shell on "REPL" (Read-Eval-Print Loop), joka on interaktiivinen ohjelmointiympäristö. Tämä tarkoittaa, että voit kirjoittaa Python-koodia ja nähdä tuloksen välittömästi. Mikä sen sitten erottaa Bashista tai PowerShellista? ==Et voi suorittaa järjestelmäkomentoja suoraan Python Shellissä==. Eli siis `ls` ei tulosta hakemiston sisältöä, `cd` ei navigoi hakemistossa, `docker` ei kutsu Docker CLI:tä ja niin edelleen. Pythonin Shell on tarkoitettu Python-koodin kirjoittamiseen ja testaamiseen, ei järjestelmäkomentojen suorittamiseen.
+Huomaa, että Python ei käyttäydy shellinä samalla tavalla kuin Bash tai PowerShell. Pythonissa toki on olemassa niin sanottu Python Shell, mutta se ei ole shell sanan samassa merkityksessä. Pythonin Shell on "REPL" (Read-Eval-Print Loop), joka on interaktiivinen ohjelmointiympäristö. Tämä tarkoittaa, että voit kirjoittaa Python-koodia ja nähdä tuloksen välittömästi. Mikä sen sitten erottaa Bashista tai PowerShellista? ==Et voi suorittaa järjestelmäkomentoja suoraan Python Shellissä==. Eli siis `ls` ei tulosta hakemiston sisältöä, `cd` ei navigoi hakemistossa, `docker` ei kutsu Docker CLI:tä ja niin edelleen.
+
+Selvyyden vuoksi täytyy painottaa, että vaikka emme voi kutsua PATH:ssa olevia binäärejä suoraan Python Shellistä, ==voimme kutsua== niitä `subprocess`-moduulin avulla. Näin myös tulemme kurssin aikana tekemään.
 
 ![alt text](python-repl.png)
 
 **Kuva 1:** Python Shell on interaktiivinen ohjelmointiympäristö, jossa voit kirjoittaa Python-koodia ja nähdä tuloksen välittömästi. Huomaa, että se käynnistetään tyypillisesti jonkin shellin child-prosessina: kuvan tapauksessa Bashin. Interaktiivista shelliä voi käyttää leikkikenttänä, mutta tyypillisesti Python ajetaan skriptinä.
+
+
 
 ## Ensimmäinen kontti
 
@@ -193,7 +199,7 @@ echo "Number of days in $month/$year: $n_days"
     1. [The Python Standard Library](https://docs.python.org/3/library/index.html). Pythonin oman dokumentaation Standard Library -osio on korvaamattoman hyvä. Pythonin mukana tulevien moduulien dokumentaatio on täällä. Kurssilla käytetään skriptaukseen liittyviä moduuleja, joista tärkeimpinä `os`, `sys`, `subprocess`, `argparse` ja `logging`. Mitä mahtaa tehdä esim. `calendar`? Entä `getpass`?
     2. [DevHints.io: Python](https://devhints.io/python). Cheat sheet, joka sisältää kielen perusasiat yhdessä paketissa. Tämän ja ylemmän lähteet avulla saat jo yllättävän paljon aikaiseksi.
     3. [Python strftime cheatsheet](https://strftime.org/). Jos/kun päädyt pelaamaan päivämäärien formatoinnin kanssa, tämä cheat sheet on nopea apu.
-    4. [Python for DevOps: Learn Ruthlessly Effective Automation](#). Kirja löytyy korkeakoulun Finna-kirjastosta digitaalisena kopiona. Voit lukea sitä selaimessa.
+    4. [Python for DevOps: Learn Ruthlessly Effective Automation](https://kamezproxy01.kamit.fi:2252/lib/kajaani-ebooks/detail.action?docID=5993982). Kirja löytyy korkeakoulun Finna-kirjastosta digitaalisena kopiona. Voit lukea sitä selaimessa.
     
     Skriptaus on niin laaja käsite, että hakusanoilla "python scripting" ei yleensä löydä mitään hyödyllistä. Tee siis ensin tarkempi suunnitelma siitä, mitä aiot tehdä, ja muodosta tämän avulla hakusanasi. Kielimallit voivat auttaa hahmottamaan, millä kirjastoilla haluamasi ratkaisu hoituu.
 

@@ -6,7 +6,7 @@ priority: 231
 
 ## Tärpit
 
-### Komennot
+### Avainsanat
 
 Aivan kuten Bashissä, myös PowerShellissä on varattuja sanoja, joita ei voi käyttää muuttujaniminä. Tässä on lista niistä:
 

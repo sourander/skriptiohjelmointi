@@ -91,8 +91,22 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## Lukeminen (310)
 
-- [ ] Tehtävä: Devausympäristö ja runbash.sh
+- [ ] Tehtävä: Python Devausympäristö
 - [ ] Tehtävä: Parsi Python-skriptit
+
+## 💡 Gallium (331)
+
+- [ ] Tehtävä: Devausympäristö ja runpy.py
+- [ ] Tehtävä: Python Hello World
+- [ ] Tehtävä: Python Turboahdettu Hello World
+- [ ] Tehtävä: Interaktiivinen Python
+- [ ] Tehtävä: Interaktiivinen Python Pt. 2
+- [ ] Tehtävä: Tiedostoon loggaus
+- [ ] Tehtävä: Ruff
+
+## 🎆 Strontium (338)
+
+- [ ] Lisätehtävä: breakpoint()
 
 
 ```

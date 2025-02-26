@@ -168,6 +168,6 @@ Viime luvussa opimme debuggausta bash:n optioneilla. Nyt käytämme lintteriä. 
 
 ??? question "Tehtävä: Korjaa skriptit"
 
-    Aja yllä luomasi skripti kaikkia `scripts/`-hakemiston skriptejä vasten — eli testaa kaikki kurssin skriptit. Korjaa virheet, joita ShellCheck löytää. Löydät virheistä lisätietoa [ShellCheck Wikistä](https://www.shellcheck.net/wiki/SC2162). Korvaa urlissa viimeinen `SCxxxx`-osa oikealla virhekoodilla.
+    Aja yllä luomasi skripti kaikkia `scripts/`-hakemiston skriptejä vasten – eli testaa kaikki kurssin skriptit. Korjaa virheet, joita ShellCheck löytää. Löydät virheistä lisätietoa [ShellCheck Wikistä](https://www.shellcheck.net/wiki/SC2162). Korvaa urlissa viimeinen `SCxxxx`-osa oikealla virhekoodilla.
 
     Ota samalla tavoitteeksi ajaa jatkossa kaikki skriptisi ShellCheckin läpi ennen kuin päästät niitä käsistäsi. Huomaa, että ShellCheck ei palauta mitään, jos skripti on virheetön.
