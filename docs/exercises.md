@@ -106,6 +106,8 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## 🎆 Strontium (338)
 
+- [ ] Tehtävä: Arvaa numero
+- [ ] Tehtävä: Reminder
 - [ ] Lisätehtävä: breakpoint()
 
 

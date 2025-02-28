@@ -28,7 +28,7 @@ Write-Host ("The answer to {0}, {1}, and {2} is: {3}" -f $c, $b, $d, $a)
 
     Mukavuus-otsikon alla on oletus, että sinulla on käytössä Visual Studio Code, PowerShell Extension ja lokaalisti asennettu PowerShell.
 
-Bash-kielessä on hyvin pieni määrä sisäänrakennettuja komentoja, joten kyseistä kieltä kirjoittaa melko kevyesti ilman *code autocompletion* ominaisuutta. PowerShellin kanssa tätä kannattaa opetella hyödyntämään.
+Bash-kielessä on hyvin pieni määrä sisäänrakennettuja komentoja, joten kyseistä kieltä kirjoittaa melko kevyesti ilman *code autocompletion* ominaisuutta. PowerShellin kanssa tätä kannattaa opetella hyödyntämään. Voit lukea lisää [VS Code: IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)-dokumentaatiosta.
 
 ![](image.png)
 
