@@ -215,7 +215,130 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
 
 !!! question "Tehtävä: Reminder"
 
-    TODO.
+    Tämän pitäisi olla sinulle jo tuttua. Luo kaksi ohjelmaa, jotka toimivat yhdessä. Toinen luo, toinen näyttää muistiinpanoja. Lisäksi on olemassa apuohjelma, joka lisää nämä PATH:iin.
+
+    * `install_reminder.py`
+        * Lisää `remind` ja `remember` symboliset linkit PATH:iin.
+    * `remember`
+        * Kysyy käyttäjältä muistutuksia, jotka tallennetaan `~/.reminder`-tiedostoon.
+        * Tyhjä syöte lopettaa ohjelman.
+        * Formaatti: `[YYYY-MM-DD HH:MM] Muistutus`
+    * `remind`
+        * Tulostaa muistutukset
+        * Antaa mahdollisuuden poistaa muistutuksia TUI-käyttöliittymällä.
+
+    Käytä TUI:n (Text User Interface) luomiseen `curses`-moduulia. Moduuli tulee Pythonin mukana Unix-like -järjestelmissä, joten sitä ei tarvitse asentaa erikseen.
+
+    Lopulta käyttö näyttää tältä, kun komennot ajetaan kontin sisällä (`python runpy.py --bash`):
+
+    ```console title="🐳 Bash"
+    # python scripts/install_reminder.py
+    Created symbolic link: /usr/local/bin/remind -> /app/scripts/remind.py
+    Created symbolic link: /usr/local/bin/remember -> /app/scripts/remember.py
+    
+    # remember
+    Enter a reminder: Learn Bash
+    Enter a reminder: Learn PowerShell
+    Enter a reminder: Learn Python
+    Enter a reminder: Eat spam
+    Enter a reminder: 
+    Goodbye 👋! To view reminders, run: remind
+
+    # remind
+    ks. kuva alta
+    ```
+    ![](py-reminder-tui.png)
+
+    **Kuva 3:** *Muistutusten lisääminen ja poistaminen TUI:n avulla.*
+
+    ??? tip "Executable"
+
+        Huomaa, että sinun tulee ==tehdä skripteistä suoritettavia== host-koneellasi, sillä kontissa kyseinen volume on read-only. Jos teet tätä kurssin osuutta Windowsista käsin, etkä voi tehdä tätä, luo skripti siten, että se luo symbolisen linkin sijasta aliaksen:
+
+        ```bash
+        alias remember="python3 /app/scripts/remember.py"
+        alias remind="python3 /app/scripts/remind.py"
+        ```
+
+        Kuinkahan tämä onnistuu Pythonissa?
+
+    ??? tip "Opettajan versio"
+
+        Alla on opettajan versio siten, että osa riveistä on jemmattu. Muista, että tällä kurssilla koodin ymmärtäminen on tärkeää. Jos opettaja kysyy sinulta, mitä jokin rivi tekee, osaatko vastata?
+
+        ```python
+        #!/bin/env python3
+
+        import curses
+        from pathlib import Path
+
+        TARGET = Path("~/.reminder").expanduser()
+
+        def load_reminders() -> list[str]:
+            pass
+
+        def save_reminders(reminders: list[str]):
+            pass
+
+        def filter_and_save(reminders: list[str], sel: set[int]):
+            kept_reminders = [
+                rem for idx, rem in enumerate(reminders) if idx not in sel
+            ]
+            save_reminders(kept_reminders)
+
+        def draw_menu(stdscr: curses.window, rem: list[str], curr: int, sel: set[int]):
+            stdscr.clear()
+            stdscr.addstr(
+                0, 2, "Press SPACE to mark as done, Q to save and quit", curses.A_BOLD
+            )
+
+            for idx, reminder in enumerate(rem):
+                # Highlight the current row
+                attr = curses.A_REVERSE if idx == curr else curses.A_NORMAL
+
+                # Add checkboxes
+                if idx in sel:
+                    button = "[X] "
+                else:
+                    button = "[ ] "
+                stdscr.addstr(idx + 2, 2, button + reminder, attr)
+
+
+
+        def reminder_app(stdscr: curses.window):
+            curses.curs_set(0)   # Hide text cursor
+            stdscr.keypad(True)  # Enable arrow keys
+            stdscr.clear()
+
+            reminders = load_reminders()
+            if not reminders:
+                raise SystemExit("No reminders found!")
+            
+            selected = set()
+            current_row = 0
+
+            while True:
+
+                draw_menu(stdscr, reminders, current_row, selected)
+
+                # Get event 
+                key = stdscr.getch()
+
+                if key == curses.KEY_UP and current_row > 0:
+                    current_row -= 1
+                elif key == curses.KEY_DOWN and current_row < len(reminders) - 1:
+                    current_row += 1
+                elif key == curses.KEY_RIGHT:
+                    selected.add(current_row)
+                elif key == curses.KEY_LEFT:
+                    selected.remove(current_row)
+                elif key in (ord("Q"), ord("q")):
+                    filter_and_save(reminders, selected)
+                    break
+
+        if __name__ == "__main__":
+            curses.wrapper(reminder_app)
+        ```
 
 ??? question "Tehtävä: breakpoint()"
 

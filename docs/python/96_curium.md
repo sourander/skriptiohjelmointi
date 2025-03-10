@@ -100,7 +100,7 @@ Luo tiedostot `build-skroh-python.py` ja `skroh-python.Dockerfile` haluamaasi lo
     RUN pip install requests
     ```
 
-Nyt voit ajaa `build-skroh-python.py`-skriptin, joka luo uuden Docker-imagen. Skripti on Python-skripti, joten sen pitäisi toimia eri käyttöjärjestelmissä Seuraa alla olevia komentoja ajatuksella. Komentojen tulostetta on lyhennetty luettavuuden parantamiseksi.
+Nyt voit ajaa `build-skroh-python.py`-skriptin, joka luo uuden Docker-imagen. Skripti on Python-skripti, joten sen pitäisi toimia eri käyttöjärjestelmissä. Seuraa alla olevia komentoja ajatuksella. Komentojen tulostetta on lyhennetty luettavuuden parantamiseksi.
 
 ```console title="🖥️ Bash | CMD | PowerShell"
 $ python build-skroh-python.py
