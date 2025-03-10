@@ -49,10 +49,6 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Einstein-level Oppimispäiväkirja
 - [ ] Tehtävä: Oppimispäiväkirjan jatkot
 
-## 👨‍🔬 Einsteinium (199)
-
-- [ ] Tehtävä: PowerShell Docker Wrapper
-
 ## PowerShell 101 (200)
 
 - [ ] Tehtävä: PowerShell Hello World
@@ -85,6 +81,10 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Duplikaattitiedostojen luominen
 - [ ] Tehtävä: Duplikaattien tunnistaminen
 
+## 👨‍🔬 Einsteinium (299)
+
+- [ ] Tehtävä: PowerShell Docker Wrapper
+
 ## Python 101 (300)
 
 - [ ] Tehtävä: Python informaatiohaku
@@ -108,7 +108,20 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: Arvaa numero
 - [ ] Tehtävä: Reminder
-- [ ] Lisätehtävä: breakpoint()
+- [ ] Tehtävä: breakpoint()
+- [ ] Tehtävä: IP Address
+
+## 👩‍🔬 Curium (396)
+
+- [ ] Tehtävä: Pingviinien laskeminen
+- [ ] Tehtävä: Suurimmat ohjelmat
+- [ ] Tehtävä: Duplikaattitiedostojen luominen
+- [ ] Tehtävä: Duplikaattien tunnistaminen
+
+## 👨‍🔬 Einsteinium (399)
+
+- [ ] Tehtävä: Arvaa luku botti
+- [ ] Tehtävä: Paste.ee
 
 
 ```

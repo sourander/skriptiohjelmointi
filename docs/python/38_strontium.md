@@ -8,33 +8,115 @@ priority: 338
 
 ### Format Operator
 
-TODO (f-string)
+Pythonin f-string on tehokas tapa formatoida merkkijonoja. Se on ollut käytössä Python 3.6:sta lähtien. F-stringin avulla voit lisätä muuttujia suoraan merkkijonoon. F-stringin tunnistaa siitä, että merkkijonon alkuun tulee `f`-kirjain. Esimerkiksi:
+
+```python
+name = "John"
+age = 42
+
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Huomaa, että yksinkertaisen muuttujan ujuttamisen lisäksi f-string sallii uskomattoman määrän muotoilua, ja tyypillisen Python-lausekkeen käytön. Esimerkiksi:
+
+```python
+print(f"2 + 2 = {2 + 2}")
+print(f"216 can be written as hex {216:X} and as binary {216:b}")
+```
+
+Voit tutustua tähän muotoiluun [Python f-string cheat sheets](https://fstring.help/cheat/) -sivuston avulla tai suoraan [Python Docs: String > Format String Syntax](https://docs.python.org/3/library/string.html#format-string-syntax).
 
 ## Mukavuus
 
 ### Visual Studio Coden käyttö
 
-!!! warning
-
-    Mukavuus-otsikon alla on oletus, että sinulla on käytössä Visual Studio Code, Python Extension ja lokaalisti asennettu Python 3.1x.
+Mukavuus-otsikon alla on oletus, että sinulla on käytössä Visual Studio Code, Python Extension ja lokaalisti asennettu Python 3.1x. Python voi olla Ubuntun mukana tullut, Python.org-sivustolta ladattu, [uv](https://docs.astral.sh/uv/)-työkalulla asennettu tai jokin muu. Tärkeintä on, että Python on lisätty käyttöjärjestelmäsi PATH:iin ja on täten ajettavissa terminaalista komennolla `python` tai `python3`.
 
 #### Venv
+
+!!! warning
+
+    Pythonin virtuaaliympäristöt eivät ole maailman helpoin aihe. Tulethan läsnätunneille paikalle, jotta saat tähän tukea ja neuvoja!
 
 Kun luot uudet Python-projektin Visual Studio Codessa, sinulla voi olla tarve asentaa joitakin moduuleita. Olet jo aiemmin oppinut, että Debian-pohjaisessa ympäristössä on `dist-packages`-hakemisto, jossa on esimerkiksi `requests`-moduuli asennettuna. Jos olet jossakin toisesssa käyttöjärjestelmässä tai jakelussa, se voi hyvin puuttua sinulta. Tässä tapauksessa tarvitset virtuaaliympäristön.
 
 Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se on **kopio Python-asennuksesta**. 
 
-Voit luoda sen seuraavalla tavalla Terminaalissa:
+Voit luoda sen seuraavalla tavalla:
 
-```bash title="🖥️ Bash"
-# Jos käytät OS:n omaa Pythonia
-$ python3 -m venv .venv
+=== "uv"
 
-# Jos sinulla on uv asennettuna
-$ uv venv
-```
+    Jos sinulla on [uv](https://docs.astral.sh/uv/), käytä ihmeessä sitä! Uv toimii Windowsissa, Linuxissa ja macOS:ssä samoin tavoin.
 
-??? warning "Muista Git Ignore!"
+    ```bash title="🖥️ Bash"
+    # Varmista, että olet projektisi hakemistossa
+    $ cd mene/sinun/projektisi/hakemistoon
+    
+    # Asenna haluamasi Python
+    $ uv install 3.12
+    $ uv venv --python 3.12
+
+    # Asenna virtuaaliympäristöön requests
+    $ uv pip install requests
+
+    # Aja uv:n hallinnoima Python
+    $ uv python scripts/hello.py
+    ```
+
+=== "Ubuntu"
+
+    Jos sinulla on käytössäsi Ubuntu, sen mukana tulee Python 3.xx. Uv on mukava työkalu, mutta vaihtoehtoisesti voit luoda virtuaaliympäristön seuraavasti.
+
+    ```bash title="🖥️ Bash"
+    # Varmista, että olet projektisi hakemistossa
+    $ cd mene/sinun/projektisi/hakemistoon
+
+    # Luo virtuaaliympäristö
+    $ python3 -m venv .venv
+
+    # Aktivoi virtuaaliympäristö 
+    $ source .venv/bin/activate
+
+    # Asenna haluamasi moduulit
+    (.venv) $ pip install requests
+
+    # Aja Python
+    (.venv) $ python scripts/hello.py
+
+    # Deaktivoi virtuaaliympäristö
+    (.venv) $ deactivate
+    ```
+
+=== "Windows"
+
+    Jos sinulla on Windowsiin asennettuna Python 3.xx, etkä halua jostain syystä asentaa uv:ta, aja seuraavat komennot.
+
+    ```pwsh-session title="🖥️ PowerShell"
+    # Varmista, että olet projektisi hakemistossa
+    PS> cd mene/sinun/projektisi/hakemistoon
+
+    # Suositeltu: kiellä pip:n käyttö virtuaaliympäristön ulkopuolella
+    PS> pip3 config set global.require-virtualenv true
+
+    # Luo virtuaaliympäristö
+    PS> python3 -m venv .venv
+
+    # Aktivoi virtuaaliympäristö
+    PS> .venv\Scripts\Activate.ps1
+
+    # Asenna haluamasi moduulit
+    (.venv) PS> pip install requests
+
+    # Aja Python
+    (.venv) PS> python scripts/hello.py
+
+    # Deaktivoi virtuaaliympäristö
+    (.venv) PS> deactivate
+    ```
+
+
+
+!!! warning "Muista Git Ignore!"
 
     Ethän unohda lisätä kyseistä hakemistoa `.gitignore`-tiedostoon, jotta se ei päädy versionhallintaan! Se on kopio Pythonista, joten se sisältää satoja binääritiedostoja, jotka eivät todellakaan kuulu versionhallintaan. Kukin käyttäjä luo oman virtuaaliympäristönsä itse.
 
@@ -46,9 +128,21 @@ $ uv venv
 
     Tarkista, että tiedostoja ei näy versionhallinnassa komennolla `git status -u`.
 
+Huomaa, että on kaksi eri asiaa: käyttää virtuaaliympäristöä shell-istunnossa ja Visual Studio Coden GUI:ssa. Visual Studio Code yleensä havaitsee, jos luot virtuaaliympäristön, mutta ei aina. Visual Studio Code saattaa myös jatkossa aktivoida sen automaattisesti shell-istuntoon, mutta tämä riippuu asetuksesta:
+
+```json title="$HOME/.config/Code/User/settings.json"
+{
+    // ...
+    "python.terminal.activateEnvironment": false,
+    // ...
+}
+```
+
+Sen sijaan VS Coden GUI-editorin, eli ei siis integroidun terminaalin, käyttämä Python on valittavissa painamalla `F1` ja kirjoittamalla `Python: Select Interpreter`. Yleensä VS Code avaa alla näkyvän (ks. Kuva 1) pop-up -ikkunan ruudun oikeaan alalaitaan kun olet luonut virtuaaliympäristön. ==Jos tämä popup menee sinulta ohi== syystä tai toisesta, voit valita Workspace-kohtaisen virtuaaliympäristön painamalla `F1` ja kirjoittamalla `Python: Select Interpreter`. Kenttään voi kirjoittaa relatiivisen polun projektin uudesta esimerkiksi näin: `${workspaceFolder}/python/.venv/`. Tämä polun käsin kirjoittaminen on tarpeen vain, jos executable on jossakin muualle kuin avoinna olevan kansion juuressa (kuten `python/.venv` eikä `.venv/`).
+
 ![](../images/py-vscode-venv-created-popup.png)
 
-**Kuva 1:** *Visual Studio Code ilmoittaa, että se on havainnut uuden virtuaaliympäristön, ja tarjoaa sinun valita sen kyseistä worskpacea varten. Klikkaa **Yes**. Jos tämä popup menee sivulta ohi syystä tai toisesta, voit valita Workspace-kohtaisen virtuaaliympäristön painamalla `F1` ja kirjoittamalla `Python: Select Interpreter`. Kenttään voi kirjoittaa relatiivisen polun projektin uudesta esimerkiksi näin: `${workspaceFolder}/python/.venv/`.*
+**Kuva 1:** *Visual Studio Code ilmoittaa, että se on havainnut uuden virtuaaliympäristön, ja tarjoaa sinun valita sen kyseistä worskpacea varten. Klikkaa **Yes**.*
 
 #### Intellisense
 
@@ -59,7 +153,7 @@ name = "John Anderton"
 name
 ```
 
-Kun lisäät sanan `name` perään vielä pisteen, aukeaa lista objektin metodeista ja ominaisuuksista. Kokeile esimerkiksi `name.upper()`. Jos lista ei aukea, paina ++ctrl+space++.
+Kun lisäät sanan `name` perään vielä pisteen, aukeaa lista objektin metodeista ja ominaisuuksista. Kokeile esimerkiksi `name.upper()`. Jos lista ei aukea, paina ++ctrl+space++. Huomaa, että IntelliSense käyttää sitä Python-versiota, joka on valittu Visual Studio Codessa. Tämä neuvotaan yllä.
 
 !!! tip "🍎 macOS"
 
@@ -123,11 +217,11 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
 
     TODO.
 
-??? question "Lisätehtävä: breakpoint()"
+??? question "Tehtävä: breakpoint()"
 
-    Koska käytämme Visual Studio Codea, voimme käyttää sen interaktiivista debuggeria CLI-pohjaisen Pdb:n (Python Debugger) sijasta. Tämän käyttö esitellään läsnätunneilla.
-
-    On kuitenkin suositeltavaa kokeilla Pdb:tä lyhyesti ihan sivistyksen tähden. Yksi tapa aktivoida se on sijoittaa skriptiisi seuraava rivi:
+    Koska käytämme Visual Studio Codea, voimme käyttää sen interaktiivista debuggeria CLI-pohjaisen Pdb:n (Python Debugger) sijasta. Tämän käyttö esitellään läsnätunneilla. On kuitenkin suositeltavaa kokeilla Pdb:tä lyhyesti ihan sivistyksen tähden. Vastaavia työkaluja löytyy myös muista kielistä, kuten Pdb:n esikuva GDB, joka voi käyttää useissa kielissä: C, C++, Rust ja moni muu.
+    
+    Yksi tapa aktivoida Pdb on sijoittaa skriptiin alla olevassa code snippetissä oleva rivi. Rivin voi tarpeen mukaan ujuttaa useisiin paikkoihin, jolloin debuggeri pysähtyy jokaisen rivin kohdalla.
 
     ```python
     breakpoint()
@@ -183,3 +277,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
     | `whatis`  | Näytä lausekkeen tyyppi                      |
 
     Lauseke (engl. expression) on usein muuttuja, mutta voi olla myös esimerkiksi funktio tai moduuli.
+
+!!! question "Tehtävä: IP Address"
+
+    TODO. (Parsitaan IP-osoitteita built-in ipaddress-moduulilla)
