@@ -117,6 +117,7 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Suurimmat ohjelmat
 - [ ] Tehtävä: Duplikaattitiedostojen luominen
 - [ ] Tehtävä: Duplikaattien tunnistaminen
+- [ ] Tehtävä: Tulosta PATH-muuttujan hakemistot
 
 ## 👨‍🔬 Einsteinium (399)
 

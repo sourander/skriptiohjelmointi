@@ -187,12 +187,123 @@ $ python runpy.py --image skroh-python:3.12 --bash
 
 ??? question "Tehtävä: Suurimmat ohjelmat"
 
-    TODO
+    Luo skripti, joka tulostaa n kappaletta suurimpia binääritiedostoja /usr/bin-hakemistossa. Vakio n = 5, mutta käyttäjä voi syöttää sen. Voit lähestyä ongelmaa kahdella tavalla:
 
-??? question "Tehtävä: Duplikaattitiedostojen luominen"
+    * `subprocess.run(["du", "-a", "/usr/bin"])`
+    * `Path("/usr/bin/some_executable").stat()`
 
-    TODO
+    Jälkimmäinen tapa säästää sinut `du`-komennon tuloksen parsimiselta ja on muutenkin *more pythonic*. Se palauttaa itemin, joka sisältää muun muassa seuraavat tiedot:
 
-??? question "Tehtävä: Duplikaattien tunnistaminen"
+    ```python
+    os.stat_result(
+        st_mode=33261,    # oct(33261) == 0o100755 eli 755 eli rwxr-xr-x
+        st_uid=0,         # user id
+        st_gid=0,         # group id
+        st_size=1346480,  # size in bytes
+        ...
+    )
+    ```
 
-    TODO
+    Huomaa, että arvot `st_uid` ja `st_gid` tulee muuttaa käyttäjänimeksi ja ryhmänimeksi. Tämä onnistuu helposti [pwd](https://docs.python.org/3/library/pwd.html) ja [grp](https://docs.python.org/3/library/grp.html)-moduuleilla. Entä kuinka muuttaisit `st_size`-arvon ihmisluettavaan muotoon? Kenties StackOverFlow-palvelussa tätä on pohtinut joku muukin?
+
+    !!! note "Lisähaaste"
+
+        Voit lisätä tehtävän haastavuutta seuraamalla symbolisia linkkejä. Jos teet tämän, tulet saamaan kohtalaisen määrän duplikaatteja. Keksi tapa poistaa duplikaatit listasta.
+
+    !!! note "Lisähaaste 2"
+        Lisähaaste on hyödyntää st_modea. Voit parsia siitä muun muassa moden numeroina (esim. `755`), kääntää sen merkkijonoksi (esim. `rwxrxrx`)
+
+    Esimerkki käytöstä alla (lisähaasteet mukana):
+
+    ```console title="🖥️ Bash"
+    $ ./runpy.py scripts/largest_binaries.py -n 8 
+    /usr/bin/x86_64-linux-gnu-lto-dump-12      30.5 MiB    root:root rwxr-xr-x
+    /usr/bin/sq                                 9.6 MiB    root:root rwxr-xr-x
+    /usr/bin/python3.11                         6.5 MiB    root:root rwxr-xr-x
+    /usr/bin/perl5.36.0                         3.6 MiB    root:root rwxr-xr-x
+    /usr/bin/git                                3.5 MiB    root:root rwxr-xr-x
+    /usr/bin/x86_64-linux-gnu-ld.gold           3.0 MiB    root:root rwxr-xr-x
+    /usr/bin/scalar                             2.1 MiB    root:root rwxr-xr-x
+    /usr/bin/git-shell                          2.0 MiB    root:root rwxr-xr-x
+    ```
+
+    Tämä harjoitus ei juuri saavuta mitään, mitä `ls`-komento ei tee, mutta se on hyvä harjoitus tiedostojen käsittelyyn ja tiedostojen metatietojen lukemiseen. Voisit käyttää näitä taitoja esimerkiksi tiedostojen analysointiin, järjestämiseen, tai vaikkapa tiedostojen poistamiseen – kenties sisällyttäen merkittävästi enemmän logiikkaa.
+
+!!! question "Tehtävä: Duplikaattitiedostojen luominen"
+
+    Tämä tehtävä toimii esiasteena seuraavalle tehtävälle. Luo skripti, joka kirjoittaa tiedostoihin sisältöä siten, että osa tiedostoista on tarkoituksella toistensa kopioita. Osa tiedostoista tulee sen sijaan olla uniikkeja. Voit käyttää apuna seuraavanlaista jakoa:
+
+    ```python title="add_duplicates.py"
+    duplicate_files = [
+        tmpdir / "foo.txt",
+        tmpdir / "foo_copy.txt",
+        tmpdir / "nested" / "foo_copy_nested.txt",
+    ]
+
+    unique_files = [
+        tmpdir / "unicorn_a.txt",
+        tmpdir / "nested" / "unicorn_b.txt",
+    ]
+    ```
+
+    Lopulta ohjelmaa tulisi voida käyttää seuraavanlaisesti:
+
+    ```console title="🐳 Bash"
+    $ python scripts/add_duplicates.py
+    Temporary directory created at: /tmp/tmpinhu9_m1
+    Created file: /tmp/tmpinhu9_m1/foo.txt
+    Created file: /tmp/tmpinhu9_m1/foo_copy.txt
+    Created file: /tmp/tmpinhu9_m1/nested/foo_copy_nested.txt
+    Created file: /tmp/tmpinhu9_m1/unicorn_a.txt
+    Created file: /tmp/tmpinhu9_m1/nested/unicorn_b.txt
+    Navigate to /tmp/tmpinhu9_m1 to see the files! 👀
+    ```
+
+    !!! tip
+    
+        Rautakoodauksen sijasta voit käyttää `tempfile.gettempdir()`, jotta sama skripti toimisi eri alustoilla.
+
+!!! question "Tehtävä: Duplikaattien tunnistaminen"
+
+    Luo skripti, joka tunnistaa duplikaatit annetussa hakemistossa. Mikäli `-recurse` flag on annettu, sen tulisi käydä myös alihakemistot läpi. Duplikaatit tulisi tunnistaa tiedoston MD5-hashin perusteella. Voit käyttää samoja vaiheita kuin aiemmin PowerShellin kanssa, mutta puuttuvat cmdletit saattavat aiheuttaa päänvaivaa.
+
+    **Päänvaiva 1:** Tulet mahdollisesti huomaamaan, että Group-Object ja Where-Object Count -komentojen puute tekee tehtävästä hieman vaikeamman Pythonissa kuin PowerShellissä, jossa olet toteuttanut vastaavan operaation aiemmin. Datan käsittelyyn tarkoitetut kirjastot, kuten Pandas, tarjoavat näitä ominaisuuksia, mutta se lisäisi meidän skriptille ylimääräisiä riippuvuuksia. Ratkaise tämä ongelma Pythonin sisäänrakennetuilla kirjastoilla. Kenties `collections.defaultdict` tai `collections.Counter` voisi olla hyödyllinen?
+
+    **Päänvaiva 2:** Sinun saattaa tulla ikävä myös Get-FileHash -cmdletia, joka laskee tiedoston hashin. Pythonissa voit käyttää `hashlib`-moduulia. Voit chunkata tiedoston ja laskea hashin osissa, kuten StackOverFlow:n postauksissa neuvotaan, jotta suurten tiedostojen käsittely onnistuu. Vaihtoehtona on käyttää ==valmisratkaisua==: `hashlib.file_digest(f, algorithm)`. Kyseinen funktio on Python 3.11:ssä lisätty.
+
+    ```console title="🐳 Bash"
+    $ python scripts/find_duplicates.py /tmp/tmpinhu9_m1/
+    🚨 WARNING: Duplicate files found:
+
+    Full path                      MD5 checksum
+    ---------------------------------------------------------------
+    /tmp/tmpinhu9_m1/foo.txt       746308829575e17c3331bbcb00c0898b
+    /tmp/tmpinhu9_m1/foo_copy.txt  746308829575e17c3331bbcb00c0898b
+    
+    $ python scripts/find_duplicates.py /tmp/tmpinhu9_m1/ --recurse
+    🚨 WARNING: Duplicate files found:
+
+    Full path                                    MD5 checksum
+    -----------------------------------------------------------------------------
+    /tmp/tmpinhu9_m1/foo.txt                     746308829575e17c3331bbcb00c0898b
+    /tmp/tmpinhu9_m1/foo_copy.txt                746308829575e17c3331bbcb00c0898b
+    /tmp/tmpinhu9_m1/nested/foo_copy_nested.txt  746308829575e17c3331bbcb00c0898b
+    ```
+
+
+!!! question "Tehtävä: Tulosta PATH-muuttujan hakemistot"
+
+    Skriptiohjelmoinnin tärkeä osa on ympäristömuuttujien käsittely. Yksi tärkeimmistä ympäristömuuttujista on `PATH`, joka sisältää hakemistot, joista käyttöjärjestelmä etsii suoritettavia tiedostoja. Toteuta skripti, joka tulostaa `PATH`-muuttujan hakemistot riveittäin. Voit käyttää `os.environ["PATH"]`-muuttujaa, joka palauttaa `PATH`-muuttujan arvon.
+
+    Tämä on Curium-osion helppo loppukevennys! Tulosteen tulisi näyttää jotakuinkin tältä:
+
+    ```console title="🐳 Bash"
+    python scripts/print_env.py 
+    /usr/local/bin
+    /usr/local/sbin
+    /usr/local/bin
+    /usr/sbin
+    /usr/bin
+    /sbin
+    /bin
+    ```
