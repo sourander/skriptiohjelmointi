@@ -213,7 +213,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
         guess = input()
         ``` 
 
-!!! question "Tehtävä: Reminder"
+??? question "Tehtävä: Reminder"
 
     Tämän pitäisi olla sinulle jo tuttua. Luo kaksi ohjelmaa, jotka toimivat yhdessä. Toinen luo, toinen näyttää muistiinpanoja. Lisäksi on olemassa apuohjelma, joka lisää nämä PATH:iin.
 
@@ -401,6 +401,62 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
 
     Lauseke (engl. expression) on usein muuttuja, mutta voi olla myös esimerkiksi funktio tai moduuli.
 
-!!! question "Tehtävä: IP Address"
+??? question "Tehtävä: IP Address"
 
-    TODO. (Parsitaan IP-osoitteita built-in ipaddress-moduulilla)
+    Kirjoita Python-skripti, joka:
+
+    1. Käyttää built-in kirjastoa `ipaddress`.
+    2. Kysyy käyttäjältä IP-osoitteen CIDR-notaatiolla (esim. `192.168.0.12/24`).
+    3. Tulostaa seuraavat sekä desimaali- että binäärimuodossa:
+        * Verkon osoite
+        * Verkon maski
+        * Ensimmäinen host ip
+        * Viimeinen host ip
+        * Broadcast ip
+
+    Alla esimerkki käytöstä. Huomaa, että tulosteen ei tarvitse olla merkistä merkkiin muotoiltu samalla tavalla.
+
+    ```console title="🖥️ Bash"
+    ./runpy.py scripts/cidr_range.py
+    Enter a network (CIDR notation): 10.0.2.42/23
+
+    Label            IP Address       Binary                          
+    ---------------------------------------------------------------------
+    Network:         10.0.2.0         00001010 00000000 00000010 00000000
+    Netmask:         255.255.254.0    11111111 11111111 11111110 00000000
+    First IP:        10.0.2.1         00001010 00000000 00000010 00000001
+    Last IP:         10.0.3.254       00001010 00000000 00000011 11111110
+    Broadcast:       10.0.3.255       00001010 00000000 00000011 11111111
+    ```
+
+    ??? tip "Host-ip verkon osoitteeksi"
+
+        Verkon osoite on se osoite, joka on ensimmäinen mahdollinen osoite kyseisessä verkossa. Käyttäjä saattaa ajatuksissaan antaa osoitteen, joka ei ole verkon vaan yksittäisen laitteen ip, kuten yllä olevassa esimerkissä (`192.168.0.12/24`). Saat muunnettua tämän verkon osoitteeksi käyttämällä `network_address`-metodin parametrina `strict=False`.
+
+    ??? tip "Missä IP:t?"
+
+        Huomaa, että `network.broadcast_address` palauttaa IPv4Network-olion. Kenties keksit käyttöä seuraaville:
+
+        * `network.broadcast_address`
+        * `list(network.hosts())` palauttaa `list[IPv4Address]` sisältäen vain hostit
+        * `int(some_ipv4)` palauttaa desimaalimuodossa olevan ip:n
+
+    ??? tip "IP neljäksi oktetiksi"
+
+        Mikä tahansa numero on helppo tulostaa 32-bittiä pitkänä binäärinä. Se onnistuu f-stringin avulla (`{int(ip):032b}`). Sen tulostaminen 4 eri osassa, eli *oktetissa*, vaatii hieman koodia, mutta parantaa tulosteen luettavuutta. Tämän voi luonnollisesti tehdä monella tapaa. Alla helppolukuinen tapa:
+
+        ```python
+        def ip2bin(ip: ipaddress.IPv4Address) -> str:
+        """
+        Convert an IPv4 address to binary format with whitespace between octets, like:
+        10000001 10000001 10000001 10000001
+        """
+
+        bit_32 = f"{int(ip):032b}"
+
+        octets = []
+        for i in range(0, 32, 8):
+            octet = bit_32[i : i + 8]
+            octets.append(octet)
+        return " ".join(octets)
+        ```
