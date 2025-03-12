@@ -83,7 +83,7 @@ Huomaa, että Python ei käyttäydy shellinä samalla tavalla kuin Bash tai Powe
 
 Selvyyden vuoksi täytyy painottaa, että vaikka emme voi kutsua PATH:ssa olevia binäärejä suoraan Python Shellistä, ==voimme kutsua== niitä `subprocess`-moduulin avulla. Näin myös tulemme kurssin aikana tekemään.
 
-![alt text](python-repl.png)
+![alt text](../images/python-repl.png)
 
 **Kuva 1:** Python Shell on interaktiivinen ohjelmointiympäristö, jossa voit kirjoittaa Python-koodia ja nähdä tuloksen välittömästi. Huomaa, että se käynnistetään tyypillisesti jonkin shellin child-prosessina: kuvan tapauksessa Bashin. Interaktiivista shelliä voi käyttää leikkikenttänä, mutta tyypillisesti Python ajetaan skriptinä.
 

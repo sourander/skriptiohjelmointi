@@ -247,7 +247,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
     # remind
     ks. kuva alta
     ```
-    ![](py-reminder-tui.png)
+    ![](../images/py-reminder-tui.png)
 
     **Kuva 3:** *Muistutusten lisääminen ja poistaminen TUI:n avulla.*
 
