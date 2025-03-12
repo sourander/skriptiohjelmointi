@@ -142,25 +142,25 @@ TODO
         [PRE-GAME] Oikea vastaus: 622
         [PRE-GAME] 
         [PRE-GAME] Syötä arvaus:
-        [BOT] Guessing: 500 (1 > correct > 1000)
+        [BOT] Guessing: 500 (1⸺1000)
         [>>>] 📈 luku on suurempi kuin 500.
-        [BOT] Guessing: 750 (501 > correct > 1000)
+        [BOT] Guessing: 750 (501⸺1000)
         [>>>] 📉 luku on pienempi kuin 750.
-        [BOT] Guessing: 625 (501 > correct > 749)
+        [BOT] Guessing: 625 (501⸺749)
         [>>>] 📉 luku on pienempi kuin 625.
-        [BOT] Guessing: 562 (501 > correct > 624)
+        [BOT] Guessing: 562 (501⸺624)
         [>>>] 📈 luku on suurempi kuin 562.
-        [BOT] Guessing: 593 (563 > correct > 624)
+        [BOT] Guessing: 593 (563⸺624)
         [>>>] 📈 luku on suurempi kuin 593.
-        [BOT] Guessing: 609 (594 > correct > 624)
+        [BOT] Guessing: 609 (594⸺624)
         [>>>] 📈 luku on suurempi kuin 609.
-        [BOT] Guessing: 617 (610 > correct > 624)
+        [BOT] Guessing: 617 (610⸺624)
         [>>>] 📈 luku on suurempi kuin 617.
-        [BOT] Guessing: 621 (618 > correct > 624)
+        [BOT] Guessing: 621 (618⸺624)
         [>>>] 📈 luku on suurempi kuin 621.
-        [BOT] Guessing: 623 (622 > correct > 624)
+        [BOT] Guessing: 623 (622⸺624)
         [>>>] 📉 luku on pienempi kuin 623.
-        [BOT] Guessing: 622 (622 > correct > 622)
+        [BOT] Guessing: 622 (622⸺622)
         [>>>] 🎉 oikein! arvasit luvun 622. (peliaika: 0h 0m 0s)
         [MAIN] Correct number: 622
         ```
