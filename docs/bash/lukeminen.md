@@ -49,6 +49,12 @@ Rust on tuoreehko, melko paljon pöhinää aiheuttava ohjelmointikieli. Sillä k
 
 Itse skripti löytyy osoitteesta: [sh.rustup.rs](https://sh.rustup.rs)
 
+### 📦 Volta
+
+Volta on Node.js:n versioiden hallintaan tarkoitettu työkalu, joka on jossain määrin vastaava kuin yllä mainittu `uv`, mutta Pythonin sijasta kielenä on JavaScript/Node.js. Tutustu [Getting Started](https://docs.volta.sh/guide/getting-started)-ohjeeseen.
+
+Itse skripti löytyy osoitteesta: [get.volta.sh](https://get.volta.sh)
+
 ### Kokoelmat
 
 Lisäksi voit tutustua myös communityn koostamiin kokoelmiin, joista löytyy yleensä hieman lyhyempiä snippettejä. Hyviä ovat ainakin:
