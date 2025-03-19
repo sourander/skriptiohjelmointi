@@ -259,7 +259,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
         └── .gitkeep
     ```
 
-    Tiedosto `runbash.sh`:n luominen olisi hyvä tehtävä viikon päästä, mutta tarvitset sitä jo nyt, joten tarjoan sen valmiina. Voit ladata sen Githubista osoitteesta [gh:sourander/skriptiohjelmointi/scripts/runbash.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/scripts/runbash.sh). Lataa tiedosto ja sijoita se oikeaan hakemistoon.
+    Tiedosto `runbash.sh`:n luominen olisi hyvä tehtävä viikon päästä, mutta tarvitset sitä jo nyt, joten tarjoan sen valmiina. Voit ladata sen Githubista osoitteesta [gh:sourander/skriptiohjelmointi/exercise-assets/scripts/runbash.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/scripts/runbash.sh). Lataa tiedosto ja sijoita se oikeaan hakemistoon.
 
 
 ??? question "Tehtävä: Bash Hello World"

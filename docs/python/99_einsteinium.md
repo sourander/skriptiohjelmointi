@@ -171,6 +171,6 @@ TODO
 
     TODO.
 
-!!! question "Tehtövä: IPinfo"
+!!! question "Tehtävä: Premiere Markers to YouTube"
 
-    TODO.
+    Lataa tämä tiedosto: [gh:sourander/skriptiohjelmointi/exercise-assets/data/premieremarkers.txt](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/data/premieremarkers.sh).

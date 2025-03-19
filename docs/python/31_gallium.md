@@ -234,7 +234,7 @@ Randomly chosen level: INFO (no. 20)
 
     Loit ajo aiemmassa tehtävässä `python/`-hakemiston, jotta sait kopioitua skriptin avulla virtuaalikoneesta kaikki Python-srkriptit sinun host-koneellesi. Jatketaan saman hakemiston käyttöä, mutta Multipass-koneen sijaan käytetään Docker-konttia. Lisäksi Bash-skriptin sijasta käytämme Python-skriptiä. Vaiheet:
 
-    1. Lataa [gh:sourander/skriptiohjelmointi/scripts/runpy.py](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/scripts/runpy.py)
+    1. Lataa [gh:sourander/skriptiohjelmointi/exercise-assets/scripts/runpy.py](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/scripts/runpy.py)
     2. Tee tiedostosta ajettava (tai aja jatkossa `python runpy.py`)
     3. Lue tiedoston sisältö läpi ja selvitä, mitä se tekee.
 

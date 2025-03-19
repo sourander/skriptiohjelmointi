@@ -123,6 +123,7 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: Arvaa luku botti
 - [ ] Tehtävä: Paste.ee
+- [ ] Tehtävä: Premiere Markers to YouTube
 
 
 ```

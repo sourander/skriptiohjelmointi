@@ -232,7 +232,7 @@ Tutustumme tämän käyttöön live-tunneilla.
         └── .gitkeep
     ```
 
-    Tiedoston `runpwsh.sh` luominen olisi hyvää kertausta Bash-osiosta, mutta jotta voimme keskittyä PowerShell-osioon, voit ladata skriptin tämän repositorion polusta: [gh:sourander/skriptiohjelmointi/scripts/runpwsh.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/scripts/runpwsh.sh)
+    Tiedoston `runpwsh.sh` luominen olisi hyvää kertausta Bash-osiosta, mutta jotta voimme keskittyä PowerShell-osioon, voit ladata skriptin tämän repositorion polusta: [gh:sourander/skriptiohjelmointi/exercise-assets/scripts/runpwsh.sh](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/scripts/runpwsh.sh)
 
 ??? question "Tehtävä: PowerShell Hello World"
 

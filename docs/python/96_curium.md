@@ -229,7 +229,7 @@ $ python runpy.py --image skroh-python:3.12 --bash
 
     Tämä harjoitus ei juuri saavuta mitään, mitä `ls`-komento ei tee, mutta se on hyvä harjoitus tiedostojen käsittelyyn ja tiedostojen metatietojen lukemiseen. Voisit käyttää näitä taitoja esimerkiksi tiedostojen analysointiin, järjestämiseen, tai vaikkapa tiedostojen poistamiseen – kenties sisällyttäen merkittävästi enemmän logiikkaa.
 
-!!! question "Tehtävä: Duplikaattitiedostojen luominen"
+??? question "Tehtävä: Duplikaattitiedostojen luominen"
 
     Tämä tehtävä toimii esiasteena seuraavalle tehtävälle. Luo skripti, joka kirjoittaa tiedostoihin sisältöä siten, että osa tiedostoista on tarkoituksella toistensa kopioita. Osa tiedostoista tulee sen sijaan olla uniikkeja. Voit käyttää apuna seuraavanlaista jakoa:
 
@@ -263,13 +263,15 @@ $ python runpy.py --image skroh-python:3.12 --bash
     
         Rautakoodauksen sijasta voit käyttää `tempfile.gettempdir()`, jotta sama skripti toimisi eri alustoilla.
 
-!!! question "Tehtävä: Duplikaattien tunnistaminen"
+??? question "Tehtävä: Duplikaattien tunnistaminen"
 
     Luo skripti, joka tunnistaa duplikaatit annetussa hakemistossa. Mikäli `-recurse` flag on annettu, sen tulisi käydä myös alihakemistot läpi. Duplikaatit tulisi tunnistaa tiedoston MD5-hashin perusteella. Voit käyttää samoja vaiheita kuin aiemmin PowerShellin kanssa, mutta puuttuvat cmdletit saattavat aiheuttaa päänvaivaa.
 
     **Päänvaiva 1:** Tulet mahdollisesti huomaamaan, että Group-Object ja Where-Object Count -komentojen puute tekee tehtävästä hieman vaikeamman Pythonissa kuin PowerShellissä, jossa olet toteuttanut vastaavan operaation aiemmin. Datan käsittelyyn tarkoitetut kirjastot, kuten Pandas, tarjoavat näitä ominaisuuksia, mutta se lisäisi meidän skriptille ylimääräisiä riippuvuuksia. Ratkaise tämä ongelma Pythonin sisäänrakennetuilla kirjastoilla. Kenties `collections.defaultdict` tai `collections.Counter` voisi olla hyödyllinen?
 
     **Päänvaiva 2:** Sinun saattaa tulla ikävä myös Get-FileHash -cmdletia, joka laskee tiedoston hashin. Pythonissa voit käyttää `hashlib`-moduulia. Voit chunkata tiedoston ja laskea hashin osissa, kuten StackOverFlow:n postauksissa neuvotaan, jotta suurten tiedostojen käsittely onnistuu. Vaihtoehtona on käyttää ==valmisratkaisua==: `hashlib.file_digest(f, algorithm)`. Kyseinen funktio on Python 3.11:ssä lisätty.
+
+    Alla näkyy esimerkkitoteutuksen käyttö:
 
     ```console title="🐳 Bash"
     $ python scripts/find_duplicates.py /tmp/tmpinhu9_m1/
@@ -291,7 +293,7 @@ $ python runpy.py --image skroh-python:3.12 --bash
     ```
 
 
-!!! question "Tehtävä: Tulosta PATH-muuttujan hakemistot"
+??? question "Tehtävä: Tulosta PATH-muuttujan hakemistot"
 
     Skriptiohjelmoinnin tärkeä osa on ympäristömuuttujien käsittely. Yksi tärkeimmistä ympäristömuuttujista on `PATH`, joka sisältää hakemistot, joista käyttöjärjestelmä etsii suoritettavia tiedostoja. Toteuta skripti, joka tulostaa `PATH`-muuttujan hakemistot riveittäin. Voit käyttää `os.environ["PATH"]`-muuttujaa, joka palauttaa `PATH`-muuttujan arvon.
 
