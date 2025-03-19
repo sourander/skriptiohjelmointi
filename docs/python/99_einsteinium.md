@@ -173,4 +173,4 @@ TODO
 
 !!! question "Tehtävä: Premiere Markers to YouTube"
 
-    Lataa tämä tiedosto: [gh:sourander/skriptiohjelmointi/exercise-assets/data/premieremarkers.txt](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/data/premieremarkers.sh).
+    Lataa tämä tiedosto: [gh:sourander/skriptiohjelmointi/exercise-assets/data/premieremarkers.txt](https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/data/premieremarkers.txt).
