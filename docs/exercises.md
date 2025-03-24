@@ -125,5 +125,9 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Premiere Markers to YouTube
 - [ ] Tehtävä: Arvaa luku botti
 
+## Lukeminen (410)
+
+- [ ] Tehtävä: "Parsi Ansible-koodit
+
 
 ```

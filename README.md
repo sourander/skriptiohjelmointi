@@ -24,21 +24,3 @@ uv run pre-commit install
 # Aja development serveri
 uv run mkdocs serve --open
 ```
-
-## Pre-commit
-
-Projektissa on käytössä pre-commit, joka varmistaa, että olet muistanut lisätä kaikki Tehtävät sivuston Tehtäväkooste-osioon. Pre-commit ajetaan automaattisesti ennen commitointia. Ajettava skripti luo uuden version `docs/exercises.md`-tiedostosta ja lisää sen commitiin.
-
-Tehtävälista järjestetään prioriteetin mukaan, jonka voi asettaa `docs/exercises.md`-tiedostossa olevan `priority`-avaimen arvolla. Default on 999. Prioriteetti määritellään Markdown-tiedoston metadata-osiossa, jonka tulee olla heti tiedoston alussa. Se näyttää tältä:
-
-```plaintext
----
-priority: 100
----
-```
-
-Jos haluat aja hookin käsin, kirjoita:
-
-```bash
-uv run pre-commit run --all-files
-```
