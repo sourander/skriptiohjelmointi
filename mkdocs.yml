@@ -57,6 +57,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
+
 plugins:
   # Navigation page ordering
   - awesome-nav
