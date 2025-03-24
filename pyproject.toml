@@ -4,13 +4,14 @@ authors = [
 ]
 requires-python = "<4.0,>=3.12"
 dependencies = [
-    "mkdocs-material~=9.5",
-    "mkdocs-awesome-pages-plugin~=2.9",
+    "mkdocs-material",
+    "mkdocs-awesome-nav",
 ]
 name = "skriptiohjelmointi"
 version = "0.1.0"
 description = ""
 readme = "README.md"
+
 
 [dependency-groups]
 dev = [

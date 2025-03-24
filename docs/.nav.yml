@@ -4,4 +4,4 @@ nav:
   - "PowerShell": powershell
   - python
   - ansible
-  - ... 
+  - "*"

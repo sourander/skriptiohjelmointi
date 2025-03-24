@@ -2,9 +2,12 @@ site_name: Skriptiohjelmointi
 
 theme:
   name: material
+  language: fi
+  
   features:
     - content.code.copy     # add copy button to code blocks
     - content.code.annotate # add annotation support to code blocks
+    - content.tabs.link     # content tabs united!
   # Day and night mode
   palette:
     # Palette toggle for dark mode
@@ -54,12 +57,14 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
-
 plugins:
   # Navigation page ordering
-  - awesome-pages
+  - awesome-nav
   - search
 
+
+
+
 copyright: |
-  Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaani University of Applied Sciences</a>. 
+  Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
   Licenced under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">BY-NC-ND 4.0</a>
