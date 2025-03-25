@@ -131,7 +131,8 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## 💡 Gallium (431)
 
-- [ ] Tehtävä: Devausympäristö
+- [ ] Tehtävä: Ansible Devausympäristö
+- [ ] Tehtävä: Ansible Hello World
 
 
 ```
