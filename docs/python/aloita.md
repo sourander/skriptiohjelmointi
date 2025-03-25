@@ -111,6 +111,57 @@ Huomaa, että shebang ei ole sinänsä osa Pythonia, eikä tyypillinen Python-oh
 print("Hello, world!")
 ```
 
+### 🆕 Inline Script Metadata
+
+!!! example "Tulevaisuus"
+
+    Tämä on tuore feature ja siksi otsikossa on 🆕-emoji. Emme käytä ominaisuutta kurssilla, mutta koska se liittyy vahvasti skriptaukseen ja lienee tulevaisuudessa yleinen käytäntö, on hyvä olla tietoinen siitä.
+
+PEP 723 (Python Enhancement Proposal) toi mukanaan Pythoniin uudistuksen [Inline Script Metadata](https://packaging.python.org/en/latest/specifications/inline-script-metadata/#inline-script-metadata). Kuinka tätä sitten hyödynnetään? Alla on esimerkki metadatan muotoilusta skriptin alkuun. Skriptiä ei voi ajaa suoraan Python 3.12:lla, vaan avuksi tarvitsee muita työkaluja, kuten `uv` tai `hatch`.
+
+```python title="inline_metadata_example.py"
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#   "requests",
+#   "pydantic",
+# ]
+# ///
+
+import requests
+from pydantic import BaseModel
+
+class Post(BaseModel):
+    userId: int
+    id: int
+    title: str
+    body: str
+
+# Fetch a dummy Post from REST API using Requests
+response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+post = Post.model_validate_json(response.content)
+print(post.title)
+```
+
+Jos `uv` on asennettuna, voit ajaa skriptin seuraavasti:
+
+```console
+$ uv run inline_metadata_example.py
+Installed 9 packages in 21ms
+[INFO] The title:  sunt aut facere repellat provident occaecati excepturi optio reprehenderit
+```
+
+Huomaa, että inline-metadatassa listatut riippuvuudet (ja niiden riippuvuudet) asennettiin automaattisesti väliaikaiseen ympäristöön.
+
+??? note "Entä kontissa?"
+
+    Voit toki kokeilla samaa ominaisuutta myös kontissa. Esimerkiksi näin:
+
+    ```bash
+    docker run --rm -v "$(pwd)/scripts:/workspace" ghcr.io/astral-sh/uv:debian uv run /workspace/inline_metadata_example.py
+    ```
+
+
 ### Ajaminen
 
 Python skriptin voi ajaa joko argumenttina `python3`-ohjelmalle tai suoraan skriptinä, jos shebang on määritelty, ja tiedosto on ajettava (executable, `x` file mode).
