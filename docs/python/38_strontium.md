@@ -40,13 +40,11 @@ Mukavuus-otsikon alla on oletus, että sinulla on käytössä Visual Studio Code
 
 Kun luot uudet Python-projektin Visual Studio Codessa, sinulla voi olla tarve asentaa joitakin moduuleita. Olet jo aiemmin oppinut, että Debian-pohjaisessa ympäristössä on `dist-packages`-hakemisto, jossa on esimerkiksi `requests`-moduuli asennettuna. Jos olet jossakin toisesssa käyttöjärjestelmässä tai jakelussa, se voi hyvin puuttua sinulta. Tässä tapauksessa tarvitset virtuaaliympäristön.
 
-Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se on **kopio Python-asennuksesta**. 
-
-Voit luoda sen seuraavalla tavalla:
+Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se on **kopio Python-asennuksesta**. Luo se `uv`:n avulla:
 
 === "uv"
 
-    Jos sinulla on [uv](https://docs.astral.sh/uv/), käytä ihmeessä sitä! Uv toimii Windowsissa, Linuxissa ja macOS:ssä samoin tavoin.
+    Jos sinulla on [uv](https://docs.astral.sh/uv/), käytä ihmeessä sitä! Jos ei ole, asenna se. Asennus vaatii yhden komennon ajamisen, joka löytyy  Uv [uv](https://docs.astral.sh/uv/):n etusivulta. Työkalu toimii Windowsissa, Linuxissa ja macOS:ssä samoin tavoin.
 
     ```bash title="🖥️ Bash"
     # Varmista, että olet projektisi hakemistossa
@@ -54,42 +52,19 @@ Voit luoda sen seuraavalla tavalla:
     
     # Asenna haluamasi Python
     $ uv install 3.12
-    $ uv venv --python 3.12
+    $ uv pin 3.12
+    $ uv init --name "skriptiohjelmointi" --bare --app .
 
     # Asenna virtuaaliympäristöön requests
-    $ uv pip install requests
+    $ uv add requests
 
     # Aja uv:n hallinnoima Python
     $ uv python scripts/hello.py
     ```
 
-=== "Ubuntu"
+=== "Windows (backup)"
 
-    Jos sinulla on käytössäsi Ubuntu, sen mukana tulee Python 3.xx. Uv on mukava työkalu, mutta vaihtoehtoisesti voit luoda virtuaaliympäristön seuraavasti.
-
-    ```bash title="🖥️ Bash"
-    # Varmista, että olet projektisi hakemistossa
-    $ cd mene/sinun/projektisi/hakemistoon
-
-    # Luo virtuaaliympäristö
-    $ python3 -m venv .venv
-
-    # Aktivoi virtuaaliympäristö 
-    $ source .venv/bin/activate
-
-    # Asenna haluamasi moduulit
-    (.venv) $ pip install requests
-
-    # Aja Python
-    (.venv) $ python scripts/hello.py
-
-    # Deaktivoi virtuaaliympäristö
-    (.venv) $ deactivate
-    ```
-
-=== "Windows"
-
-    Jos sinulla on Windowsiin asennettuna Python 3.xx, etkä halua jostain syystä asentaa uv:ta, aja seuraavat komennot.
+    Jos sinulla on Windowsiin asennettuna Python 3.xx, etkä jostain syystä saa uv:ta asennettua, voit käyttää Python-osion tehtävissä `venv`-moduulia. Myöhemmin Ansible-osiossa käytetään kuitenkin `uv`:ta Linuxissa, joten ==tee tämä vain jos ei ole muita vaihtoehtoja!==. Jos sinulla on `uv` tai mahdollisuus asentaa se, valitse ylhäältä `uv`-välilehti.
 
     ```pwsh-session title="🖥️ PowerShell"
     # Varmista, että olet projektisi hakemistossa
@@ -113,8 +88,6 @@ Voit luoda sen seuraavalla tavalla:
     # Deaktivoi virtuaaliympäristö
     (.venv) PS> deactivate
     ```
-
-
 
 !!! warning "Muista Git Ignore!"
 
