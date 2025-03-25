@@ -129,5 +129,9 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: "Parsi Ansible-koodit
 
+## 💡 Gallium (431)
+
+- [ ] Tehtävä: Devausympäristö
+
 
 ```

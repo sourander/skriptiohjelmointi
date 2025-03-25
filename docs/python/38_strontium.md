@@ -50,6 +50,9 @@ Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se 
     # Varmista, että olet projektisi hakemistossa
     $ cd mene/sinun/projektisi/hakemistoon
     
+    # Mene ALIHAKEMISTOON python/
+    $ cd python
+    
     # Asenna haluamasi Python
     $ uv install 3.12
     $ uv pin 3.12
@@ -62,13 +65,18 @@ Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se 
     $ uv python scripts/hello.py
     ```
 
-=== "Windows (backup)"
+    Tutustu syntyneisiin tiedostoihin, kuten `.python-version` ja `pyproject.toml`. Kysy opettajalta apua, jos jokin asia askarruttaa.
+
+=== "Windows (vain hätätilanteessa)"
 
     Jos sinulla on Windowsiin asennettuna Python 3.xx, etkä jostain syystä saa uv:ta asennettua, voit käyttää Python-osion tehtävissä `venv`-moduulia. Myöhemmin Ansible-osiossa käytetään kuitenkin `uv`:ta Linuxissa, joten ==tee tämä vain jos ei ole muita vaihtoehtoja!==. Jos sinulla on `uv` tai mahdollisuus asentaa se, valitse ylhäältä `uv`-välilehti.
 
     ```pwsh-session title="🖥️ PowerShell"
     # Varmista, että olet projektisi hakemistossa
     PS> cd mene/sinun/projektisi/hakemistoon
+
+    # Mene ALIHAKEMISTOON python/
+    PS> cd python
 
     # Suositeltu: kiellä pip:n käyttö virtuaaliympäristön ulkopuolella
     PS> pip3 config set global.require-virtualenv true
