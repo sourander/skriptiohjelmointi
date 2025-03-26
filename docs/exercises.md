@@ -125,6 +125,10 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Premiere Markers to YouTube
 - [ ] Tehtävä: Arvaa luku botti
 
+## Ansible 101 (400)
+
+- [ ] Tehtävä: Ansiblen informaatiohaku
+
 ## Lukeminen (410)
 
 - [ ] Tehtävä: "Parsi Ansible-koodit
@@ -133,6 +137,11 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: Ansible Devausympäristö
 - [ ] Tehtävä: Ansible Hello World
+
+## 🎆 Strontium (438)
+
+- [ ] Tehtävä: Lisää Cloud-Init
+- [ ] Tehtävä: Luo Ansible config
 
 
 ```

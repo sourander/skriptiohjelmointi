@@ -162,3 +162,19 @@ ansible-playbook -i inventory.ini my-first-playbook.yml
 ```
 
 Tämä komento ajaa Playbookin `my-first-playbook.yml` ja käyttää Inventory-tiedostoa `inventory.ini`. Ansible yhdistää IP-osoitteisiin ja suorittaa määritellyt taskit järjestyksessä ylhäältä alas.
+
+## Tehtävät
+
+!!! question "Tehtävä: Ansiblen informaatiohaku"
+
+    Muodosta itsellesi katalogi tarpeellisista lähteistä. Suosi tuoreita ja virallisia lähteitä. Alla pari suositusta, mistä aloittaa etsintä:
+
+    1. [Ansible Community Documentation](https://docs.ansible.com/ansible/latest/index.html). Vaikka me käytämme `ansible-core`-pakettia, tämä dokumentaatio on silti hyödyllinen. Ainut, mitä sinun pitää huomioida, että `ansible.builtin`-moduuli on Ansible Coren oma, muut moduulit ovat Collectioneista. Jos tarvitset jotakin muuta pluginia (moduulia tai roolia), asenna se `ansible-galaxy`-komennolla.
+    2. [Ansible for DevOps](https://github.com/geerlingguy/ansible-for-devops-manuscript). Tämä avoimen lähdekoodin kirja on ostettavissa, jos haluaa tukea kirjoittajaa. Kirja on saatavilla ilmaiseksi: etsi GitHubista lausetta *"You can also grab a free copy of the published work on LeanPub using this coupon link"*.
+    3. [Ansible for DevOps Examples](https://github.com/geerlingguy/ansible-for-devops). Latasit yllä olevan kirjan tai et, tämä repositorio on hyödyllinen, koska se sisältää paljon esimerkkejä. Eikä ihan mitä tahansa esimerkkejä. Jos [etsit ladatuimmat Rolet Ansible Galaxystä](https://galaxy.ansible.com/ui/standalone/roles/?page=1&page_size=10&sort=-download_count), huomaat, että top 10 on täynnä tämän kirjoittajan rooleja. Kirjoitushetkellä ladatuin on `geerlingguy.docker` noin 22 miljoonalla latauksella.
+    4. [Practical Ansible Automation Handbook](https://kamk.finna.fi/Record/kamk.99641009106247) on vaihtoehtoinen kirja ja se löytyy KAMK Finna -kirjastosta. Kirja on vuodelta 2023 ja Luca Bertonin kirjoittama.
+    
+    Myös maksullisia kirjoja löytyy, joista maininnan arvoinen on **Ansible: Up and Running 3rd e.d. (2022)**, joka O'Reillyn julkaisema ja . Data Center -opiskelijoita voi kiinnostaa myös **Ansible for VMware by Examples: A Step-by-Step Guide to Automating Your VMware Infrastructure (2022)**, joka on Apressin julkaisema ja Luca Bertonin kirjoittama.
+
+    Ansible on aihe, josta löytyy merkittävästi myös YouTube-sisältöä.
+
