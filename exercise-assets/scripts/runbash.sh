@@ -11,20 +11,64 @@
 #                The script directory is mounted as READ-ONLY, 
 #                thus protecting your host's file system from  
 #                script logic mistakes.
-#: Options     : [script_name] [image_name]
+#: Options     : [-h] [-i image_name] [ARGS]..
 #
 #: === Examples ====
 #:   runbash.sh
-#:   runbash.sh '' ubuntu:20.04
-#:   runbash.sh scripts/hello.sh
-#:   runbash.sh scripts/hello.sh ubuntu:20.04
+#:   runbash.sh -i ubuntu:20.04
+#:   runbash.sh -i ubuntu:20.04 scripts/hello.sh
+#:   runbash.sh -i ubuntu:20.04 scripts/hello.sh arg1 arg2 arg3
+#:   runbash.sh scripts/hello.sh arg1 arg2 arg3
 
 # Global static var
 SCRIPT_DIR="scripts"
-DEFAULT_IMAGE="ubuntu:24.04"
+
+# Global variables
+IMAGE_NAME="ubuntu:24.04"
+declare -a POSITIONAL
+
+
+show_help() {
+cat << EOF
+Usage: ${0##*/} [-h] [-i image_name] [ARGS]..
+Run a script inside a Docker container or interactive shell session. The script must be
+located in the "scripts" directory relative to current working directory.
+
+    -h          Display this help and exit
+    -i          Docker image name
+    ARGS        Arguments to pass to the script
+EOF
+}
+
+parse_arguments() {
+    local OPTIND=1  
+    local optstring="hi:"
+
+    while getopts "$optstring" opt; do
+        case $opt in
+            h)
+                show_help
+                exit 0
+                ;;
+            i)
+                IMAGE_NAME=$OPTARG
+                ;;
+            *)
+                show_help >&2
+                exit 1
+        esac
+    done
+
+
+    # Remove the options we parsed above
+    shift $((OPTIND-1))
+
+    # Correct
+    POSITIONAL=("$@")
+}
 
 check_directory_exists() {
-    if [ ! -d $1 ]; then
+    if [ ! -d "$1" ]; then
         echo "[ERROR] Directory '${1}' does not exist." >&2
         exit 1
     fi
@@ -33,13 +77,6 @@ check_directory_exists() {
 check_script_exists() {
     if [ ! -f "$1" ]; then
         echo "[ERROR] Script '${1}' does not exist." >&2
-        exit 1
-    fi
-}
-
-check_script_no_whitespace() {
-    if [[ "$1" =~ [[:space:]] ]]; then
-        echo "[ERROR] Script name cannot contain whitespace." >&2
         exit 1
     fi
 }
@@ -59,16 +96,21 @@ make_all_scripts_executable() {
     done
 }
 
-run_docker_container() {
-    local cmd="${1}"
-    local image="${2}"
-    
+run_docker_container_with_only_bash() {
     docker container run --rm \
-      -it \
+      --interactive --tty \
       --name skriptiohjelmointi-bash \
-      --mount type=bind,source="$(pwd)/${SCRIPT_DIR}",target=/app,readonly \
-      $image \
-      $cmd
+      --mount type=bind,source="$(pwd)",target=/app,readonly \
+      "$IMAGE_NAME"
+}
+
+run_docker_container_with_script_n_args() {
+    docker container run --rm \
+      --interactive --tty \
+      --name skriptiohjelmointi-bash \
+      --mount type=bind,source="$(pwd)",target=/app,readonly \
+      --workdir /app \
+      "$IMAGE_NAME" "${POSITIONAL[@]}"
 }
 
 main() {
@@ -76,25 +118,15 @@ main() {
     check_directory_exists "$SCRIPT_DIR"
     make_all_scripts_executable "${SCRIPT_DIR}/*.sh"
 
-    # Default to Dockerfile CMD (e.g. /bin/bash)
-    # You can check it with: docker inspect <image_name>
-    docker_command=""
-
-    # Get arguments
-    script=${1:-}
+    parse_arguments "$@"
     
-    if [[ $script ]]; then
-
-        check_script_exists "$script"
-        check_script_no_whitespace "$script"
-        
-        # Set the command to run inside the container
-        script_basename=$(basename "$script")
-        docker_command="/app/$script_basename"
+    if [ ${#POSITIONAL[@]} -eq 0 ]; then
+        echo "No script provided. Starting interactive shell session."
+        run_docker_container_with_only_bash
+    else
+        check_script_exists "${POSITIONAL[0]}"
+        run_docker_container_with_script_n_args "${POSITIONAL[@]}"
     fi
-
-    image_name=${2:-$DEFAULT_IMAGE}
-    run_docker_container "${docker_command}" "${image_name}"
 }
 
 # Run the main function with all script arguments

@@ -136,11 +136,11 @@ cd /             # Vaihdetaan takaisin kotihakemistoon
 
 ## Vianetsintä
 
-Voimme käyttää Bash-kielestä tuttuja tapoja, mutta luonnolliseti niille on eri syntaksi. Tuttu `set -x` korvautuu StrictMode-asetuksella ja `set -e` korvautuu ErrorActionPreference-asetuksella.
+Voimme käyttää Bash-kielestä tuttuja tapoja, mutta luonnolliseti niille on eri syntaksi. Tuttu `set -u` korvautuu StrictMode-asetuksella ja `set -e` korvautuu ErrorActionPreference-asetuksella.
 
 ### StrictMode
 
-PowerShellin StrictMode on hieman monimutkaisempi kuin Bashin `set -x`. Käytännössä se kuitenkin esimerkiksi tarkistaa, että et yritä kutsua käyttämättömiä muuttujia. Voit kytkeä skriptissä sen päälle näin:
+PowerShellin StrictMode on hieman monimutkaisempi kuin Bashin `set -u` (eli `nounset`). Käytännössä se kuitenkin esimerkiksi tarkistaa, että et yritä kutsua käyttämättömiä muuttujia. Voit kytkeä skriptissä sen päälle näin:
 
 ```powershell
 Set-StrictMode -Version 2.0
@@ -164,7 +164,7 @@ Voit käyttää myös muita versioita, 1.0 tai 3.0. Tutustu niiden dokumentaatio
 
 ### ErrorActionPreference
 
-PowerShellissä on useita preference-muuttujia (ks. about_Preference_Variables), joilla voit säätää, kuinka PowerShell käyttäytyy. Näistä `set -x`:ää eli "exit on error"-toiminnallisuutta vastaa parhaiten `ErrorActionPreference`. Voit asettaa sen arvoksi `Stop`, jolloin skripti pysähtyy ensimmäiseen virheeseen. Vakioarvo on `Continue`, jolloin skripti jatkaa virheistä huolimatta.
+PowerShellissä on useita preference-muuttujia (ks. about_Preference_Variables), joilla voit säätää, kuinka PowerShell käyttäytyy. Näistä `set -e`:tä eli `errexit`-toiminnallisuutta vastaa parhaiten `ErrorActionPreference`. Voit asettaa sen arvoksi `Stop`, jolloin skripti pysähtyy ensimmäiseen virheeseen. Vakioarvo on `Continue`, jolloin skripti jatkaa virheistä huolimatta.
 
 ```powershell
 $ErrorActionPreference = "Stop"

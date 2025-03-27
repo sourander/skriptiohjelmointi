@@ -9,13 +9,13 @@ from pathlib import Path
 
 def resolve_scripts_dir(script: str):
     if script:
-        p = Path(script).parent    # scripts/a.py -> scripts
+        p = Path(script).parent  # scripts/a.py -> scripts
     else:
-        p = Path.cwd() / "scripts" # $(pwd)/scripts
+        p = Path.cwd() / "scripts"  # $(pwd)/scripts
     return p.resolve()
 
 
-def construct_docker_command(image, python_cmd:list, script: str, args: list):
+def construct_docker_command(image, python_cmd: list, script: str, args: list):
     scripts_dir = resolve_scripts_dir(script)
 
     cmd = [
@@ -40,14 +40,16 @@ def construct_docker_command(image, python_cmd:list, script: str, args: list):
     return cmd
 
 
-def run_docker(python_cmd:list[str], image: str, script: str, args: list, dryrun: bool):
-    
+def run_docker(
+    python_cmd: list[str], image: str, script: str, args: list, dryrun: bool
+):
     cmd = construct_docker_command(image, python_cmd, script, args)
-    
+
     if not dryrun:
         subprocess.run(cmd)
     else:
         print("[DRY] Cmd that would run: ", shlex.join(cmd))
+
 
 def handle_arguments():
     parser = argparse.ArgumentParser(
@@ -60,27 +62,24 @@ def handle_arguments():
         help="Docker image to use (default: python:3.12)",
     )
     parser.add_argument(
-        "--dryrun",
-        action="store_true",
-        help="Print the command without executing it"
+        "--dryrun", action="store_true", help="Print the command without executing it"
     )
     parser.add_argument(
-        "positional",
-        nargs=argparse.REMAINDER,
-        help="Script and its arguments"
+        "positional", nargs=argparse.REMAINDER, help="Script and its arguments"
     )
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
         "--interactive",
         action="store_true",
-        help="Run Python in interactive mode (-i) after the script is done"
+        help="Run Python in interactive mode (-i) after the script is done",
     )
     group.add_argument(
         "--bash",
         action="store_true",
-        help="Run bash shell in the container instead of Python"
+        help="Run bash shell in the container instead of Python",
     )
     return parser.parse_args()
+
 
 def main():
     args = handle_arguments()
