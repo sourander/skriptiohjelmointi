@@ -92,7 +92,7 @@ PowerShellissä käsitellään pääasiassa objekteja. Tämä tulee jatkumaan my
 
 [^learn_pwsh_in_y_minutes]: Schandevijl et. al. 2025. Learning PowerShell in Y Minutes. https://learnxinyminutes.com/powershell/
 
-Käytännössä tämä tarkoittaa sitä, että esimerkiksi kokonaisluku on objekti, ja objektilla on metodeja. Kärjistettynä Bashissä kaikki on vain tekstiä, eli merkkijonoa, jota voidaan *tulkita* esimerkiksi lukuja aritmeettisissa operaatioissa (`let` tai ``$(( expression ))``). PowerShellissä luku on luku, merkkijono on merkkijono ja esimerkiksi IP-osoite on IP-osoite. Kaikilla niillä on omat metodinsa. Jos putkitat yhden komennon tulostan toisen komennon syötteeksi, niin kyseinen komentoketju (engl. *command chain*) sisältää useita eri objekteja listana. Bashistä tuttu `grep`, `awk` tai `sed` parsiminen vaihtuu objektien käsittelyksi. Tulet tutustumaan tähän myöhemmin harjoitusten muodossa.
+Käytännössä tämä tarkoittaa sitä, että esimerkiksi kokonaisluku on objekti, ja objektilla on metodeja. Kärjistettynä Bashissä kaikki on vain tekstiä, eli merkkijonoa, jota voidaan *tulkita* esimerkiksi lukuja aritmeettisissa operaatioissa (`let` tai ``$(( expression ))``). PowerShellissä luku on luku, merkkijono on merkkijono ja esimerkiksi IP-osoite on IP-osoite. Kaikilla niillä on omat metodinsa. Jos putkitat yhden komennon tulosteen toisen komennon syötteeksi, niin kyseinen komentoketju (engl. *command chain*) sisältää useita eri objekteja listana. Bashistä tuttu `grep`, `awk` tai `sed` parsiminen vaihtuu objektien käsittelyksi. Tulet tutustumaan tähän myöhemmin harjoitusten muodossa.
 
 !!! tip 
 
