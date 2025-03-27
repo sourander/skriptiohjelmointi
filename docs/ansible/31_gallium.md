@@ -95,7 +95,7 @@ Ansiblea varten tarvitsemme joko koneiden hostnamet tai IP-osoitteen Inventory-t
 multipass list --format json
 ```
 
-Mikä parempaa, voimme lopulta luoda Python-skriptin, joka lukee tämän outputin ja kirjoittaa sen tiedostoon `config/inventory/hosts.ini`. Skriptiä voisi käyttää käsin näin:
+Mikä parempaa, voimme lopulta luoda Python-skriptin, joka lukee tämän outputin ja kirjoittaa sen tiedostoon `config/inventory/hosts.ini`. Lisätään kumpikin kone groupiin `multipass`, ja luodaan kummallekin oma ryhmänsä: `first` ja `second`. Tämä siksi, että voimme jatkossa kohdentaa käskyjä vain yhteen virtuaalikoneeseen helposti. Meillä ei ole DNS-osoitteita hallittuina, emmekä halua joutua kirjoittamaan IP-osoitteita, koska ne vaihtuvat joka kerta kun koneet tuhotaan ja luodaan uusiksi. Skriptiä voisi käyttää käsin näin:
 
 ```console
 $ multipass list --format json | uv run scripts/multipass-to-inv.py
@@ -106,6 +106,12 @@ $ multipass list --format json | uv run scripts/multipass-to-inv.py
 $ cat config/inventory/hosts.ini 
 [multipass]
 192.168.64.41
+192.168.64.42
+
+[first]
+192.168.64.41
+
+[second]
 192.168.64.42
 ```
 
@@ -146,9 +152,16 @@ Yllä oleva komento olisi hyvä lisätä aiemmin luomaasi `create-vms`-skriptiin
         with ini_file.open("w") as f:
             f.write("[multipass]\n")
             for vm in vm_list.list:
-                for ip in vm.ipv4:
-                    print(f"[INFO] Adding {ip} to inventory")
-                    f.write(f"{ip}\n")
+                ip = vm.ipv4[0].exploded
+                print(f"[INFO] Adding {ip} to inventory")
+                f.write(f"{ip}\n")
+
+            f.write("\n[first]\n")
+            f.write(vm_list.list[0].ipv4[0].exploded)
+            f.write("\n")
+
+            f.write("\n[second]\n")
+            f.write(vm_list.list[1].ipv4[0].exploded)
 
     if __name__ == "__main__":
         raw_json = read_raw_json_from_stdin()
@@ -232,7 +245,7 @@ PLAY RECAP *********************
 
 ## Tehtävät
 
-!!! question "Tehtävä: Ansible Devausympäristö"
+??? question "Tehtävä: Ansible Devausympäristö"
 
     Luo yllä olevien tärppien avulla devausympäristö hakemistoon `ansible/`. Projektisi juuren tulisi näyttää siis lopulta tältä:
 
@@ -272,7 +285,7 @@ PLAY RECAP *********************
 
         Tuotannossa hakemistorakenne olisi todennäköisesti monimutkaisempi. [Ansible Docs: Sample Ansible setup](https://docs.ansible.com/ansible/latest/tips_tricks/sample_setup.html) antaa esimerkkejä siitä, kuinka hakemistot voivat olla järjestetty.
 
-!!! question "Tehtävä: Ansible Hello World"
+??? question "Tehtävä: Ansible Hello World"
 
     Toisinna yllä näkyvät vaiheet siten, että saat Ansiblen tulostamaan `Hello, World!` molemmille virtuaalikoneille. Käytä apunasi yllä olevia tärppejä.
 

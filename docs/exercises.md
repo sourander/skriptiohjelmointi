@@ -143,5 +143,17 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Lisää Cloud-Init
 - [ ] Tehtävä: Luo Ansible config
 
+## 👩‍🔬 Curium (496)
+
+- [ ] Tehtävä: Nginx
+- [ ] Tehtävä: Nginx idempotenssi
+- [ ] Tehtävä: Nginx poisto
+- [ ] Tehtävä: Nginx with Hello World
+- [ ] Tehtävä: Ufw from Galaxy
+
+## 👨‍🔬 Einsteinium (499)
+
+- [ ] Tehtävä: Hostaa Linux Perusteet ja Skriptiohjelmointi
+
 
 ```

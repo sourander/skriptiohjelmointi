@@ -169,7 +169,7 @@ Tämä toimii apuna myöhempää tehtävää varten. Alla on [get.docker.com](ht
 
 * Miltä näyttää: `$#`
 * Mitä se tekee: Palauttaa positionaalisten argumenttien määrän.
-* Miksi se on käytössä?:
+* Miksi se on käytössä: Se parsii skriptille annetut argumentit muuttujiin.
 
 Tämä on ==muita skriptin tekijöitä haastavampi kokonaisuus==, ja on ok, jos se ei heti tunnu ilmiselvältä. Docker-asennusskriptissä sitä käytetään parsimaan skriptille annetut argumentit muuttujiin, näin:
 
@@ -199,7 +199,7 @@ done
 Kyseisen skriptin voisi ajaa: 
 ```bash title="Bash"
 # Näin
-./skripti.sh --foo arvo1 --bar arvo2 --toggle`
+./skripti.sh --foo arvo1 --bar arvo2 --toggle
 
 # Tai eri järjestyksessä
 ./skripti --toggle -bar arvo2 --foo arvo1

@@ -8,7 +8,7 @@ Edellisessä luvussa varmasti huomasit, että Ansible-komennoista kasvoi melko p
 
 ## Ansible-käyttäjä
 
-Kuvitellaan, että meillä on ohjattavana myös muita distribuutioita kuin kaksi Multipassilla ajettavaa Ubuntua. Olisi huomattavan näppärää, jos **kaikissa** koneissa olisi **aina** käyttäjä `ansible`, jonka avulla voimme tehdä muutoksia. Tämä onnistuu, kun käytämme Ansiblen `authorized_key`-moduulia.
+Kuvitellaan, että meillä on ohjattavana myös muita distribuutioita kuin kaksi Multipassilla ajettavaa Ubuntua. Olisi huomattavan näppärää, jos **kaikissa** koneissa olisi **aina** käyttäjä `ansible`, jonka avulla voimme tehdä muutoksia. Käyttäjän voi luonnollisesti luoda käsin, Ansible-automatiikalla, tai jollekin muulla automatiikalla, kuten Cloud-Initilla. Alla tutustumme sekä hyvinkin manualiseen ratkaisuun että Cloud-Init-ratkaisuun.
 
 
 ### Ansible-käyttäjä käsin
@@ -126,6 +126,8 @@ Tiedosto on todella *verbose*, joten luomme sen sijaan käsin omamme:
 inventory = config/inventory/hosts.ini
 remote_user = ansible
 host_key_checking = False
+interpreter_python = auto_silent
+gathering = smart
 ```
 
 ### Kokeile vaikka
@@ -182,7 +184,7 @@ $ uv run ansible-galaxy collection install -r requirements.yml
 
 ## Tehtävät
 
-!!! question "Tehtävä: Lisää Cloud-Init"
+??? question "Tehtävä: Lisää Cloud-Init"
 
     Tämä vaihe on simppeli ja siihen löytyy ohjeet yltä. Vaiheet:
 
@@ -209,7 +211,7 @@ $ uv run ansible-galaxy collection install -r requirements.yml
     └── uv.lock
     ```
 
-!!! question "Tehtävä: Luo Ansible config"
+??? question "Tehtävä: Luo Ansible config"
 
     Luo yllä neuvottu `ansible.cfg`-tiedosto ja tarkista, että kokonaisuus toimii. Sinun tulisi voida ajaa seuraavanlaiset komennot `ansible/`-hakemistossa:
 

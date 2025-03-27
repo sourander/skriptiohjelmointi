@@ -30,17 +30,17 @@ Jos sinulla on Linux tai macOS, sinulla on pääsy Bash-tulkkiin suoraan. Se sop
 
 ### Mikä Bash on?
 
-Bash eli Bourne Again Shell on tyypillisesti Linux-distribuutioissa käytetty shell eli suomeksi komentotulkki. Bash on alkuperäisen Unixin Shell (eli `sh`) -tulkin jalanjäljissä kulkeva GNU Projectin vastine, kuten sen leikkisästä nimestä voi päätellä. Bash pääosin yhteensopiva Shellin kanssa.
+Bash eli **Bourne Again SHell** on tyypillisesti Linux-distribuutioissa käytetty shell eli suomeksi komentotulkki. Bash on alkuperäisen Unixin Bourne Shell (eli `sh`) -tulkin jalanjäljissä kulkeva GNU Projectin vastine, kuten sen leikkisästä nimestä voi päätellä. Bash on pääosin yhteensopiva Shellin kanssa.
 
-Bash itsessään tukee ohjelmointikielistä tuttuja rakenteita, kuten muuttujia, ehtolauseita, silmukoita ja funktioita, joten se on enemmän kuin pelkkä komentotulkki. Tästä huolimatta se ei kuitenkaan ole täysiverinen ohjelmointikieli, joten monimutkaisemmat ohjelmat kannattaa kirjoittaa jollakin muulla kielellä, kuten Pythonilla tai Rubyllä - tai ==voit kutsua näitä== Bash-skriptistä käsin. Bash on liima useiden ohjelmien välillä, ja monimutkaisimpiin operaatioihin kutsutaankin yleensä binääreitä kuten `awk`, `sed`, `grep`, `bc` ja niin edelleen.
+Bash itsessään tukee ohjelmointikielistä tuttuja rakenteita, kuten muuttujia, ehtolauseita, silmukoita ja funktioita, joten se on enemmän kuin pelkkä komentotulkki. Tästä huolimatta se ei kuitenkaan ole täysiverinen ohjelmointikieli, joten monimutkaisemmat ohjelmat kannattaa kirjoittaa jollakin muulla kielellä, kuten Pythonilla tai C:llä - tai ==voit kutsua näitä== Bash-skriptistä käsin. Bash on liima useiden ohjelmien välillä, ja monimutkaisimpiin operaatioihin kutsutaankin yleensä binääreitä kuten `awk`, `sed`, `grep`, `bc` ja niin edelleen.
 
 > "Bash, as a shell, is actually a 'glue' language. It helps programs to cooperate with each other, and benefits from it." - [Wikibooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting/External_Programs)
 
-Jos käytät jotekin muuta tulkkia, kuten `Z Shell` eli `zsh`, voit silti kirjoittaa ja ajaa skriptit silti Bash-kielellä. Näin ne toimivat melko varmasti lähes kaikilla Linux-käyttäjillä. Tässä auttaa ns. shebang, joka on ensimmäinen rivi skriptissä. Tutustutaan siihen seuraavaksi.
+Jos käytät jotekin muuta tulkkia, kuten `Z Shell` eli `zsh`, voit silti kirjoittaa ja ajaa skriptit silti Bash-kielellä. Tämän mahdollista ns. shebang, joka on ensimmäinen rivi skriptissä. Tutustutaan siihen seuraavaksi. Jos kirjoitat POSIX-yhteensopivaa koodia, voit käyttää `#!/bin/sh` -shebangia, joka on vielä enemmän *portable*.
 
 ## Ensimmäinen kontti
 
-Alla olevan `docker container run` komennon voi ajaa lähes missä tahansa komentotulkissa ja missä tahansa käyttöjärjestelmässä. Komento kutsuu käynnistää interaktiivisessa `-it` kontissa ajettavan `ubuntu:24.04` imagen, ja kontti tuhotaan (`--rm`) kun poistut siitä. Alla esimerkki ajetuista komennoista. Output on esitelty `>`-merkillä alkavina riveinä. Huomaa, että olet kontissa vakiona käyttäjä root.
+Alla olevan `docker container run` komennon voi ajaa lähes missä tahansa komentotulkissa ja missä tahansa käyttöjärjestelmässä. Komento kutsuu käynnistää interaktiivisessa (`-it` eli `--interactive` ja `--tty`) kontissa ajettavan `ubuntu:24.04` imagen, ja kontti tuhotaan (`--rm`) kun poistut siitä. Alla esimerkki ajetuista komennoista.
 
 ```pwsh title="🖥️ Bash | Git Bash | PowerShell | CMD"
 docker container run --rm -it ubuntu:24.04
@@ -55,9 +55,6 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software; you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 ```
-
-
-
 
 ## Skripti
 

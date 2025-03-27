@@ -41,20 +41,29 @@ Ansiblen kilpailijoita ovat esimerkiksi Puppet, Chef, VMware SaltStack. Toisin k
 
 Alla on taulukko tyypillisistä entiteeteistä tai konsepteista, jotka ovat osa Ansiblea:
 
-| Entiteetti   | Kuvaus                              |
-| ------------ | ----------------------------------- |
-| Control node | Ansiblen ajamiseen käytettävä kone  |
-| Managed node | Ansiblen hallinnoitava kone         |
-| Inventory    | Managed nodejen lista               |
-| Playbook     | Ansiblen suoritettava tiedosto      |
-| Task         | Yksittäinen komento Playbookissa    |
-| Ansible User | Managed nodella käytettävä käyttäjä |
+| Entiteetti   | Kuvaus                                                    |
+| ------------ | --------------------------------------------------------- |
+| Control node | Ansiblen ajamiseen käytettävä kone                        |
+| Managed node | Ansiblen hallinnoitava kone                               |
+| Inventory    | Managed nodejen lista                                     |
+| Playbook     | Ansiblen suoritettava tiedosto                            |
+| Task         | Yksittäinen komento Playbookissa                          |
+| Collection   | Kokoelma moduuleja (`<namespace>.<collection>`)           |
+| Module       | Yksittäinen komento (`<namespace>.<collection>.<module>`) |
+
+==Moduuli== on käytännössä yksittäinen ==Python-skripti==, joka suoritetaan managed nodella. Kuinka tämä ajetaan? **Control Node** avaa SSH-yhteyden **Managed Nodeen**, etsii Python-binäärin, siirtää (`scp`:llä) skriptin väliaikaishakemistoon, ja ajaa skriptin: `/usr/bin/python3 /tmp/ansible_script_xyz.py`. Huomaa, että Ansiblen ei tarvitse olla asennettuna Managed Nodeen: riittää, että Python, SSH Daemon ja automaatioon sopiva käyttäjä (default: `ubuntu`) ovat läsnä.
+
+!!! tip
+
+    Voit käydä kurkkimassa Python-skriptien sisältöä. Esimerkiksi `ansible.builtin.command`-moduuli löytyy virtuaaliympäristön luomisen jälkeen `.venv/lib/python3.12/site-packages/ansible/modules/command.py`-tiedostosta. Jos haluat nähdä tiedoston ilman asennusta, se löytyy luonnollisesti GitHubista: [gh:ansible/ansible/lib/ansible/modules/command.py/](https://github.com/ansible/ansible/blob/devel/lib/ansible/modules/command.py).
 
 ### Ero skripteihin
 
 Ansible on deklaratiivinen työkalu, toisin kuin imperatiiviset skriptit, kuten Bash-skriptit. Deklaratiivinen tarkoittaa, että kerrot Ansiblelle, mitä haluat, ja Ansible huolehtii siitä, että se tapahtuu. Imperatiivinen tarkoittaa, että kerrot tarkalleen, miten haluat, että asiat tapahtuvat.
 
 Lisäksi Ansible on idempotentti, eli voit ajaa saman Playbookin monta kertaa, ja lopputulos on aina sama. Jos *desired state* on jo saavutettu, Ansible ei tee mitään.
+
+## Komponentit
 
 ### Core ja Community
 
@@ -70,21 +79,17 @@ Red Hat pyrkii tekemään Ansiblella rahaa, joten kaikki siihen liittyvät työk
 Yllä listatuista on hyvä tietää, että:
 
 * **Ansible Core** on varsinainen ansible-komentorivityökalu.
-    * Dokumentaatio: [.../ansible-core](https://docs.ansible.com/ansible-core/devel/index.html)
 * **Ansible Galaxy** on pakettivarasto, josta voit ladata Collectioneita *(vrt. PowerShell Gallery, PyPi)*.
-    * Dokumentaatio [Coren sivuilta](https://docs.ansible.com/ansible-core/devel/galaxy/user_guide.html)
-    * Dokumentaatio: [Communityn sivuilta](https://docs.ansible.com/ansible-core/devel/galaxy/user_guide.html)
 * **Ansible Community** sisältää Ansible Coren, johon on valmiiksi asennettu kuratoitu kattaus Collectioneita.
-    * Dokumentaatio: [.../ansible](https://docs.ansible.com/ansible/latest/index.html)
 
 Lopulta on siis sama, asennatko [ansible-coren](https://pypi.org/project/ansible-core/) vai [ansiblen](https://pypi.org/project/ansible-core/). Jos asennat ensimmäiseen kaikki jälkimmäiseen sisältyät Collectionit, sinulla on käytännössä sama paketti. Kuinka monta Collectiona ja mitä ne ovat?
 
 * Core
     * 1 Collection.
-    * Lista: [Core docs: ansible.builtin](https://docs.ansible.com/ansible-core/devel/collections/ansible/builtin/index.html)
+    * Tämä: [Core docs: ansible.builtin](https://docs.ansible.com/ansible-core/devel/collections/ansible/builtin/index.html)
 * Community
     * Yli 100 Collectionia.
-    * Lista [Community docs: Collection Index](https://docs.ansible.com/ansible/latest/collections/)
+    * Lista: [Community docs: Collection Index](https://docs.ansible.com/ansible/latest/collections/)
 
 !!! tip "Rautalangasta"
 
