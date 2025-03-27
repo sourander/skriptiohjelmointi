@@ -50,10 +50,11 @@ Koko totuus löytyy PowerShellin dokumentaatiosta (esim. [about_Variables](https
 
 #### Dynaaminen
 
-PowerShell on dynaamisesti tyypitetty kieli. Tämä tarkoittaa, että sama muuttuja voi vaihtua kokoluvusta merkkijonoksi ja niin edelleen. Tämän lisäksi PowerShell päättelee tyypin `=` merkin oikealla puolella olevan komennon palautuvasta tyypistä. Alla on esimerkkejä, joissa muuttuja saa jonkin literaalin arvon tyypin.
+PowerShell on dynaamisesti tyypitetty kieli. Tämä tarkoittaa, että sama muuttuja voi vaihtua kokoluvusta merkkijonoksi ja niin edelleen, ja tyyppi päätellään automaattisesti. Merkin `=` vasemmalle puolella on muuttujanimi, oikealla on lauseke: `{variable} = {expression}`. Lauseke voi olla literaali, kuten `123`, tai sisältää operaattoreita, kuten `100 + 125 - 2`. Oli niin tai näin, tulkki evaluioi `=`-merkin oikealla puolella olevan lausekkeen ja yrittää sijoittaa kyseisen arvon muuttujaan. Muuttuja saa tämän tyypin.
 
 ```powershell
 $x = 1            # Kokonaisluku (Int32)
+$x = 1 + 2 - 1    # ... kuten tämäkin.
 $x = 3.12         # Liukuluku (Double)
 $x = "abc"        # Merkkijono (String)
 $x = @("abc", 42) # Taulukko (Array)
