@@ -78,7 +78,7 @@ using System;
 
 class Program {
     static void Main() {
-        double result = Math.Pow(5, 2);
+        double result = Math.Pow(10, 2);
         Console.WriteLine(result);
     }
 }
