@@ -37,7 +37,7 @@ Docker sopii moneen, mutta jos tarve on hallita esim. systemd-palveluita, luoda 
     ./runbash.sh scripts/arguments.sh
     ```
 
-    ```plaintext title="🐳 stdout
+    ```plaintext title="🐳 stdout"
     Image name:
     Cloud Init file:
     Positional arguments one by one: 
