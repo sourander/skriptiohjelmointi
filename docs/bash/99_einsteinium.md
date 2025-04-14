@@ -118,7 +118,7 @@ Docker sopii moneen, mutta jos tarve on hallita esim. systemd-palveluita, luoda 
 
     ```bash title="🖥️ Bash"
     # Luo
-    ./runmulti.sh -n oppimispaivakirja scripts/luo-skripti.sh config/skriptiohjelmointi-2054.yaml
+    ./runmulti.sh -n oppimispaivakirja scripts/luo-paivakirja.sh config/skriptiohjelmointi-2054.yaml
 
     # Yhdistä ☣️-koneeseen
     multipass shell oppimispaivakirja
