@@ -59,7 +59,7 @@ Docker sopii moneen, mutta jos tarve on hallita esim. systemd-palveluita, luoda 
 
     ??? "Vihje"
 
-        Käytä `getopts`-rakennetta. Ohjeet esim. [Greg's Wiki](https://mywiki.wooledge.org/BashFAQ/035#getopts). Mallia voit ottaa myös `getbash.sh`-skriptistä.
+        Käytä `getopts`-rakennetta. Ohjeet esim. [Greg's Wiki](https://mywiki.wooledge.org/BashFAQ/035#getopts). Mallia voit ottaa myös `runbash.sh`-skriptistä.
 
 
 ??? question "Tehtävä: Multipass-harjoituskenttä"
