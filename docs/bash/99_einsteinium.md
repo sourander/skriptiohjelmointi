@@ -166,7 +166,7 @@ Docker sopii moneen, mutta jos tarve on hallita esim. systemd-palveluita, luoda 
     # Aja mkdocs lisäosineen uv:lla
     uv tool run \
       --with mkdocs-material \
-      --with mkdocs-awesome-pages-plugin \
+      --with mkdocs-awesome-nav \
       mkdocs serve --dev-addr 0.0.0.0:8000
     ```
 
