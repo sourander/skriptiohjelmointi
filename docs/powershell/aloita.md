@@ -96,7 +96,7 @@ Käytännössä tämä tarkoittaa sitä, että esimerkiksi kokonaisluku on objek
 
 !!! tip 
 
-    Voit siis ajaa one-liner komennon: `$number = 10; $number.GetType()`. Ruutuun tulostuu taulukkomuotoinen näkymä, jonka sisällöstä ja muodosta vastaa [Out-Default](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/out-default). Huomaa, että komennossa kutsutaan numeon omaa metodia `GetType()`, joka palauttaa tiedon siitä, minkä tyyppinen objekti on kyseessä. Tätä et voi Bashissä tehdä.
+    Voit siis ajaa one-liner komennon: `$number = 10; $number.GetType()`. Ruutuun tulostuu taulukkomuotoinen näkymä, jonka sisällöstä ja muodosta vastaa [Out-Default](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/out-default). Huomaa, että komennossa kutsutaan numeron omaa metodia `GetType()`, joka palauttaa tiedon siitä, minkä tyyppinen objekti on kyseessä. Tätä et voi Bashissä tehdä.
 
 ## Ensimmäinen kontti
 

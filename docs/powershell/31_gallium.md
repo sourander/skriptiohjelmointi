@@ -226,9 +226,9 @@ Tutustumme tämän käyttöön live-tunneilla.
     ├── bash/
     ├── pwsh
     |   ├── README.md
-    │   ├── runpwsh.sh  # Uusi tiedosto
-    │   ├── .help/      # Uusi hakemisto
-    │   └── scripts/    # Uusi hakemisto
+    │   ├── runpwsh.sh                  # Uusi tiedosto
+    │   ├── .help/powershell-help/      # Uusi hakemisto
+    │   └── scripts/                    # Uusi hakemisto
     └── python
         └── .gitkeep
     ```
