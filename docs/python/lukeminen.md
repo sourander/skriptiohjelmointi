@@ -28,7 +28,7 @@ multipass launch --name $vm_name lts
 # List all scripts in the system
 declare -a scripts
 IFS=$'\n' read -d '' -r -a scripts < <(
-    multipass exec "$vm_name" -- find /usr/bin -type f -exec file {} \+ | awk -F: -v lang="python" 'tolower($2) ~ lang {print $1}'
+    multipass exec "$vm_name" -- find /usr/bin -type f -exec file {} \+ | awk -F: -v lang="${language}" 'tolower($2) ~ lang {print $1}'
 )
 
 # Copy all files
@@ -121,7 +121,7 @@ Alla taulukossa vain ne, joiden pituus on yli 100. Loput löytyvät admonitionin
 
 Tämän luvun toinen tehtävä on tutustua Python-skripteihin, jotka kopioit virtuaalikoneesta host-koneellesi. Osa skripteistä voi olla hieman vaikea lähestyä, jos et ole Pythonin kanssa ennen työskennellyt. Tämän otsikon alaotsikoissa käsitellään muutamat vinkit, joiden avulla voit paremmin ymmärtää skriptien toimintaa.
 
-### Sisennyt
+### Sisennys
 
 Toisin kuin Bash ja PowerShell, Python käyttää sisennystä (engl. indentation) koodin rakenteen määrittämiseen. Aiempien kielten skripteissä olet nähnyt sisennystä käytettävän, mutta syynä on pelkkä luettavuuden parantaminen. Pythonissa sisennys vaikuttaa toiminnallisuuteen. Sivuoireena Pythonissa koodiblokin ympärille ei tarvitse laittaa sulkeita esimerkiksi if-lausekkeissa.
 
