@@ -22,7 +22,7 @@ Python on valmiiksi asennettuna Ubuntussa ja monissa muissa Linux-jakeluissa. Wi
 
     :material-file-code: Kun kirjoitat ==skriptiä==, on jossain määrin oletettavaa, että käytät sitä Python-versiota, mikä sattuu olemaan asennettuna binäärissä `/usr/bin/python3`.
 
-    Tässä luvussa emme luo ohjelmia vaan irrallisia skriptejä. Pyrimme pitämään asiat mahdollisimman yksinkertaisina, joten emme käytä virtuaaliympäristöjä, paketinhallintaa, emmekä edes asenna `pip`-paketteja. Käytämme sitä Python-versiota, mikä sattuu olemaan asennettuna.
+    Tässä luvussa emme luo ohjelmia vaan irrallisia skriptejä. Pyrimme pitämään asiat mahdollisimman yksinkertaisina, joten emme käytä **kohdekoneessa** virtuaaliympäristöjä, paketinhallintaa, emmekä edes asenna `pip`-paketteja. Käytämme sitä Python-versiota, mikä sattuu olemaan asennettuna. Lokaalissa koneessa saatamme asentaa paketteja, jotta meidän ympäristömme vastaa sitä, mikä Debianissa on vakiona.
 
 Python on monilta osin cross-platform, joten skriptit toimivat samalla tavalla riippumatta siitä, ajatko niitä Windowsissa, Linuxissa vai macOS:ssä. Esimerkiksi hakemistopolut käyttäytyvät `pathlib`-kirjaston avulla samalla tavalla riippumatta käyttöjärjestelmästä: `Path` on alustasta riippuen joko `WindowsPath` tai `PosixPath`.
 
