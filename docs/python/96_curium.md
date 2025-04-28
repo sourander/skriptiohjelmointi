@@ -75,7 +75,7 @@ Voimme toki ajaa `pip install requests`-komennon kontin sisällä, mutta tämä 
 
 Luo tiedostot `build-skroh-python.py` ja `skroh-python.Dockerfile` haluamaasi lokaatioon. Tässä esimerkissä ne on luotu projektikansion `python/`-alihakemistoon.
 
-=== "build-skroh-python.sh"
+=== "build-skroh-python.py"
     ```bash title="build-skroh-python.py"
     #!/usr/bin/env python3
     import subprocess
