@@ -8,14 +8,14 @@ Ansible-osuus eroaa Bash, PowerShell ja Python osuuksista siten, että valmista 
 
 Gallium-osiossa tehdään minimum viable product. Tämä tehdään muutamassa vaiheessa.
 
-| #   | Vaihe                | Työkalu         | Tavoite                                           |
-| --- | -------------------- | --------------- | ------------------------------------------------- |
-| 1   | venv                 | UV + Python     | Isolate our dependencies from system level Python |
-| 2   | Ansible              | UV              | Asennetaan Ansible Core                           |
-| 3   | Virtual Machines     | Bash, Multipass | Create 2x Multipass VM                            |
-| 4   | Inventory Generation | Python script   | Generate Ansible Inventory from Multipass output  |
-| 5   | Playbook             | VS Code         | Write a Hello World level Playbook                |
-| 6   | Test Run             | Ansible         | Run the playbook                                  |
+| #   | Vaihe                | Työkalu         | Tavoite                                                 |
+| --- | -------------------- | --------------- | ------------------------------------------------------- |
+| 1   | venv                 | uv + Python     | Eristetään projektin riippuvuudet OS-tason Pythonista   |
+| 2   | Ansible              | uv              | Asennetaan Ansible Core                                 |
+| 3   | Virtual Machines     | Bash, Multipass | Luodaan kaksi managed nodea                             |
+| 4   | Inventory Generation | Python script   | Luodaan Multipass-komennon outputista Ansible Inventory |
+| 5   | Playbook             | VS Code         | Luodaan Hello World -tason Playbook                     |
+| 6   | Test Run             | Ansible         | Ajetaan Playbook                                        |
 
 Kuhunkin osioon on oma tärppinsä alla. Lopulta sivun pohjalla on tehtäviä, jotka sisältävät nämä vaiheet.
 
