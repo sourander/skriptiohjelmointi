@@ -69,18 +69,24 @@ Lisäksi Ansible on idempotentti, eli voit ajaa saman Playbookin monta kertaa, j
 
 Red Hat pyrkii tekemään Ansiblella rahaa, joten kaikki siihen liittyvät työkalut eivät ole ilmaisia. Alla on taulukko Ansiblen eri palikoista ja tieto siitä, onko se ilmainen vai kuuluuko se maksulliseen tuotteeseen.
 
-| Työkalu           | Free | $$$ | Maksullinen lisätuote         |
-| ----------------- | ---- | --- | ----------------------------- |
-| Ansible Core      | x    |     |                               |
-| Ansible Community | x    |     |                               |
-| Ansible Galaxy    | x    |     | Automation Hub                |
-| AWX               | x    |     | Ansible Controller (ex Tower) |
+| Työkalu           | Free | $$$ | Maksullinen vastine                 |
+| ----------------- | ---- | --- | ----------------------------------- |
+| Ansible Core      | x    |     |                                     |
+| Ansible Community | x    |     |                                     |
+| Ansible Navigator | x    | x   | Automation Content Navigator        |
+| Ansible Galaxy    | x    | x   | Automation Hub                      |
+| AWX               | x    | x   | Ansible Controller (ex Tower)       |
+|                   |      | x   | Red Hat Ansible Lightspeed          |
+|                   |      | x   | Red Hat Ansible Automation Platform |
+|                   |      | x   | Red Hat Ansible on Clouds           |
 
 Yllä listatuista on hyvä tietää, että:
 
 * **Ansible Core** on varsinainen ansible-komentorivityökalu.
+* **Ansible Navigator** on TUI-käyttöliittymä (Text User Interface) Ansiblelle. Tyypillisesti se hyödyntää `podman` tai `docker`-konttia runtimenä. Emme käsittele Navigatoria tällä kurssilla. Meille riittää CLI.
 * **Ansible Galaxy** on pakettivarasto, josta voit ladata Collectioneita *(vrt. PowerShell Gallery, PyPi)*.
 * **Ansible Community** sisältää Ansible Coren, johon on valmiiksi asennettu kuratoitu kattaus Collectioneita.
+* **Maksulliset vastineet** asentuvat Red Hat Ansible Automation Platformin mukana. Niitä ei käytetä tässä kurssissa. Esimerkiksi **Lightspeed** on Red Hatin kehittämä tekoälyavusteinen työkalu, joka auttaa sinua kirjoittamaan Ansible-koodia. Se asennettaisiin esimerkiksi VS Codeen Extensionina. **Ansible on Clouds** on tuotteistettu tapa asentaa Ansible pilvipalveluihin, kuten AWS:ään tai Azureen.
 
 Lopulta on siis sama, asennatko [ansible-coren](https://pypi.org/project/ansible-core/) vai [ansiblen](https://pypi.org/project/ansible-core/). Jos asennat ensimmäiseen kaikki jälkimmäiseen sisältyät Collectionit, sinulla on käytännössä sama paketti. Kuinka monta Collectiona ja mitä ne ovat?
 
