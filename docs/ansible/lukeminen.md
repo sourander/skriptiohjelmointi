@@ -41,7 +41,7 @@ Nämä roolit löytyvät `gh:maykinmedia/commonground-ansible` repositoriosta, j
 
 ## Tehtävät
 
-!!! question "Tehtävä: "Parsi Ansible-koodit"
+!!! question "Tehtävä: Parsi Ansible-koodit"
 
     Tämä tehtävätyyppi on tuttu jo Bash, PowerShell ja Python osioista. Valitse yllä olevista Ansible-esimerkeistä yksi ja tutustu sen koodin sisältöön. Kirjoita ylös löytämäsi syntaksin palaset, jotka ovat uniikkeja. Huomaa, että koodi ei ole pelkästään yhdessä tiedostossa, vaan sinun tulee yleensä tutustua 2-3 tiedostoon:
 

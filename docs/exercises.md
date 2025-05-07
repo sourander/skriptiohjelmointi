@@ -131,7 +131,7 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## Lukeminen (410)
 
-- [ ] Tehtävä: "Parsi Ansible-koodit
+- [ ] Tehtävä: Parsi Ansible-koodit
 
 ## 💡 Gallium (431)
 
