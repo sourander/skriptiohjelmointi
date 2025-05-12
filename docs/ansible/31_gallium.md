@@ -183,7 +183,7 @@ Luo yksinkertainen Playbook, joka vain tulostaa `Hello, World!`. Tämä on hyvä
     Nyt on tuikata Playbook käyntiin, ottaa etäisyyttä ja ihailla käsien työtä. Kuten aiemmasta Creating a Playbook -ohjeesta tiedät, komento on:
 
     ```
-    $ uv run ansible-playbook -i configs/inventory/hosts.ini configs/playbooks/hello.yml
+    $ uv run ansible-playbook -i configs/inventory/hosts.ini configs/playbooks/hello-world.yml
     uv run ansible-playbook -i config/inventory/hosts.ini config/playbooks/hello-world.yml 
 
     PLAY [Hello World] 
@@ -205,8 +205,8 @@ Saat lisättyä avaimen näin:
 
 ```bash
 # Copy our public key to the remote hosts
-multipass transfer ~/.ssh/id_ed25519.pub ansible-1:/tmp/id_ed25519.pub
-multipass transfer ~/.ssh/id_ed25519.pub ansible-2:/tmp/id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub | multipass exec ansible-1 -- bash -c 'cat > /tmp/id_ed25519.pub'
+cat ~/.ssh/id_ed25519.pub | multipass exec ansible-2 -- bash -c 'cat > /tmp/id_ed25519.pub'
 
 # Append the public key to authorized_keys in /home/ubuntu/.ssh
 multipass exec ansible-1 -- bash -c "cat /tmp/id_ed25519.pub >> ~/.ssh/authorized_keys"
