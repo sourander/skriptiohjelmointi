@@ -39,6 +39,47 @@ Nämä roolit löytyvät `gh:maykinmedia/commonground-ansible` repositoriosta, j
 
     Tämä on monimutkainen esimerkki! Älä huoli, jos et ymmärrä kaikkea koodia. Pyri silti silmäilemään koodia ja tunnistamaan syntaksista merkityksellisiä palasia.
 
+## Syventävää lukemista
+
+### Ansible Lokaalisti
+
+Ansible on suunniteltu käytettäväksi keskitettynä työkaluja, jolla hallinnoidaan useiden koneiden konfiguraatiota, mutta kukaan ei estä käyttämästä sitä vain ja ainoastaan omien työasemien konfiguroimiseen. Kenties kyllästyt esimerkiksi varmistelemaan, että sinun `.zshrc`-tiedostosta löytyy tietyt rivit. Jos ajat sokkona seuraavan koodiblokin, päädyt lisäämään samat rivit useita kertoja:
+
+```bash
+echo 'alias gitweek="'git log --pretty=format:"%x09%ad%x09%s" --date=format:"%V %a"'' >> ~/.zshrc
+echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
+echo 'eval "$(uvx --generate-shell-completion zsh)"' >> ~/.zshrc
+```
+
+Voit korvata tämän joko `ansible.builtin.lineinfile` tai `blockinfile` moduulia hyödyntäen. Esimerkiksi:
+
+```yaml
+- name: Add gitweek alias to startup scripts
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: 'alias gitweek='git log --pretty=format:"%x09%ad%x09%s" --date=format:"%V %a"''
+    regexp: '^alias gitweek='
+- name: Add uv autocompletion to startup scripts
+  ansible.builtin.blockinfile:
+    path: ~/.zshrc
+    block: |
+      # uv and uvx autocompletion
+      eval "$(uv generate-shell-completion zsh)"
+      eval "$(uvx --generate-shell-completion zsh)"
+```
+
+Luonnollisesti yllä olevan `typora`-aliasis voisi lisätä myös `blockinfile`-moduulin avulla.
+
+### Ansible dotfiles
+
+Yllä mainitun lokaalin työaseman hallinnan voi viedä niin pitkälle kuin haluaa. Ansible ei ole toki ainut työkalu, jolla voit hakea dotfilesisisi GitHubista tai jostakin muusta keskitetystä lähteestä, mistä löytyy niiden tuoreimmat versiot. Tähän löytyy [hirveä määrä kilpailevia ratkaisuja](https://dotfiles.github.io/utilities/). Tässä luvussa käsitellään Ansiblea, joten on luontevaa pohtia, kuinka ongelman voisi ratkaista Ansiblea hyödyntäen. Tähän tarjoaa yhdenlaisen ratkaisun esimerkiksi TechDufus, katso video alta. Videolla saat pikaisen katsauksen myös Ansible Vaultiin, jota ei käsitellä tällä kurssilla. Ansible Vault mahdollistaa arkaluonteisten tietojen salaamisen siten, että ne voi säilyttää versionhallinnassa. Esimerkiksi SSH-avaimet, salasanat ja muut arkaluontoiset tiedot voi salata ja purkaa Ansible Vaultin avulla.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hPPIScBt4Gw?si=ToR2Fy0ZXr-sj1VR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Video 1**: Kehitysympäristön pystytys Ansiblea hyödyntäen. Varsinainen koodi löytyy [gh:techdufus/dotfiles](https://github.com/techdufus/dotfiles) repositoriosta.
+
+Onko tämä tarpeen? Riippuu täysin sinusta. Jos käytät useita eri työasemia, ja sinulla on tarve pitää niiden kehitysympäristöt kaikkine konfiguraatioineen synkronissa, ja tarpeet ovat monimutkaisempia kuin pelkkä yksi tai kaksi aliasia, niin silloin Ansible voi olla hyvä vaihtoehto. Muissa tapauksissa *over-engineering* voi olla vaarana.
+
 ## Tehtävät
 
 !!! question "Tehtävä: Parsi Ansible-koodit"
