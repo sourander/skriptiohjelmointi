@@ -183,8 +183,7 @@ Luo yksinkertainen Playbook, joka vain tulostaa `Hello, World!`. Tämä on hyvä
     Nyt on tuikata Playbook käyntiin, ottaa etäisyyttä ja ihailla käsien työtä. Kuten aiemmasta Creating a Playbook -ohjeesta tiedät, komento on:
 
     ```
-    $ uv run ansible-playbook -i configs/inventory/hosts.ini configs/playbooks/hello-world.yml
-    uv run ansible-playbook -i config/inventory/hosts.ini config/playbooks/hello-world.yml 
+    $ uv run ansible-playbook -i config/inventory/hosts.ini config/playbooks/hello-world.yml 
 
     PLAY [Hello World] 
     fatal: [192.168.64.42]: UNREACHABLE! => 
