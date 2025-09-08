@@ -230,7 +230,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
         * Käynnistää interaktiivisen Bashin kontissa
     * Varmistat, että kaikki on versionhallinnassa
 
-    Opettaja on antanut sinulle tyhjän repositorion tätä kurssia varten, ja se on esimerkiksi osoitteessa `https://repo.kamit.fi/skriptiohjelmointi-2054/johnanderton`. Tyhjä repositorio sisältää ohjeet, kuinka voit luoda lokaalin repositorion ja alustaa sen `main`-haaralla sekä tyhjällä `README.md`-tiedostolla. Noudata GitLabin ohjeita. Kloonaa repositorio lokaatioon:
+    Opettaja on antanut sinulle tyhjän repositorion tätä kurssia varten, ja se on esimerkiksi osoitteessa `https://gitlab.dclabra.fi/skriptiohjelmointi-2054/johnanderton`. Tyhjä repositorio sisältää ohjeet, kuinka voit luoda lokaalin repositorion ja alustaa sen `main`-haaralla sekä tyhjällä `README.md`-tiedostolla. Noudata GitLabin ohjeita. Kloonaa repositorio lokaatioon:
 
     *  Ⓜ️ win: `C:\Users\uname\Code\skriptiohjelmointi-2054\johnanderton`
     *  🐧 linux: `/home/uname/Code/skriptiohjelmointi-2054/johnanderton`
