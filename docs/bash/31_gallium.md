@@ -313,7 +313,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
 
 ??? question "Tehtävä: Interaktiivinen Bash"
 
-    Harjoittele tässä tehtävässä interaktiivista Bashin käyttöä. Tämä on tarpeellista, jos haluat luoda kontin sisälle esimerkiksi testitiedostoja, tai haluat tarkkailla, mitä ajettu skripti oikeastaan tekikään. Tarvitset tässä tehtävässä ylempänä mainitun `runbash.sh`-skriptin. Huomaa, että se löytyy `/app/`-hakemistosta kontin sisällä. Tämä johtuu `runbash.sh`-skriptin rivistä: `--mount type=bind,source="$(pwd)/${SCRIPT_DIR}",target=/app,readonly`.
+    Harjoittele tässä tehtävässä interaktiivista Bashin käyttöä. Tämä on tarpeellista, jos haluat luoda kontin sisälle esimerkiksi testitiedostoja, tai haluat tarkkailla, mitä ajettu skripti oikeastaan tekikään. Tarvitset tässä tehtävässä ylempänä mainitun `runbash.sh`-skriptin. Huomaa, että se löytyy `/app/scripts/`-hakemistosta kontin sisällä. Tämä johtuu `runbash.sh`-skriptin rivistä: `--mount type=bind,source="$(pwd)/${SCRIPT_DIR}",target=/app,readonly`.
 
     Jos muokkaat `hello_turbo.sh`-tiedostoa Host-koneella, sinun ei tarvitse poistua kontista ja käynnistää sitä uudelleen, koska polku on bindattu kontin sisään. Tallenna tiedosto ja aja se uudelleen kontissa - tiedosto on päivittynyt! Myös alla komennoissa luotava tiedosto `/root/a/b/c/hello_turbo.sh`-päivittyy samalla kertaa, koska se on symbolinen linkki eli pointteri alkuperäiseen tiedostoon.
     
@@ -328,13 +328,13 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
     **Vaihe 1: Aja missä oletkin**
 
     ```bash title="🐳 Bash"
-    /app/hello_turbo.sh
+    /app/scripts/hello_turbo.sh
     ```
 
     ```plaintext title="🐳 stdout"
     ========= Turbo Hello World! =========
     Current working directory:     /
-    Script directory:              /app/hello_turbo.sh
+    Script directory:              /app/scripts/hello_turbo.sh
     Kernel name:                   24.04.1 LTS (Noble Numbat)
     ```
 
