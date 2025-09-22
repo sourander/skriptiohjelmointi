@@ -291,11 +291,11 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
     distro_version=${VERSION:-"Unknown distribution"}
 
     cwd_path=''  # IMPLEMENT
-    scr_path=''  # IMPLEMENT
+    src_path=''  # IMPLEMENT
 
     printf "========= Turbo Hello World! =========\n"
     printf "%-30s %s\n" "Current working directory:" "$cwd_path"
-    printf "%-30s %s\n" "Script directory:" "$scr_path"
+    printf "%-30s %s\n" "Script directory:" "$src_path"
     printf "%-30s %s\n" "Kernel name:" "$distro_version"
     ```
 
