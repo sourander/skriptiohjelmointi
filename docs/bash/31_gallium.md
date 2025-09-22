@@ -356,11 +356,7 @@ declare -A my_dictionary=([key2]="value2" [key3]="kissa" [key1]="value1" )
     Current working directory:     /root/a
     Script directory:              /root/a/b/c/hello_turbo.sh
     Kernel name:                   24.04.1 LTS (Noble Numbat)
-    ```
-
-    !!! tip
-
-        
+    ``` 
 
 ??? question "Tehtävä: Bash vianetsintä"
 
