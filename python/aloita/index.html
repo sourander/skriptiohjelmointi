@@ -1,0 +1,1638 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../powershell/99_einsteinium/">
+      
+      
+        <link rel="next" href="../lukeminen/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Python 101 - Skriptiohjelmointi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-101" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Skriptiohjelmointi" class="md-header__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skriptiohjelmointi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python 101
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Skriptiohjelmointi" class="md-nav__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skriptiohjelmointi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tervetuloa kurssille
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bash
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Bash
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bash 101
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lukeminen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💡 Gallium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎆 Strontium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👩‍🔬 Curium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👨‍🔬 Einsteinium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PowerShell
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PowerShell
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PowerShell 101
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lukeminen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💡 Gallium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎆 Strontium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👩‍🔬 Curium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👨‍🔬 Einsteinium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Python 101
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python 101
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perusteet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perusteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missa-ajetaan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missä ajetaan?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Missä ajetaan?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lokaalisti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lokaalisti
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mika-python-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mikä Python on?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erot-shelleihin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erot shelleihin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensimmainen-kontti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensimmäinen kontti
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skripti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skripti
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skripti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sisältö
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-script-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      🆕 Inline Script Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajaminen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bash-python-ajurina" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash Python-ajurina
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tehtävät
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lahteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lähteet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lukeminen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💡 Gallium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎆 Strontium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👩‍🔬 Curium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👨‍🔬 Einsteinium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ansible
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Ansible
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ansible 101
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lukeminen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💡 Gallium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎆 Strontium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👩‍🔬 Curium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👨‍🔬 Einsteinium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tehtäväkooste
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perusteet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perusteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missa-ajetaan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missä ajetaan?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Missä ajetaan?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lokaalisti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lokaalisti
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mika-python-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mikä Python on?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erot-shelleihin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erot shelleihin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensimmainen-kontti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensimmäinen kontti
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skripti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skripti
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skripti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sisältö
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-script-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      🆕 Inline Script Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajaminen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bash-python-ajurina" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash Python-ajurina
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tehtävät
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lahteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lähteet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-101">Python 101</h1>
+<h2 id="perusteet">Perusteet</h2>
+<h3 id="missa-ajetaan">Missä ajetaan?</h3>
+<h4 id="docker">Docker</h4>
+<p>Aivan kuten aiemmissa osioissa käsitellyt kielet, myös Python-kieliset skriptit voidaan ajaa Docker-kontissa. Tämä on, aivan kuten ennenkin, kannattavaa jos teet jotakin riskialtista, kuten tuhoat tiedostoja. Kontti mahdollistaa ns. "clean slate" -ympäristön, jossa ei ole mitään ylimääräistä.</p>
+<h4 id="lokaalisti">Lokaalisti</h4>
+<p>Python on valmiiksi asennettuna Ubuntussa ja monissa muissa Linux-jakeluissa. Windowsissa Pythonia ei ole valmiiksi asennettuna, mutta sen voi ladata ja asentaa <a href="https://www.python.org/downloads/">Pythonin kotisivuilta</a>. Asennuksen jälkeen Python on käytettävissä komentoriviltä, kunhan muistat aktivoida <strong>Add Python to PATH</strong> -valinnan asennuksen aikana.</p>
+<div class="admonition tip">
+<p class="admonition-title">Paketinhallinta... not today</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></span> Kun luot <mark>Python-ohjelmaa</mark> tai -kirjastoa, käytät todennäköisesti virtuaaliympäristöjä tai jopa paketinhallintaaohjelmia, kuten <a href="https://python-poetry.org/">Python Poetry</a> tai <a href="https://docs.astral.sh/uv/">uv</a>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m.12 13.5 3.74 3.74 1.42-1.41-2.33-2.33 2.33-2.33-1.42-1.41zm11.16 0-3.74-3.74-1.42 1.41 2.33 2.33-2.33 2.33 1.42 1.41z"/></svg></span> Kun kirjoitat <mark>skriptiä</mark>, on jossain määrin oletettavaa, että käytät sitä Python-versiota, mikä sattuu olemaan asennettuna binäärissä <code>/usr/bin/python3</code>.</p>
+<p>Tässä luvussa emme luo ohjelmia vaan irrallisia skriptejä. Pyrimme pitämään asiat mahdollisimman yksinkertaisina, joten emme käytä <strong>kohdekoneessa</strong> virtuaaliympäristöjä, paketinhallintaa, emmekä edes asenna <code>pip</code>-paketteja. Käytämme sitä Python-versiota, mikä sattuu olemaan asennettuna. Lokaalissa koneessa saatamme asentaa paketteja, jotta meidän ympäristömme vastaa sitä, mikä Debianissa on vakiona.</p>
+</div>
+<p>Python on monilta osin cross-platform, joten skriptit toimivat samalla tavalla riippumatta siitä, ajatko niitä Windowsissa, Linuxissa vai macOS:ssä. Esimerkiksi hakemistopolut käyttäytyvät <code>pathlib</code>-kirjaston avulla samalla tavalla riippumatta käyttöjärjestelmästä: <code>Path</code> on alustasta riippuen joko <code>WindowsPath</code> tai <code>PosixPath</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Eroja tosin silti löytyy! Esimerkiksi tiedostoja kirjoittaessa kannattaa olla skarppina, että määrität eksplitiittisesti tiedoston enkoodauksen, sillä Windowsissa oletusenkoodaus on <code>win-1252</code>, kun taas Linuxissa ja macOS:ssä se on <code>utf-8</code>.</p>
+<p>Myös Linux-jakelut voivat yllättää muutoksillaan. Debianissa (ja myös Ubuntussa) on käytössä <code>dist-packages</code>-hakemisto, joka ei ole standardi Pythonin osalta. Tämä voi aiheuttaa esimerkiksi sen, että Ubuntu-käyttäjät luulevat <code>requests</code>-kirjaston olevan osa Pythonin Standard Libraryä.</p>
+</div>
+<h3 id="mika-python-on">Mikä Python on?</h3>
+<p>Vapaasti suomennettu What is Python? Executive Summary on seuraava: </p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Python on tulkattava, olio-ohjelmointiin perustuva korkean tason ohjelmointikieli. Sen monipuoliset tietorakenteet, dynaaminen tyypitys ja sidonta tekevät siitä erinomaisen nopeaan sovelluskehitykseen sekä skriptauskieleksi eri komponenttien yhdistämiseen. Selkeä ja helposti opittava syntaksi parantaa luettavuutta ja vähentää ylläpitokustannuksia. Python tukee moduuleja ja paketteja, mikä edistää koodin uudelleenkäyttöä. Tulkki ja laaja vakiokirjasto ovat ilmaiseksi saatavilla kaikille merkittäville alustoille. <sup id="fnref:pythonsummary"><a class="footnote-ref" href="#fn:pythonsummary">2</a></sup></p>
+</div>
+<p>Pythonin sijasta voisimme yhtä hyvin opiskella Perliä. Kumpikin kieli ponnistaa samankaltaisesta historiasta eli Unix-skriptauksesta. Aivan kuten <code>python3</code>, myös <code>perl</code> on mitä todennäköisimmin valmiiksi asennettuna jakelussasi. Perl on kenties kotikentällä skriptauksessaan vahvemmassa asemassa. Pythonin oma dokumentaatio tiivistää sen näin: <em>"As a consequence, Python comes close to Perl but rarely beats it in its original application domain; however Python has an applicability well beyond Perl's niche <sup id="fnref:pythoncompare"><a class="footnote-ref" href="#fn:pythoncompare">1</a></sup>"</em> Me käytämme Pythonia monista syistä, joita yksi on se, että kurssilla käsitelty Ansible on kirjoitettu Pythonilla. Toinen on se, että opiskelijat ovat usein jo käyttäneet Pythonia jossain muussa yhteydessä. Jos halut lukea Pythonin oman näkemyksen kielen vahvuuksista, lue esimerkiksi <a href="https://docs.python.org/3/tutorial/appetite.html">Python Docs: Whetting Your Appetite</a></p>
+<p>Alla on piirakkakuvaajaan laskettuna Python, Perl ja Shell-skriptien sekä Linux-binäärien määrä <code>/usr/bin</code>-hakemistossa.</p>
+<pre class="mermaid"><code>pie showData
+    title File types in bin
+    "Python" : 46
+    "Perl" : 50
+    "Shell" : 132
+    "Binaries" : 631</code></pre>
+<details class="tip">
+<summary>Kuinka tiedostot laskettiin?</summary>
+<p>Komento on ajettu Multipassilla luodussa virtuaalikoneessa, jossa on arm64 Ubuntu 24.04. Komennon <code>find</code> syntaksi on hieman vaikea tulkita, mutta se suorittaa komennon <code>file &lt;file_1&gt; &lt;file_2&gt; &lt;file_...&gt;</code>. Kyseinen komento tulostaa rivin per tiedosto, joka sisältää päätellyt tiedostotyypin. Nämä rivit putkitetaan grep-komennon filtteröitäväksi, ja lopulta lasketaan filtterin läpäisseet rivit.</p>
+<div class="language-console highlight"><span class="filename">☣️ Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">$ </span><span class="c1"># Count Python scripts in /bin</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">$ </span>find<span class="w"> </span>/usr/bin<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>file<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\+</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d:<span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="go">46</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">$ </span><span class="c1"># Count Perl</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">$ </span>find<span class="w"> </span>/usr/bin<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>file<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\+</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d:<span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;perl&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="go">50</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="gp">$ </span><span class="c1"># Count Shell scripts</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="gp">$ </span>find<span class="w"> </span>/usr/bin<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>file<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\+</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d:<span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="go">132</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="gp">$ </span><span class="c1"># Count binaries</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="gp">$ </span>find<span class="w"> </span>/usr/bin<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>file<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\+</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;ELF&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="go">631</span>
+</span></code></pre></div>
+</details>
+<h3 id="erot-shelleihin">Erot shelleihin</h3>
+<p>Huomaa, että Python ei käyttäydy shellinä samalla tavalla kuin Bash tai PowerShell. Pythonissa toki on olemassa niin sanottu Python Shell, mutta se ei ole shell sanan samassa merkityksessä. Pythonin Shell on "REPL" (Read-Eval-Print Loop), joka on interaktiivinen ohjelmointiympäristö. Tämä tarkoittaa, että voit kirjoittaa Python-koodia ja nähdä tuloksen välittömästi. Mikä sen sitten erottaa Bashista tai PowerShellista? <mark>Et voi suorittaa järjestelmäkomentoja suoraan Python Shellissä</mark>. Eli siis <code>ls</code> ei tulosta hakemiston sisältöä, <code>cd</code> ei navigoi hakemistossa, <code>docker</code> ei kutsu Docker CLI:tä ja niin edelleen.</p>
+<p>Selvyyden vuoksi täytyy painottaa, että vaikka emme voi kutsua PATH:ssa olevia binäärejä suoraan Python Shellistä, <mark>voimme kutsua</mark> niitä <code>subprocess</code>-moduulin avulla. Näin myös tulemme kurssin aikana tekemään.</p>
+<p><img alt="alt text" src="../../images/python-repl.png" /></p>
+<p><strong>Kuva 1:</strong> Python Shell on interaktiivinen ohjelmointiympäristö, jossa voit kirjoittaa Python-koodia ja nähdä tuloksen välittömästi. Huomaa, että se käynnistetään tyypillisesti jonkin shellin child-prosessina: kuvan tapauksessa Bashin. Interaktiivista shelliä voi käyttää leikkikenttänä, mutta tyypillisesti Python ajetaan skriptinä.</p>
+<h2 id="ensimmainen-kontti">Ensimmäinen kontti</h2>
+<p>Aivan kuten edellisissä osioissa, myös Python-skriptit voidaan ajaa Docker-kontissa, mutta image pitää valita siten, että Python 3 on asennettuna.</p>
+<div class="language-bash highlight"><span class="filename">🖥️ Bash|Git Bash|PowerShell|CMD</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>python:3.12
+</span></code></pre></div>
+<p>Komento suorittaa imagen default <code>Cmd</code>:n, joka on <code>python3</code>. Toisin sanoen käynnistät Python Shellin. Vaihtoehtoisesti voit antaa sille parametriksi polun skriptiin. Tähän tutustumme kurssin aikana.</p>
+<h2 id="skripti">Skripti</h2>
+<h3 id="sisalto">Sisältö</h3>
+<p>Huomaa, että shebang ei ole sinänsä osa Pythonia, eikä tyypillinen Python-ohjelma sisällä shebangiä. Alustamme on Unix-like, ja teemme skriptiohjelmointia, joten voimme kuitenkin hyödyntää sitä - ja näin tekevät <code>/usr/bin</code>-hakemiston Python-skriptitkin.</p>
+<div class="language-python highlight"><span class="filename">hello.py</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/bin/env python3</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="inline-script-metadata">🆕 Inline Script Metadata</h3>
+<div class="admonition example">
+<p class="admonition-title">Tulevaisuus</p>
+<p>Tämä on tuore feature ja siksi otsikossa on 🆕-emoji. Emme käytä ominaisuutta kurssilla, mutta koska se liittyy vahvasti skriptaukseen ja lienee tulevaisuudessa yleinen käytäntö, on hyvä olla tietoinen siitä.</p>
+</div>
+<p>PEP 723 (Python Enhancement Proposal) toi mukanaan Pythoniin uudistuksen <a href="https://packaging.python.org/en/latest/specifications/inline-script-metadata/#inline-script-metadata">Inline Script Metadata</a>. Kuinka tätä sitten hyödynnetään? Alla on esimerkki metadatan muotoilusta skriptin alkuun. Skriptiä ei voi ajaa suoraan Python 3.12:lla, vaan avuksi tarvitsee muita työkaluja, kuten <code>uv</code> tai <code>hatch</code>.</p>
+<div class="language-python highlight"><span class="filename">inline_metadata_example.py</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># /// script</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># requires-python = &quot;&gt;=3.12&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># dependencies = [</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">#   &quot;requests&quot;,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">#   &quot;pydantic&quot;,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># ]</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># ///</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">userId</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="n">body</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1"># Fetch a dummy Post from REST API using Requests</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/posts/1&quot;</span><span class="p">)</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">model_validate_json</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Jos <code>uv</code> on asennettuna, voit ajaa skriptin seuraavasti:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>uv<span class="w"> </span>run<span class="w"> </span>inline_metadata_example.py
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">Installed 9 packages in 21ms</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="go">[INFO] The title:  sunt aut facere repellat provident occaecati excepturi optio reprehenderit</span>
+</span></code></pre></div>
+<p>Huomaa, että inline-metadatassa listatut riippuvuudet (ja niiden riippuvuudet) asennettiin automaattisesti väliaikaiseen ympäristöön.</p>
+<details class="note">
+<summary>Entä kontissa?</summary>
+<p>Voit toki kokeilla samaa ominaisuutta myös kontissa. Esimerkiksi näin:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/scripts:/workspace&quot;</span><span class="w"> </span>ghcr.io/astral-sh/uv:debian<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>/workspace/inline_metadata_example.py
+</span></code></pre></div>
+</details>
+<h3 id="ajaminen">Ajaminen</h3>
+<p>Python skriptin voi ajaa joko argumenttina <code>python3</code>-ohjelmalle tai suoraan skriptinä, jos shebang on määritelty, ja tiedosto on ajettava (executable, <code>x</code> file mode).</p>
+<div class="language-bash highlight"><span class="filename">🖥️ Bash|Git Bash|PowerShell|CMD</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>python3<span class="w"> </span>hello.py
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Hello,<span class="w"> </span>world!
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>$<span class="w"> </span>./hello.py
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Hello,<span class="w"> </span>world!
+</span></code></pre></div>
+<h3 id="bash-python-ajurina">Bash Python-ajurina</h3>
+<p>On mahdollista hyödyntää Python-kieltä Bash-skriptissä. Tämä on hyödyllistä, kun haluat suorittaa jonkin operaation, mikä on merkittävän vaikea toteuttaa Bashilla. Jopa kohtalaisen yksinkertaisissa tapauksissa Python voi edistää syntaksin selkeyttä ja ymmärrettävyyttä - ja tämä on tärkeää, jos skriptiäsi joku muu joutuu lukemaan.</p>
+<p>Kuvitellaan esimerkki, että sinun tulee selvittää, kuinka monta päivää on tietyssä kuukaudessa. Mieti hetki, kuinka tämä voisi onnistua Bashissä. Tämän jälkeen avaa alta vihjelaatikko, jossa on ainakin yksi ratkaisu tähän.</p>
+<details class="tip">
+<summary>Vihje: Kuukauden päivät Bashillä</summary>
+<p>Voit toteuttaa tämän Bashilla käyttämällä case-lauseketta. Helmikuu vaatisi kuitenkin karkausvuosien osalta poikkeuksen. Tämä ei ole maailman vaikein ohjelma, ja olet kenties jo aiemmassa harjoituksessa toteuttanut <code>is_leap_year</code> -funktion, jota voisi hyödyntää tässä.</p>
+<div class="language-bash highlight"><span class="filename">example_days_in_month.sh</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># Usage: days_in_month.sh [month] [year]</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Source imaginery is_leap_year function</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>.<span class="w"> </span>is_leap_year.sh
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">month</span><span class="o">=</span><span class="nv">$1</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">year</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-$(</span>date<span class="w"> </span>+%Y<span class="k">)</span><span class="si">}</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">case</span><span class="w"> </span><span class="nv">$month</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="m">1</span><span class="p">|</span><span class="m">3</span><span class="p">|</span><span class="m">5</span><span class="p">|</span><span class="m">7</span><span class="p">|</span><span class="m">8</span><span class="p">|</span><span class="m">10</span><span class="p">|</span><span class="m">12</span><span class="o">)</span><span class="w"> </span><span class="nv">days</span><span class="o">=</span><span class="m">31</span><span class="w"> </span><span class="p">;;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="m">4</span><span class="p">|</span><span class="m">6</span><span class="p">|</span><span class="m">9</span><span class="p">|</span><span class="m">11</span><span class="o">)</span><span class="w"> </span><span class="nv">days</span><span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="p">;;</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="m">2</span><span class="o">)</span><span class="w"> </span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span>is_leap_year<span class="w"> </span><span class="nv">$year</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="nv">days</span><span class="o">=</span><span class="m">29</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="nv">days</span><span class="o">=</span><span class="m">28</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="p">;;</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="k">esac</span>
+</span></code></pre></div>
+</details>
+<p>Saman voisi toteuttaa Pythonissa rautakoodattuna näin:</p>
+<div class="language-python highlight"><span class="filename">days_in_month.py</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</span></code></pre></div>
+<p>Voimme upottaa seuraavan Python-rimpsun Bashiin näin:</p>
+<div class="language-bash highlight"><span class="filename">days_in_month_python.sh</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash -eu</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># Usage: days_in_month.sh [month] [year]</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nv">month</span><span class="o">=</span><span class="nv">$1</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">year</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="k">:-$(</span>date<span class="w"> </span>+%Y<span class="k">)</span><span class="si">}</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nv">n_days</span><span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s2">import calendar</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="s2">print(calendar.monthrange(</span><span class="nv">$year</span><span class="s2">, </span><span class="nv">$month</span><span class="s2">)[1])</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s2">&quot;</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">)</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Number of days in </span><span class="nv">$month</span><span class="s2">/</span><span class="nv">$year</span><span class="s2">: </span><span class="nv">$n_days</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Miksi joku siis suosisi natiivia Bash-toteutusta? Yksi syy on, että Linuxissa on aina jokin POSIX-yhteensopiva shell saatavilla, toisin kuin Python. Tyypillisistä jakeluista <code>python3</code> löytyy, mutta konteissa ajetaan usein kovin karsittua imagea. Jos käytät Pythonia skripteissä, sinun pitää valita oikea image. Lisäksi vuosikymmeniä vanha POSIX-yhteensopivuus on melko vakaa verrattuna Pythonin versioyhteensopivuuteen.</p>
+<p>Käytännössä tässä taistelevat siis <code>portability + stability</code> vs. <code>readability + maintainability</code>.</p>
+<p>Tähän ei ole absoluuttisesti oikeaa ja väärää vastausta.</p>
+</div>
+<h2 id="tehtavat">Tehtävät</h2>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Python informaatiohaku</p>
+<p>Muodosta itsellesi katalogi tarpeellisista lähteistä. Python kehittyy aktiivisesti, joten suosi uusia lähteitä. Alla pari suositusta, mistä aloittaa etsintä:</p>
+<ol>
+<li><a href="https://docs.python.org/3/library/index.html">The Python Standard Library</a>. Pythonin oman dokumentaation Standard Library -osio on korvaamattoman hyvä. Pythonin mukana tulevien moduulien dokumentaatio on täällä. Kurssilla käytetään skriptaukseen liittyviä moduuleja, joista tärkeimpinä <code>os</code>, <code>sys</code>, <code>subprocess</code>, <code>argparse</code> ja <code>logging</code>. Mitä mahtaa tehdä esim. <code>calendar</code>? Entä <code>getpass</code>?</li>
+<li><a href="https://devhints.io/python">DevHints.io: Python</a>. Cheat sheet, joka sisältää kielen perusasiat yhdessä paketissa. Tämän ja ylemmän lähteet avulla saat jo yllättävän paljon aikaiseksi.</li>
+<li><a href="https://strftime.org/">Python strftime cheatsheet</a>. Jos/kun päädyt pelaamaan päivämäärien formatoinnin kanssa, tämä cheat sheet on nopea apu.</li>
+<li><a href="https://kamezproxy01.kamit.fi:2252/lib/kajaani-ebooks/detail.action?docID=5993982">Python for DevOps: Learn Ruthlessly Effective Automation</a>. Kirja löytyy korkeakoulun Finna-kirjastosta digitaalisena kopiona. Voit lukea sitä selaimessa.</li>
+</ol>
+<p>Skriptaus on niin laaja käsite, että hakusanoilla "python scripting" ei yleensä löydä mitään hyödyllistä. Tee siis ensin tarkempi suunnitelma siitä, mitä aiot tehdä, ja muodosta tämän avulla hakusanasi. Kielimallit voivat auttaa hahmottamaan, millä kirjastoilla haluamasi ratkaisu hoituu.</p>
+<p>Jos olet valmis sijoittamaan opiskeluusi rahaa, myös seuraavat lähteet voivat olla varteenotettavia:</p>
+<ul>
+<li>💰 <a href="https://www.humblebundle.com/">Humble Bundle</a>. Sivustolla on ajoittain tarjolla kirjoja, jotka käsittelevät Bash-skriptauksen perusteita. Tarjonta vaihtelee jatkuvasti, joten on tuurista kiinni, löytyykö sieltä nyt mitään hyödyllistä. Kirjapaketit maksavat yleensä halvimmillaan noin 1-20 euroa.</li>
+<li>💰 <a href="https://www.oreilly.com/">O'Reilly</a>. Kirjastoon kuuluu useiden eri julkaisijoiden kirjoja: O'Reilly, No Starch Press, Manning Publications, Packt, Apress ja monet muut. Luettavissa kuukausimaksulla.</li>
+<li>💰 <a href="https://realpython.com/python-subprocess/">Real Python: Subprocess</a>. Real Python on maksullinen sivu, mutta maltillisen määrän artikkeleita saa lukea ilmaiseksi. Kun tiedät, mitä haluat, voit etsiä tietoa tarkemmin täältä. Tässä linkitetty artikkeli käsittelee <code>subprocess</code>-moduulia, joka on tärkeä osa Python-skriptauksen työkalupakkia.</li>
+</ul>
+</div>
+<h2 id="lahteet">Lähteet</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:pythoncompare">
+<p>Python.org. <em>Comparing Python to Other Languages</em>. https://www.python.org/doc/essays/comparisons/&#160;<a class="footnote-backref" href="#fnref:pythoncompare" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:pythonsummary">
+<p>Python.org. <em>What is Python? Executive Summary</em>. https://www.python.org/doc/essays/blurb/&#160;<a class="footnote-backref" href="#fnref:pythonsummary" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">BY-NC-ND 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
