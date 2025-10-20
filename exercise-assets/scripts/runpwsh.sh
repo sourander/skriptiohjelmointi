@@ -17,9 +17,8 @@
 #: Options     : [ARGS]..
 #
 #: === Examples ====
-#:   runbash.sh
-#.   runbash.sh 'Update-Help -DestinationPath /srv/powershell-help'
-#:   runbash.sh scripts/hello.sh arg1 arg2 arg3
+#:   runpwsh.sh
+#:   runpwsh.sh scripts/hello.sh arg1 arg2 arg3
 
 LOCAL_HELP="$(pwd)/.help/powershell-help"
 DOCKER_HELP="/srv/powershell-help"
