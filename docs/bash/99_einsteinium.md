@@ -172,4 +172,4 @@ Docker sopii moneen, mutta jos tarve on hallita esim. systemd-palveluita, luoda 
 
     Tämän jälkeen selvitä virtuaalikoneen IP-osoite ja yhdistä siihen. Virtuaaliosoitteen näet ajamalla komennon `multipass info <koneennimi>`. Tämän jälkeen voit avata selaimen ja kirjoittaa osoiteriville `http://<virtuaalikoneen-ip>:8000`.
 
-    Nyt olet virallisesti varmistanut skripti, joten se olisi valmiina käytetäväksi myös muuallakin kuin virtuaalikoneessa. Success! 🎉
+    Nyt olet virallisesti varmistanut skriptin toiminnallisuuden, joten se olisi valmiina käytettäväksi myös muuallakin kuin virtuaalikoneessa. Success! 🎉
