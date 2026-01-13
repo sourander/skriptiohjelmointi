@@ -1,0 +1,1972 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../bash/99_einsteinium/">
+      
+      
+        <link rel="next" href="../lukeminen/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>PowerShell 101 - Skriptiohjelmointi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#powershell-101" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Skriptiohjelmointi" class="md-header__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skriptiohjelmointi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PowerShell 101
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Skriptiohjelmointi" class="md-nav__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skriptiohjelmointi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 101
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perusteet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perusteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missa-ajetaan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missä ajetaan?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Missä ajetaan?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dev-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dev Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mika-se-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mikä se on?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entapa-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entäpä .NET?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erot-bashiin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erot Bashiin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensimmainen-kontti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensimmäinen kontti
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ensimmäinen kontti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#komennot-ja-apu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komennot ja apu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skripti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skripti
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skripti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sisältö
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suorituspolitiikka-m-win" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suorituspolitiikka (Ⓜ️ Win)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiedoston-luominen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiedoston luominen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skriptin-ajaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skriptin ajaminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lahteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lähteet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perusteet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perusteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missa-ajetaan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missä ajetaan?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Missä ajetaan?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dev-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dev Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mika-se-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mikä se on?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entapa-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entäpä .NET?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erot-bashiin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erot Bashiin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensimmainen-kontti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensimmäinen kontti
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ensimmäinen kontti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#komennot-ja-apu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komennot ja apu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skripti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skripti
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skripti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sisältö
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suorituspolitiikka-m-win" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suorituspolitiikka (Ⓜ️ Win)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiedoston-luominen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiedoston luominen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skriptin-ajaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skriptin ajaminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lahteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lähteet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="powershell-101">PowerShell 101</h1>
+<h2 id="perusteet">Perusteet</h2>
+<h3 id="missa-ajetaan">Missä ajetaan?</h3>
+<h4 id="docker">Docker</h4>
+<p>Jotta sinun on mahdollista tehdä tämän kurssin tehtäviä, sinulla on oltava PowerShell käytössä. Jos teet skriptejä, jotka poistavat tiedostoja tai tekevät jotakin muuta vaarallista, on suositeltavaa ajaa PowerShelliä Docker-kontissa. Tämän pitäisi olla sinulle tuttua jo aiemmasta Bash-osiosta. Kontti noudetaan Docker Hubin sijasta <a href="https://mcr.microsoft.com/en-us/artifact/mar/powershell/about">Microsoft Artifact Registry: PowerShell</a>-katalogista. Kontti rakentuu Ubuntun päälle, mutta siihen on asennettu PowerShell riippuvuuksineen, ja vakio CMD ei ole <code>bash</code>, vaan <code>pwsh</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Jos haluat harjoitella Microsoft Windows -spesifisiä komentoja, kuten <code>Get-Service</code>, tarvitset Windows-ympäristön. Docker luo Linux-kontteja. Emme käsittele Windows-komentoja tässä kurssissa, mutta voit kokeilla niitä omalla koneellasi, mikäli sinulla on Windows-kone käytössäsi.</p>
+</div>
+<h4 id="local-machine">Local Machine</h4>
+<p>On kovin tyypillistä, että Dockeria suositellaan lääkkeeksi aivan kaikkeen. Tulet huomaamaan, että jos ajat kaiken koodin väliaikaisessa kontissa, koodin syntaksia värittävä VS Code <strong>PowerShell Extension</strong> ei toimi. Kyseinen Extension, aivan kuten muiden kielten vastaavat, tarvitsevät pääsyn kielen runtimeen, jotta ne voivat tarjota sinulle koodin täydennystä, syntaksivärittelyä ja muuta.</p>
+<p>Helpoin tapa ratkaista tämä? Asenna PowerShell lokaalisti, olit sitten Windows-, macOS- tai Linux-käyttäjä. Voit yhä ajaa vaaralliset tai epävarmat skriptit Docker-kontissa, mutta voit kirjoittaa ja testata skriptisi lokaalisti.</p>
+<h4 id="dev-container">Dev Container</h4>
+<p>Voit yrittää <em>best of both worlds</em>-ratkaisua Visual Studio Coden Dev Containers -ominaisuuden avulla. Tämä on kuitenkin edistyneempi aihe. Emme käsittele sitä tässä kurssissa.</p>
+<h3 id="mika-se-on">Mikä se on?</h3>
+<p>PowerShell on Microsoftin kehittämä skriptauskieli ja komentotulkki. Se on suunniteltu alunperin Windows-ympäristöön, mutta nykyään se on saatavilla myös Linuxille ja macOS:lle. Jos tarkkoja ollaan, niin tuotteita on kaksi, joista vain toinen on saatavilla muille kuin Windowsille:</p>
+<ul>
+<li>Ⓜ️ Windows PowerShell<ul>
+<li>Asentuu Windowsin mukana. Perustuu kaupalliseen .NET Frameworkiin. Tuorein versio on 5.1 eikä Microsoft enää kehitä sitä.</li>
+<li>Executable: <code>powershell.exe</code></li>
+</ul>
+</li>
+<li>Ⓜ️🍎🐧 PowerShell<ul>
+<li>Asennetaan erikseen. Tuorein versio on 7.x ja Microsoft kehittää sitä aktiivisesti.</li>
+<li>Executable: <code>pwsh</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Huomaa, että kaikkia moduuleita tai cmdlettejä ei ole saataville kaikille alustoille. Esimerkiksi moduulin <code>Microsoft.PowerShell.Management</code> komento <code>Get-Service</code> ei toimi Linuxissa. Tämä johtuu .NET Frameworkin ja .NET Coren eroista. <sup id="fnref:5.1vs7difference"><a class="footnote-ref" href="#fn:5.1vs7difference">1</a></sup></p>
+</div>
+<h3 id="entapa-net">Entäpä .NET?</h3>
+<p>Dotnet (.NET) on kehitysympäristö (engl. <em>developer platform</em>), jolla on useita tehtäviä ja joka koostuu useista eri osista. Ekosysteemiin kuuluu esimerkiksi ajoympäristö (engl. <em>runtime envinronment</em>) Common Language Runtime (CLR), joka on vastuussa koodin suorittamisesta Java-virtuaalikoneen tapaan. Suoritettava koodi on Common Intermediate Language (CIL) tavukoodia. Ekosysteemi sisältää näiden lisäksi kirjastoja, kääntäjän, SDK ja muuta. Varsinaiset CIL-kieleksi käännettävät dotnet-ohjelmointikielet ovat C# ja F#. PowerShell on sekä tulkki (komentokehote, CLI) että skriptauskieli, joka käyttää .NETin kirjastoja. Sitä ei käännetä, vaan sitä tulkataan dynaamisesti ajon aikana PowerShell runtimen toimesta. <sup id="fnref:introdotnet"><a class="footnote-ref" href="#fn:introdotnet">2</a></sup></p>
+<p>Jos ylempi kappale meni aivan ohi, niin tärkeää on sisäistää, että .NET kirjastoja voi kutsua PowerShellistä, koska se on .NET-ympäristössä toimiva kieli. PowerShellin cmdletit ovat käännettyjä .NET-kirjastojen kutsuja. Käytännössä seuraavat kaksi tekevät jossain määrin saman asian, joskin alempaa muotoa on luonteva käyttää vain silloin, kun sopivaa cmdletiä ei ole olemassa:</p>
+<div class="language-pwsh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># PowerShell cmdlet</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">Get-Process</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># .NET Library the cmdlet wraps</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="no">[System.Diagnostics.Process]</span><span class="p">::</span><span class="n">GetProcesses</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Namespacen ensimmäinen osa, esim. <code>System</code>, voidaan usein jättää pois. Näin esimerkiksi <code>[System.Math]</code> on sama kuin <code>[Math]</code>.</p>
+</div>
+<p>Dotnet-kirjastojen avulla voi saada C#:stä tuttuja toiminnallisuuksia työkalupakkiisi. Esimerkkinä tästä olkoot luvun korottaminen potenssiin, joka hoituu PowerShellissä näin:</p>
+<div class="language-pwsh highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$result</span> <span class="p">=</span> <span class="no">[Math]</span><span class="p">::</span><span class="n">Pow</span><span class="p">(</span><span class="n">10</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">Write-Host</span> <span class="nv">$result</span>
+</span></code></pre></div>
+<p>Ja C#:ssä näin:</p>
+<div class="language-csharp highlight"><span class="filename">C#</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="erot-bashiin">Erot Bashiin</h3>
+<p>PowerShellissä käsitellään pääasiassa objekteja. Tämä tulee jatkumaan myöhemmin Python-osiossa: myös se kieli on rankasti objekteihin suuntautunut.</p>
+<blockquote>
+<p>"A key difference with Bash is that it is mostly objects that you manipulate rather than plain text" <sup id="fnref:learn_pwsh_in_y_minutes"><a class="footnote-ref" href="#fn:learn_pwsh_in_y_minutes">3</a></sup></p>
+</blockquote>
+<p>Käytännössä tämä tarkoittaa sitä, että esimerkiksi kokonaisluku on objekti, ja objektilla on metodeja. Kärjistettynä Bashissä kaikki on vain tekstiä, eli merkkijonoa, jota voidaan <em>tulkita</em> esimerkiksi lukuja aritmeettisissa operaatioissa (<code>let</code> tai <code>$(( expression ))</code>). PowerShellissä luku on luku, merkkijono on merkkijono ja esimerkiksi IP-osoite on IP-osoite. Kaikilla niillä on omat metodinsa. Jos putkitat yhden komennon tulosteen toisen komennon syötteeksi, niin kyseinen komentoketju (engl. <em>command chain</em>) sisältää useita eri objekteja listana. Bashistä tuttu <code>grep</code>, <code>awk</code> tai <code>sed</code> parsiminen vaihtuu objektien käsittelyksi. Tulet tutustumaan tähän myöhemmin harjoitusten muodossa.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Voit siis ajaa one-liner komennon: <code>$number = 10; $number.GetType()</code>. Ruutuun tulostuu taulukkomuotoinen näkymä, jonka sisällöstä ja muodosta vastaa <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/out-default">Out-Default</a>. Huomaa, että komennossa kutsutaan numeron omaa metodia <code>GetType()</code>, joka palauttaa tiedon siitä, minkä tyyppinen objekti on kyseessä. Tätä et voi Bashissä tehdä.</p>
+</div>
+<h2 id="ensimmainen-kontti">Ensimmäinen kontti</h2>
+<p>Alla olevan <code>docker container run</code> komento on Bash-osiosta tuttu, joskin käytämme eri imagea. Komento käynnistää PowerShellin Docker-kontissa.</p>
+<div class="language-pwsh highlight"><span class="filename">Bash | Git Bash | PowerShell | CMD</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">docker</span> <span class="n">container</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">-it</span> <span class="n">mcr</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">powershell</span> 
+</span></code></pre></div>
+<details class="warning">
+<summary>🍎 Apple Silicon -käyttäjille</summary>
+<p>Yllä mainittu image ei välttämättä toimi macOS-koneella, jossa on Silicon-prosessi (M1, M2, ...). Voi toki olla, että tilanne on muuttunut sitten tämän ohjeen kirjoittamisen, mutta jos kyseinen image kaataa Terminaalin jatkuvasti, kokeile arm64:lle käännettyä imagea, joka perustuu Microsoftin kehittämään Mariner-jakeluun (alias Azure Linux).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a># macOS ARM64
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>docker container run --rm -it mcr.microsoft.com/powershell:mariner-2.0-arm64
+</span></code></pre></div>
+</details>
+<p>Docker-komento ja sen parametrit (<code>--rm</code> ja <code>-it</code>) ovat sinulle jo tuttuja Bash-osiosta. Alla olevassa koodissa tulostetaan PowerShellin versiotiedot Docker-kontissa. Alempana näet tulosteen. Komento on ajettu samana päivänä sekä Ubuntu- että macOS-koneella, jälkimmäisessä käyttäen <code>mariner</code>-imagea.</p>
+<div class="language-pwsh highlight"><span class="filename">PowerShell @ Docker</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$PSVersionTable</span>
+</span></code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ubuntu amd64</label><label for="__tabbed_1_2">macOS arm64</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><span class="filename">stdout @ Docker</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Name                           Value
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>----                           -----
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>PSVersion                      7.4.2
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>PSEdition                      Core
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>GitCommitId                    7.4.2
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>OS                             Ubuntu 22.04.4 LTS
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Platform                       Unix
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>PSRemotingProtocolVersion      2.3
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>SerializationVersion           1.1.0.1
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>WSManStackVersion              3.0
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><span class="filename">stdout @ Docker</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Name                           Value
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>----                           -----
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>PSVersion                      7.4.6
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>PSEdition                      Core
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>GitCommitId                    7.4.6
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>OS                             CBL-Mariner/Linux
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>Platform                       Unix
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>PSRemotingProtocolVersion      2.3
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>SerializationVersion           1.1.0.1
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>WSManStackVersion              3.0
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="komennot-ja-apu">Komennot ja apu</h3>
+<p>Varsinaiset komennot ovat <code>cmdlet</code>-tyyppisiä. Ne koostuvat verbistä ja substantiivista. Alla esimerkki:</p>
+<ul>
+<li><code>Verb-Noun</code>: pseudoesimerkki</li>
+<li><code>Get-Process</code>: hakee prosessit</li>
+<li><code>Get-Alias</code>: hakee aliasit komennoilla (esim. <code>dir</code> on <code>Get-ChildItem</code> komennon alias)</li>
+<li><code>Update-Help</code>: päivittää PowerShellin helpin, ladaten rutkasti esimerkkejä ja lisäapua.</li>
+</ul>
+<p>Mistä tahansa komennosta saat helpin muutamalla eri tavalla. Alla esimerkkejä, joissa halutaan saada lisää tietoa Get-ChildItem-komennosta:</p>
+<div class="language-pwsh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c"># Kenties alkuun haluat ajaa:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">Update-Help</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c"># Get-Noun muoto</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">Get-Help</span> <span class="nb">Get-ChildItem</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c"># Huomaa, että se ei ole case-sensitiivinen</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nb">get-help</span> <span class="nb">get-childitem</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c"># Output on helpompi lukea less-ohjelmassa</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nb">Get-Help</span> <span class="nb">Get-ChildItem</span> <span class="p">|</span> <span class="n">less</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c"># Lyhyt muoto (alias)</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">help</span> <span class="nb">Get-ChildItem</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c"># Kysymysmerkki</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="nb">Get-ChildItem</span> <span class="p">-?</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Verb-Noun -parameter value -anotherparameter anothervalue -switch
+</span></code></pre></div>
+<p>Kyseinen <code>Verb-Noun</code>-cmdlet-pohjainen syntaksi on PowerShellin ydin. Esimerkiksi <code>Get-Process</code> hakee prosessit ja <code>Stop-Process</code> pysäyttää prosessin.</p>
+<h2 id="skripti">Skripti</h2>
+<p>Aivan kuten Bashin kohdalla, myös PowerShellissä skripti on tiedosto, joka sisältää yhden tai useamman komennon. Aivan kuten Bash, PowerShell on myöskin tulkki, jossa toimii samat komennot kuin skriptitiedostoissa.</p>
+<p><img alt="" src="../../images/pwsh-simple-foreach-loop.png" /></p>
+<p><em>Kuva 1:</em> Yksinkertainen for-silmukka PowerShellissä ilman erillistä skriptitiedostoa. Komento on ajettu kontissa.</p>
+<h3 id="sisalto">Sisältö</h3>
+<p>Skripti on tiedosto, joka sisältää yhden tai useamman komennon. Tämä on sinulle Bashista tuttua, mutta PowerShellin kohdalla konvention mukainen tiedostopääte on <code>.ps1</code>. Huomaa, että shebang ei ole tarpeen, jos tiedosto ajetaan nimenomaan PowerShellissä. Tiedoston ei myöskään tarvitse olla executable eli <code>chmod +x</code> ei ole tarpeen.</p>
+<div class="language-pwsh highlight"><span class="filename">hello.ps1</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">Write-Host</span> <span class="s2">&quot;Hello, World!&quot;</span>
+</span></code></pre></div>
+<h3 id="suorituspolitiikka-m-win">Suorituspolitiikka (Ⓜ️ Win)</h3>
+<p>On tärkeää huomata, että jos ajat PowerShelliä Windows-ympäristössä, sinun tulee ottaa huomioon execution policy. Kyseinen asetus säätää sitä, missä tapauksissa skriptejä saa suorittaa. Tavallisessa Windows Home/Pro -ympäristössä execution policy on <strong>Restricted</strong>, joka tarkoittaa, että mitään skriptejä ei saa ajaa. Yleisesti suositeltu asetus on <strong>RemoteSigned</strong>.</p>
+<p>Jos et ole aikaisemmin tehnyt mitään PowerShell-skriptien ajoon liittyviä toimenpiteitä, suorita seuraava komento:</p>
+<div class="language-pwsh highlight"><span class="filename">PowerShell in Windows</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Jos ajat PowerShelliä Docker-kontissa tai muutoin Linuxissa, sinun ei tarvitse huolehtia tästä: policy on vakiona Unrestricted, eikä RemoteSigned ole edes tuettu.</p>
+</div>
+<details class="warning">
+<summary>Tietoturva-offtopic</summary>
+<p>RemoteSigned ei välttämättä toimi aivan kuten sen arvaisi toimivan. Se, onko tiedosto Internetistä ladattu vai ei, määrittyy <code>Zone.Identifier</code> -attribuutin perusteella. Tämä ongelma on kuitenkin helppo kiertää: poista attribuutti tiedostosta. Jos kokeilet ladata <code>Invoke-RestMethod</code>-komennolla skriptin, saatat yllättyä, kun sillä ei olekaan koko Zone.Identifieriä asetettuna, vaikka voisi kuvitella. Myös koko policy on helposti kierrävissä.</p>
+<p>Execution Policy ei ole siis sinänsä vahva turvamekanismi. Se lähinnä ehkäisee käyttäjää ajamasta skriptejä huomaamattaan.</p>
+</details>
+<h3 id="tiedoston-luominen">Tiedoston luominen</h3>
+<p>Tiedoston voi luoda millä tahansa tekstieditorilla, mutta on suositeltavaa käyttää Visual Studio Codea. Tämän käyttöön tutustutaan läsnätunneilla.</p>
+<h3 id="skriptin-ajaminen">Skriptin ajaminen</h3>
+<p>Skriptin voi ajaa monella tapaa. Tyypillinen tapa on relatiivinen polku. Koska me olemme samassa hakemistossa kuin skripti, relatiivinen polku on yksintaisesti <code>./&lt;tiedostonimi&gt;</code>:</p>
+<div class="language-pwsh highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c"># Relatiivinen polku</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="p">./</span><span class="n">hello</span><span class="p">.</span><span class="n">ps1</span>
+</span></code></pre></div>
+<p>Absoluuttista polkua käyttäen:</p>
+<div class="language-pwsh highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c"># Linux</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p">/</span><span class="n">root</span><span class="p">/</span><span class="n">hello</span><span class="p">.</span><span class="n">ps1</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c"># Windows</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">hello</span><span class="p">.</span><span class="n">ps1</span>
+</span></code></pre></div>
+<p>Kyseisen binäärin argumenttina:</p>
+<div class="language-pwsh highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c"># PowerShell Core</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">pwsh</span> <span class="p">./</span><span class="n">hello</span><span class="p">.</span><span class="n">ps1</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c"># Windows PowerShell</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">powershell</span><span class="p">.</span><span class="n">exe</span> <span class="p">./</span><span class="n">hello</span><span class="p">.</span><span class="n">ps1</span>
+</span></code></pre></div>
+<h2 id="tehtavat">Tehtävät</h2>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: PowerShell Hello World</p>
+<p>Luo skriptitiedosto <code>hello.ps1</code>, joka tulostaa tekstin "Hello World". </p>
+<p>Varmista, että saat sen ajettua ympäristössä, jossa koet kehittämisen mieluisaksi. Saat käyttää fyysistä konetta, virtuaalikonetta, Dockeria tai vastaavaa.</p>
+<p><strong>Suositus</strong>: Docker</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: PowerShell informaatiohaku</p>
+<p>Toimi kuten aiemmassa Bash-tiedonhakutehtävässä. Muodosta itsellesi hyödyllinen katalogi lähteistä. Alla muutama suositus, mistä aloittaa etsintä:</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/powershell/">PowerShell Documentation</a>. Virallinen dokumentaatio. Varmista, että seuraat oikean version dokumentaatiota.</li>
+<li><a href="https://github.com/fleschutz/PowerShell">Markus Fleschutzin PowerShell repo</a>. Sisältää sekä <a href="https://github.com/fleschutz/PowerShell/blob/main/docs/cheat-sheet.md">cheat sheetin</a> että satoja PowerShell-skriptejä.</li>
+<li><a href="https://learnxinyminutes.com/powershell/">Learn PowerShell in Y Minutes</a>. Cheat Sheet -tyylinen opas, josta selviää ydinasiat.</li>
+<li><a href="https://kamk.finna.fi/">KAMK Finna</a>. Hakusanalla "PowerShell" löytyy esimerkiksi Jonathan Hassellin kirja "Learning PowerShell" vuodelta 2017.</li>
+</ol>
+<p>Myös Bashin kohdalla mainitut kirjalähteet eli KAMK Finna, Humble Bundlen ja O'Reillyn kirjasto ovat toimivia paikkoja etsiä tietoa - jälkimmäiset kaksi ovat toki maksullisia. Erityismaininnan arvoinen maksullinen kirja on Don Jones ja Jeffrey Hicksin <a href="https://www.manning.com/books/learn-windows-powershell-in-a-month-of-lunches-second-edition">Learn PowerShell Scripting in a Month of Lunches 2nd ed. (Manning)</a>.</p>
+</div>
+<h2 id="lahteet">Lähteet</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:5.1vs7difference">
+<p>Microsoft. Differences between Windows PowerShell 5.1 and PowerShell 7.x. https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell&#160;<a class="footnote-backref" href="#fnref:5.1vs7difference" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:introdotnet">
+<p>Microsoft. Introduction to .NET. https://learn.microsoft.com/en-us/dotnet/core/introduction&#160;<a class="footnote-backref" href="#fnref:introdotnet" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:learn_pwsh_in_y_minutes">
+<p>Schandevijl et. al. 2025. Learning PowerShell in Y Minutes. https://learnxinyminutes.com/powershell/&#160;<a class="footnote-backref" href="#fnref:learn_pwsh_in_y_minutes" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

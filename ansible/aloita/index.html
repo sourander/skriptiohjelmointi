@@ -1,0 +1,1904 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../python/99_einsteinium/">
+      
+      
+        <link rel="next" href="../lukeminen/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Ansible 101 - Skriptiohjelmointi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ansible-101" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Skriptiohjelmointi" class="md-header__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skriptiohjelmointi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ansible 101
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Skriptiohjelmointi" class="md-nav__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skriptiohjelmointi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible 101
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perusteet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perusteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missa-ajetaan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missä ajetaan?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Missä ajetaan?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lokaalisti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lokaalisti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multipass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mika-ansible-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mikä Ansible on?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ero-skripteihin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ero skripteihin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#komponentit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komponentit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Komponentit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-ja-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core ja Community
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionumerot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionumerot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sisältö
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajaminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perusteet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perusteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missa-ajetaan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missä ajetaan?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Missä ajetaan?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lokaalisti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lokaalisti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multipass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mika-ansible-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mikä Ansible on?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ero-skripteihin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ero skripteihin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#komponentit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komponentit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Komponentit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-ja-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core ja Community
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionumerot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionumerot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sisältö
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajaminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ansible-101">Ansible 101</h1>
+<h2 id="perusteet">Perusteet</h2>
+<h3 id="missa-ajetaan">Missä ajetaan?</h3>
+<h4 id="lokaalisti">Lokaalisti</h4>
+<p>Emme käytä Docker-konttia Ansiblen ajamiseen, jotta säästymme mahdollisilta huolilta liittyen verkotukseen. Ansible <strong>control node</strong> ajetaan tällä kurssilla omalta <strong>Linux-työasemalta</strong>. </p>
+<p>Ansiblea voi ajaa keskitetystä CI/CD-palvelusta (GitLab CI/CD, GitHub Actions, Jenkins, ...) tai keskitetyn hallintapalvelimen kautta (Ansible Tower, AWX), mutta perusteita opetellessa on helpointa ajaa Ansiblea lokaalisti. Käytettiin sitä mistä tahansa, sen tiedostot säilötään tyypillisesti Git-repositorioon. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Git ja <em>"<code>$ANYTHING</code> as a Code"</em> ovat DevOpsin perusta.</p>
+<p>Muuttuja <code>$ANYTHING</code> voi olla esimerkiksi:</p>
+<ul>
+<li>Platform as Code</li>
+<li>Infrastructure as Code</li>
+<li>Configuration as Code</li>
+<li>Pipeline as Code</li>
+<li>Policy as Code</li>
+<li>...</li>
+</ul>
+</div>
+<h4 id="multipass">Multipass</h4>
+<p>Ansible <strong>managed node</strong> on tällä kurssilla Multipass-virtuaalikone. Huomaa, että tämä ei tarkoita, että me ajaisimme Ansiblea Multipass-virtuaalikoneessa. Ansible ajetaan <strong>control nodella</strong>, ja se yhdistää SSH:lla managed nodeen. Termi tälle on <strong>agentless</strong>.</p>
+<h3 id="mika-ansible-on">Mikä Ansible on?</h3>
+<p>Ansible on DevOps- tai Configuration Management -työkalu, joka toteuttaa <mark>Configuration as Code</mark>-periaatetta. Sen omistaa Red Hat Inc., ja se on kirjoitettu Pythonilla, mutta tavallisessa käytössä Python-taitoja ei tarvita: riittää, että osaa kirjoittaa YAML-tiedostoja. Ansiblella ei siis tyypillisesti hallita intrastruktuuria vaan sen konfiguraatiota. Toisilla kursseilla sinulle on esitelty Terraform, joka on infrastruktuurin hallintatyökalu: Ansible jatkaa siitä, mihin Terraform loppuu.</p>
+<p>Ansiblella voi siis esimerkiksi asentaa ohjelmia, konfiguroida palomuureja, luoda käyttäjiä, ajaa skriptejä, ja niin edelleen. Kaiken, minkä voit tehdä komentorivillä, voit tehdä Ansiblella.</p>
+<p>Ansiblen kilpailijoita ovat esimerkiksi Puppet, Chef, VMware SaltStack. Toisin kuin useimmat kilpailijat, Ansible ei vaadi agenttien asentamista managed nodeihin, vaan se käyttää SSH:ta (tai Windows-nodejen kanssa WinRM:ää) managed nodeihin yhteyden ottamiseen. Tämä tekee Ansiblesta helpon ottaa käyttöön, koska managed nodeihin ei tarvitse asentaa mitään (paitsi SSH).</p>
+<p>Alla on taulukko tyypillisistä entiteeteistä tai konsepteista, jotka ovat osa Ansiblea:</p>
+<table>
+<thead>
+<tr>
+<th>Entiteetti</th>
+<th>Kuvaus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control node</td>
+<td>Ansiblen ajamiseen käytettävä kone</td>
+</tr>
+<tr>
+<td>Managed node</td>
+<td>Ansiblen hallinnoitava kone</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>Managed nodejen lista</td>
+</tr>
+<tr>
+<td>Playbook</td>
+<td>Ansiblen suoritettava tiedosto</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>Yksittäinen komento Playbookissa</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>Kokoelma moduuleja (<code>&lt;namespace&gt;.&lt;collection&gt;</code>)</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>Yksittäinen komento (<code>&lt;namespace&gt;.&lt;collection&gt;.&lt;module&gt;</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><mark>Moduuli</mark> on käytännössä yksittäinen <mark>Python-skripti</mark>, joka suoritetaan managed nodella. Kuinka tämä ajetaan? <strong>Control Node</strong> avaa SSH-yhteyden <strong>Managed Nodeen</strong>, etsii Python-binäärin, siirtää (<code>scp</code>:llä) skriptin väliaikaishakemistoon, ja ajaa skriptin: <code>/usr/bin/python3 /tmp/ansible_script_xyz.py</code>. Huomaa, että Ansiblen ei tarvitse olla asennettuna Managed Nodeen: riittää, että Python, SSH Daemon ja automaatioon sopiva käyttäjä (default: <code>ubuntu</code>) ovat läsnä.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Voit käydä kurkkimassa Python-skriptien sisältöä. Esimerkiksi <code>ansible.builtin.command</code>-moduuli löytyy virtuaaliympäristön luomisen jälkeen <code>.venv/lib/python3.12/site-packages/ansible/modules/command.py</code>-tiedostosta. Jos haluat nähdä tiedoston ilman asennusta, se löytyy luonnollisesti GitHubista: <a href="https://github.com/ansible/ansible/blob/devel/lib/ansible/modules/command.py">gh:ansible/ansible/lib/ansible/modules/command.py/</a>.</p>
+</div>
+<h3 id="ero-skripteihin">Ero skripteihin</h3>
+<p>Ansible on deklaratiivinen työkalu, toisin kuin imperatiiviset skriptit, kuten Bash-skriptit. Deklaratiivinen tarkoittaa, että kerrot Ansiblelle, mitä haluat, ja Ansible huolehtii siitä, että se tapahtuu. Imperatiivinen tarkoittaa, että kerrot tarkalleen, miten haluat, että asiat tapahtuvat.</p>
+<p>Lisäksi Ansible on idempotentti, eli voit ajaa saman Playbookin monta kertaa, ja lopputulos on aina sama. Jos <em>desired state</em> on jo saavutettu, Ansible ei tee mitään.</p>
+<h2 id="komponentit">Komponentit</h2>
+<h3 id="core-ja-community">Core ja Community</h3>
+<p>Red Hat pyrkii tekemään Ansiblella rahaa, joten kaikki siihen liittyvät työkalut eivät ole ilmaisia. Alla on taulukko Ansiblen eri palikoista ja tieto siitä, onko se ilmainen vai kuuluuko se maksulliseen tuotteeseen.</p>
+<table>
+<thead>
+<tr>
+<th>Työkalu</th>
+<th>Free</th>
+<th>$$$</th>
+<th>Maksullinen vastine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ansible Core</td>
+<td>x</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ansible Community</td>
+<td>x</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ansible Navigator</td>
+<td>x</td>
+<td>x</td>
+<td>Automation Content Navigator</td>
+</tr>
+<tr>
+<td>Ansible Galaxy</td>
+<td>x</td>
+<td>x</td>
+<td>Automation Hub</td>
+</tr>
+<tr>
+<td>AWX</td>
+<td>x</td>
+<td>x</td>
+<td>Ansible Controller (ex Tower)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>x</td>
+<td>Red Hat Ansible Lightspeed</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>x</td>
+<td>Red Hat Ansible Automation Platform</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>x</td>
+<td>Red Hat Ansible on Clouds</td>
+</tr>
+</tbody>
+</table>
+<p>Yllä listatuista on hyvä tietää, että:</p>
+<ul>
+<li><strong>Ansible Core</strong> on varsinainen ansible-komentorivityökalu.</li>
+<li><strong>Ansible Navigator</strong> on TUI-käyttöliittymä (Text User Interface) Ansiblelle. Tyypillisesti se hyödyntää <code>podman</code> tai <code>docker</code>-konttia runtimenä. Emme käsittele Navigatoria tällä kurssilla. Meille riittää CLI.</li>
+<li><strong>Ansible Galaxy</strong> on pakettivarasto, josta voit ladata Collectioneita <em>(vrt. PowerShell Gallery, PyPi)</em>.</li>
+<li><strong>Ansible Community</strong> sisältää Ansible Coren, johon on valmiiksi asennettu kuratoitu kattaus Collectioneita.</li>
+<li><strong>Maksulliset vastineet</strong> asentuvat Red Hat Ansible Automation Platformin mukana. Niitä ei käytetä tässä kurssissa. Esimerkiksi <strong>Lightspeed</strong> on Red Hatin kehittämä tekoälyavusteinen työkalu, joka auttaa sinua kirjoittamaan Ansible-koodia. Se asennettaisiin esimerkiksi VS Codeen Extensionina. <strong>Ansible on Clouds</strong> on tuotteistettu tapa asentaa Ansible pilvipalveluihin, kuten AWS:ään tai Azureen.</li>
+</ul>
+<p>Lopulta on siis sama, asennatko <a href="https://pypi.org/project/ansible-core/">ansible-coren</a> vai <a href="https://pypi.org/project/ansible-core/">ansiblen</a>. Jos asennat ensimmäiseen kaikki jälkimmäiseen sisältyät Collectionit, sinulla on käytännössä sama paketti. Kuinka monta Collectiona ja mitä ne ovat?</p>
+<ul>
+<li>Core<ul>
+<li>1 Collection.</li>
+<li>Tämä: <a href="https://docs.ansible.com/ansible-core/devel/collections/ansible/builtin/index.html">Core docs: ansible.builtin</a></li>
+</ul>
+</li>
+<li>Community<ul>
+<li>Yli 100 Collectionia.</li>
+<li>Lista: <a href="https://docs.ansible.com/ansible/latest/collections/">Community docs: Collection Index</a></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Rautalangasta</p>
+<p>Kuvittele, että Windowsista olisi olemassa <strong>Windows Core</strong> ja <strong>Windows Community Gamer Edition (WCGE)</strong>.</p>
+<p><strong>WCGE</strong> sisältäisi: Windows Coren, eli tavallisen Windowsin, johon on valmiiksi asennettu: Steam, Discord, Chrome, ja Visual Studio Code.</p>
+<p>Lopulta on aivan sama, asennatko Windows Coren ja lataat sen jälkeen Steam, Discord, Chrome ja Visual Studio Code erikseen, vai asennatko Windows Community Collectionin.</p>
+</div>
+<h3 id="versionumerot">Versionumerot</h3>
+<p>Jotta homma ei olisi liian simppeliä, Community ja Coren versionumerot poikkeavat toisistaan, ja lisäksi standardi on <mark>vaihtunut 2021 Ansible 3:n myötä</mark>. Alla on taulukko, joka kertoo, mikä Coren versio vastaa mitäkin Communityn versiota:</p>
+<table>
+<thead>
+<tr>
+<th>Ansible</th>
+<th>Ansible Core</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ansible 11</td>
+<td>2.18</td>
+</tr>
+<tr>
+<td>Ansible 10</td>
+<td>2.17</td>
+</tr>
+<tr>
+<td>Ansible 9</td>
+<td>2.16</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td><mark>Ansible 3</mark></td>
+<td>2.11</td>
+</tr>
+<tr>
+<td>Ansible 2.10</td>
+<td>2.10</td>
+</tr>
+<tr>
+<td>Ansible 2.9</td>
+<td>2.9</td>
+</tr>
+</tbody>
+</table>
+<p>Nykyään riittää tietää, että Python Package Indexissä on <a href="https://pypi.org/project/ansible-core/">ansible-core</a>-paketti, joka on Ansible Coren uusin versio, ja <a href="https://pypi.org/project/ansible/">ansible</a>-paketti, joka on Ansible (Community) uusin versio. Kirjoitushetkellä versiot mätsäävät yllä näkyvään taulukkoon, eli versiot 11 ja 2.18 ovat tuoreimmat:</p>
+<ul>
+<li>Ansible (Community) 11.3.0</li>
+<li>Ansible Core 2.18.3</li>
+</ul>
+<h3 id="playbook">Playbook</h3>
+<h3 id="sisalto">Sisältö</h3>
+<p>Hello World -viritelmään tarvitsemme vähintään kaksi tiedostoa: <strong>Inventory</strong> ja <strong>Playbook</strong>.</p>
+<p>Playbook on Ansiblen suoritettava tiedosto, joka koostuu yhdestä tai useammasta <strong>play</strong>sta. Play on yksi tai useampi <strong>task</strong>, joka suoritetaan managed nodeilla. Task on yksittäinen komento, joka suoritetaan managed nodella. Alla on yksinkertainen Playbook, joka on lainattu <a href="https://docs.ansible.com/ansible/latest/getting_started/get_started_playbook.html">Ansible Community: Getting started with Ansible</a>-dokumentaatiosta.</p>
+<div class="language-yaml highlight"><span class="filename">my-first-playbook.yml</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My first play</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhosts</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ping my hosts</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">     </span><span class="nt">ansible.builtin.ping</span><span class="p">:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Print message</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">     </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">       </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hello world</span>
+</span></code></pre></div>
+<p>Kyseinen Playbook sisältää yhden playn, <em>My first play</em>, joka sisältää kaksi taskia. Ensimmäinen task käyttää <code>ansible.builting</code> Collectionista moduulia nimeltään <code>ping</code>, ja toinen käyttää saman Collectionin <code>debug</code>-moduulia.</p>
+<div class="admonition note">
+<p class="admonition-title">Kolme väliviivaa</p>
+<p>Tulet törmäämään esimerkkeihin, joissa Playbook alkaa kolmella väliviivalla. Tämä kuuluu <a href="https://yaml.org/spec/1.2.2/">YAML-tiedoston spesifikaatioon</a>, ja merkkaa dokumentin alkua: <em>"YAML uses three dashes (“---”) to separate directives from document content. This also serves to signal the start of a document if no directives are present."</em></p>
+<p>Meidän harjoituksissa yhdessä YAML-tiedostossa ei tule koskaan olemaan enempää kuin yksi dokumentti, joten ne voi nähdä valinnaisina. Ota tai jätä.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Kolme pistettä</p>
+<p>Sama tarina kuin yllä, mutta <code>...</code>-merkkaa dokumentin loppua. Valinnainen, mutta spesifikaation mukainen.</p>
+</div>
+<p>Toinen tiedosto on Inventory, joka sisältää listan IP-osoitteista tai hostnameista, joihin Ansible yhdistää. Inventory voi olla yksinkertainen tiedosto, joka sisältää hyödyntää ryhmiä ja muuttujia. Tiedosto voi olla <code>.ini</code> tai <code>.yaml</code>-muotoinen. Alla on esimerkki <code>.ini</code>-muotoisesta Inventory-tiedostosta, joka on lainattu samasta lähteestä kuin Playbook:</p>
+<div class="language-ini highlight"><span class="filename">inventory.ini</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[myhosts]</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">192.0.2.50</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">192.0.2.51</span>
+</span></code></pre></div>
+<h3 id="ajaminen">Ajaminen</h3>
+<p>Olettaen, että sinulla on <code>ansible-core</code> asennettuna, voit ajaa Playbookin seuraavasti:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventory.ini<span class="w"> </span>my-first-playbook.yml
+</span></code></pre></div>
+<p>Tämä komento ajaa Playbookin <code>my-first-playbook.yml</code> ja käyttää Inventory-tiedostoa <code>inventory.ini</code>. Ansible yhdistää IP-osoitteisiin ja suorittaa määritellyt taskit järjestyksessä ylhäältä alas.</p>
+<h2 id="tehtavat">Tehtävät</h2>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Ansiblen informaatiohaku</p>
+<p>Muodosta itsellesi katalogi tarpeellisista lähteistä. Suosi tuoreita ja virallisia lähteitä. Alla pari suositusta, mistä aloittaa etsintä:</p>
+<ol>
+<li><a href="https://docs.ansible.com/ansible/latest/index.html">Ansible Community Documentation</a>. Vaikka me käytämme <code>ansible-core</code>-pakettia, tämä dokumentaatio on silti hyödyllinen. Ainut, mitä sinun pitää huomioida, että <code>ansible.builtin</code>-moduuli on Ansible Coren oma, muut moduulit ovat Collectioneista. Jos tarvitset jotakin muuta pluginia (moduulia tai roolia), asenna se <code>ansible-galaxy</code>-komennolla.</li>
+<li><a href="https://github.com/geerlingguy/ansible-for-devops-manuscript">Ansible for DevOps</a>. Tämä avoimen lähdekoodin kirja on ostettavissa, jos haluaa tukea kirjoittajaa. Kirja on saatavilla ilmaiseksi: etsi GitHubista lausetta <em>"You can also grab a free copy of the published work on LeanPub using this coupon link"</em>.</li>
+<li><a href="https://github.com/geerlingguy/ansible-for-devops">Ansible for DevOps Examples</a>. Latasit yllä olevan kirjan tai et, tämä repositorio on hyödyllinen, koska se sisältää paljon esimerkkejä. Eikä ihan mitä tahansa esimerkkejä. Jos <a href="https://galaxy.ansible.com/ui/standalone/roles/?page=1&amp;page_size=10&amp;sort=-download_count">etsit ladatuimmat Rolet Ansible Galaxystä</a>, huomaat, että top 10 on täynnä tämän kirjoittajan rooleja. Kirjoitushetkellä ladatuin on <code>geerlingguy.docker</code> noin 22 miljoonalla latauksella.</li>
+<li><a href="https://kamk.finna.fi/Record/kamk.99641009106247">Practical Ansible Automation Handbook</a> on vaihtoehtoinen kirja ja se löytyy KAMK Finna -kirjastosta. Kirja on vuodelta 2023 ja Luca Bertonin kirjoittama.</li>
+</ol>
+<p>Myös maksullisia kirjoja löytyy, joista maininnan arvoinen on <strong>Ansible: Up and Running 3rd e.d. (2022)</strong>, joka O'Reillyn julkaisema ja . Data Center -opiskelijoita voi kiinnostaa myös <strong>Ansible for VMware by Examples: A Step-by-Step Guide to Automating Your VMware Infrastructure (2022)</strong>, joka on Apressin julkaisema ja Luca Bertonin kirjoittama.</p>
+<p>Ansible on aihe, josta löytyy merkittävästi myös YouTube-sisältöä.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

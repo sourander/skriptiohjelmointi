@@ -1,0 +1,1959 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../31_gallium/">
+      
+      
+        <link rel="next" href="../96_curium/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>🎆 Strontium - Skriptiohjelmointi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#strontium" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Skriptiohjelmointi" class="md-header__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skriptiohjelmointi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🎆 Strontium
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Skriptiohjelmointi" class="md-nav__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skriptiohjelmointi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tarpit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tärpit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tärpit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format Operator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mukavuus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mukavuus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mukavuus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-coden-kaytto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Studio Coden käyttö
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Studio Coden käyttö">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Venv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intellisense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intellisense
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tarpit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tärpit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tärpit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format Operator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mukavuus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mukavuus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mukavuus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-coden-kaytto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Studio Coden käyttö
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Studio Coden käyttö">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Venv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intellisense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intellisense
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="strontium">🎆 Strontium</h1>
+<h2 id="tarpit">Tärpit</h2>
+<h3 id="format-operator">Format Operator</h3>
+<p>Pythonin f-string on tehokas tapa formatoida merkkijonoja. Se on ollut käytössä Python 3.6:sta lähtien. F-stringin avulla voit lisätä muuttujia suoraan merkkijonoon. F-stringin tunnistaa siitä, että merkkijonon alkuun tulee <code>f</code>-kirjain. Esimerkiksi:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">age</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and I am </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Huomaa, että yksinkertaisen muuttujan ujuttamisen lisäksi f-string sallii uskomattoman määrän muotoilua, ja tyypillisen Python-lausekkeen käytön. Esimerkiksi:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2 + 2 = </span><span class="si">{</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;216 can be written as hex </span><span class="si">{</span><span class="mi">216</span><span class="si">:</span><span class="s2">X</span><span class="si">}</span><span class="s2"> and as binary </span><span class="si">{</span><span class="mi">216</span><span class="si">:</span><span class="s2">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Voit tutustua tähän muotoiluun <a href="https://fstring.help/cheat/">Python f-string cheat sheets</a> -sivuston avulla tai suoraan <a href="https://docs.python.org/3/library/string.html#format-string-syntax">Python Docs: String &gt; Format String Syntax</a>.</p>
+<h2 id="mukavuus">Mukavuus</h2>
+<h3 id="visual-studio-coden-kaytto">Visual Studio Coden käyttö</h3>
+<p>Mukavuus-otsikon alla on oletus, että sinulla on käytössä Visual Studio Code, Python Extension ja lokaalisti asennettu Python 3.1x. Python voi olla Ubuntun mukana tullut, Python.org-sivustolta ladattu, <a href="https://docs.astral.sh/uv/">uv</a>-työkalulla asennettu tai jokin muu. Tärkeintä on, että Python on lisätty käyttöjärjestelmäsi PATH:iin ja on täten ajettavissa terminaalista komennolla <code>python</code> tai <code>python3</code>.</p>
+<h4 id="venv">Venv</h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pythonin virtuaaliympäristöt eivät ole maailman helpoin aihe. Tulethan läsnätunneille paikalle, jotta saat tähän tukea ja neuvoja!</p>
+</div>
+<p>Kun luot uudet Python-projektin Visual Studio Codessa, sinulla voi olla tarve asentaa joitakin moduuleita. Olet jo aiemmin oppinut, että Debian-pohjaisessa ympäristössä on <code>dist-packages</code>-hakemisto, jossa on esimerkiksi <code>requests</code>-moduuli asennettuna. Jos olet jossakin toisesssa käyttöjärjestelmässä tai jakelussa, se voi hyvin puuttua sinulta. Tässä tapauksessa tarvitset virtuaaliympäristön.</p>
+<p>Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se on <strong>kopio Python-asennuksesta</strong>. Luo se <code>uv</code>:n avulla:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">uv</label><label for="__tabbed_1_2">Windows (vain hätätilanteessa)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Jos sinulla on <a href="https://docs.astral.sh/uv/">uv</a>, käytä ihmeessä sitä! Jos ei ole, asenna se. Asennus vaatii yhden komennon ajamisen, joka löytyy  Uv <a href="https://docs.astral.sh/uv/">uv</a>:n etusivulta. Työkalu toimii Windowsissa, Linuxissa ja macOS:ssä samoin tavoin.</p>
+<div class="language-bash highlight"><span class="filename">🖥️ Bash</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Varmista, että olet projektisi hakemistossa</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mene/sinun/projektisi/hakemistoon
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Mene ALIHAKEMISTOON python/</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>python
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Asenna haluamasi Python</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>$<span class="w"> </span>uv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.12
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>$<span class="w"> </span>uv<span class="w"> </span>pin<span class="w"> </span><span class="m">3</span>.12
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>$<span class="w"> </span>uv<span class="w"> </span>init<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;skriptiohjelmointi&quot;</span><span class="w"> </span>--bare<span class="w"> </span>--app<span class="w"> </span>.
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Asenna virtuaaliympäristöön requests</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>$<span class="w"> </span>uv<span class="w"> </span>add<span class="w"> </span>requests
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># Aja uv:n hallinnoima Python</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>$<span class="w"> </span>uv<span class="w"> </span>python<span class="w"> </span>scripts/hello.py
+</span></code></pre></div>
+<p>Tutustu syntyneisiin tiedostoihin, kuten <code>.python-version</code> ja <code>pyproject.toml</code>. Kysy opettajalta apua, jos jokin asia askarruttaa.</p>
+</div>
+<div class="tabbed-block">
+<p>Jos sinulla on Windowsiin asennettuna Python 3.xx, etkä jostain syystä saa uv:ta asennettua, voit käyttää Python-osion tehtävissä <code>venv</code>-moduulia. Myöhemmin Ansible-osiossa käytetään kuitenkin <code>uv</code>:ta Linuxissa, joten <mark>tee tämä vain jos ei ole muita vaihtoehtoja!</mark>. Jos sinulla on <code>uv</code> tai mahdollisuus asentaa se, valitse ylhäältä <code>uv</code>-välilehti.</p>
+<div class="language-pwsh-session highlight"><span class="filename">🖥️ PowerShell</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go"># Varmista, että olet projektisi hakemistossa</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="gp">PS&gt; </span><span class="nb">cd </span><span class="n">mene</span><span class="p">/</span><span class="n">sinun</span><span class="p">/</span><span class="n">projektisi</span><span class="p">/</span><span class="n">hakemistoon</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="go"># Mene ALIHAKEMISTOON python/</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="gp">PS&gt; </span><span class="nb">cd </span><span class="n">python</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="go"># Suositeltu: kiellä pip:n käyttö virtuaaliympäristön ulkopuolella</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="gp">PS&gt; </span><span class="n">pip3</span> <span class="n">config</span> <span class="nb">set </span><span class="n">global</span><span class="p">.</span><span class="n">require-virtualenv</span> <span class="n">true</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="go"># Luo virtuaaliympäristö</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="gp">PS&gt; </span><span class="n">python3</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="go"># Aktivoi virtuaaliympäristö</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="gp">PS&gt; </span><span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="go"># Asenna haluamasi moduulit</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">PS&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="go"># Aja Python</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">PS&gt; </span><span class="n">python</span> <span class="n">scripts</span><span class="p">/</span><span class="n">hello</span><span class="p">.</span><span class="n">py</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="go"># Deaktivoi virtuaaliympäristö</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">PS&gt; </span><span class="n">deactivate</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Muista Git Ignore!</p>
+<p>Ethän unohda lisätä kyseistä hakemistoa <code>.gitignore</code>-tiedostoon, jotta se ei päädy versionhallintaan! Se on kopio Pythonista, joten se sisältää satoja binääritiedostoja, jotka eivät todellakaan kuulu versionhallintaan. Kukin käyttäjä luo oman virtuaaliympäristönsä itse.</p>
+<p>Lisää siis seuraava rivi <code>.gitignore</code>-tiedostoon:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>.venv/
+</span></code></pre></div>
+<p>Tarkista, että tiedostoja ei näy versionhallinnassa komennolla <code>git status -u</code>.</p>
+</div>
+<p>Huomaa, että on kaksi eri asiaa: käyttää virtuaaliympäristöä shell-istunnossa ja Visual Studio Coden GUI:ssa. Visual Studio Code yleensä havaitsee, jos luot virtuaaliympäristön, mutta ei aina. Visual Studio Code saattaa myös jatkossa aktivoida sen automaattisesti shell-istuntoon, mutta tämä riippuu asetuksesta:</p>
+<div class="language-json highlight"><span class="filename">$HOME/.config/Code/User/settings.json</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&quot;python.terminal.activateEnvironment&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Sen sijaan VS Coden GUI-editorin, eli ei siis integroidun terminaalin, käyttämä Python on valittavissa painamalla <code>F1</code> ja kirjoittamalla <code>Python: Select Interpreter</code>. Yleensä VS Code avaa alla näkyvän (ks. Kuva 1) pop-up -ikkunan ruudun oikeaan alalaitaan kun olet luonut virtuaaliympäristön. <mark>Jos tämä popup menee sinulta ohi</mark> syystä tai toisesta, voit valita Workspace-kohtaisen virtuaaliympäristön painamalla <code>F1</code> ja kirjoittamalla <code>Python: Select Interpreter</code>. Kenttään voi kirjoittaa relatiivisen polun projektin uudesta esimerkiksi näin: <code>${workspaceFolder}/python/.venv/</code>. Tämä polun käsin kirjoittaminen on tarpeen vain, jos executable on jossakin muualle kuin avoinna olevan kansion juuressa (kuten <code>python/.venv</code> eikä <code>.venv/</code>).</p>
+<p><img alt="" src="../../images/py-vscode-venv-created-popup.png" /></p>
+<p><strong>Kuva 1:</strong> <em>Visual Studio Code ilmoittaa, että se on havainnut uuden virtuaaliympäristön, ja tarjoaa sinun valita sen kyseistä worskpacea varten. Klikkaa </em><em>Yes</em><em>.</em></p>
+<h4 id="intellisense">Intellisense</h4>
+<p>Aivan kuten PowerShell, myös Python on hyvin vahvasti <em>object-oriented</em> -kieli. Tämä tarkoittaa, että Pythonissa kaikki on objekteja, ja objekteilla on metodeja ja ominaisuuksia. Olet jo kokeillut samaa ominaisuutta PowerShellin kanssa, mutta kokeile uusiksi Pythonin kanssa. Luo esimerkiksi seuraava skripti:</p>
+<div class="language-python highlight"><span class="filename">testing_context_menu.py</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;John Anderton&quot;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">name</span>
+</span></code></pre></div>
+<p>Kun lisäät sanan <code>name</code> perään vielä pisteen, aukeaa lista objektin metodeista ja ominaisuuksista. Kokeile esimerkiksi <code>name.upper()</code>. Jos lista ei aukea, paina <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-space">Space</kbd></span>. Huomaa, että IntelliSense käyttää sitä Python-versiota, joka on valittu Visual Studio Codessa. Tämä neuvotaan yllä.</p>
+<div class="admonition tip">
+<p class="admonition-title">🍎 macOS</p>
+<p>Sama pikanäppäin on <span class="keys"><kbd class="key-function">Fn</kbd><span>+</span><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-space">Space</kbd></span></p>
+</div>
+<h4 id="run-selection">Run Selection</h4>
+<p>Joskus voi olla tarpeen ajaa valittu koodinpätkä lokaalin koneen terminaalissa. Kenties haluat nopeasti kokeilla, kuinka keskellä pitkää skriptiä määritelty funktio toimii ajamatta muuta koodia? Tämä onnistuu Visual Studio Codessa valitsemalla koodinpätkä ja painamalla <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span>. Vaiheoehtoinen tapa on context menu. Klikkaa hiiren oikealla korvalla valittuja koodirivejä, valitse <strong>Run Python &gt;</strong> ja <strong>Run Selection/Line in Python Terminal</strong>.</p>
+<p><img alt="" src="../../images/py-vscode-run-in-terminal.png" /></p>
+<p><strong>Kuva 2:</strong> <em>Skripistä on valittuna vain yksi funktio, <code>function_i_wanna_test</code>, ja se ajetaan terminaalissa.</em></p>
+<p>Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi <strong>Python</strong>-niminen terminaali, jossa koodi suoritetaan REPL-tilassa. Tämä on vastaava tapa kuin ajaa aiemmin näkemäsi <code>python -i scripts/some.py</code>, mutta voit valita juuri ne rivit, jotka haluat suoritettavaksi. Kuten alla olevasta snippetistä näet, funktio on jatkossa kutsuttavissa kyseisessä terminaalissa.</p>
+<div class="language-python-console highlight"><span class="filename">🖥️ Python REPL (VS Code Terminal)</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">function_i_wanna_test</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">([1, 2], [3, 4, 5, 6])</span>
+</span></code></pre></div>
+<h2 id="tehtavat">Tehtävät</h2>
+<details class="question">
+<summary>Tehtävä: Arvaa numero</summary>
+<p>Luo ohjelma, joka generoi luvun väliltä 1-1000 ja pyytää käyttäjää arvaamaan sen. Ohjelma antaa vihjeen, onko arvattu luku suurempi vai pienempi kuin generoitu luku. Ohjelma lopettaa, kun käyttäjä arvaa oikein. Olet tehnyt ohjelman jo aiemmin (Bash ja PowerShell), joten voit lainata sieltä logiikan.</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gp">$ </span>./runpy.py<span class="w"> </span>scripts/arvaaluku.py
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">Arvaa luku väliltä 1-1000.</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="go">Muu syöte kuin positiviinen kokoluku poistuu ohjelmasta.</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="go">Syötä arvaus:</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="go">9</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="go">📉 Luku on pienempi kuin 9.</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="go">Syötä arvaus:</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="go">7</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="go">📈 Luku on suurempi kuin 7.</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="go">Syötä arvaus:</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="go">8</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="go">🎉 Oikein! Arvasit luvun 8. (Peliaika: 0h 4m 18s)</span>
+</span></code></pre></div>
+<p>Varmista, että pelaaja voi halutessaan lopettaa pelin. Minun toteutuksessa mikä tahansa muu syöte kuin kokonaisluvuksi parsittava syöte lopettaa pelin (esim. exit tai tyhjä merkkijono).</p>
+<div class="admonition note">
+<p class="admonition-title">⚠️ TÄRKEÄÄ</p>
+<p>Kirjoita ohjelman <code>input()</code> ilman promptia. Anna prompti erillisellä print-komennolla. Tämä helpottaa kurssin myöhempää tehtävää, jossa rakennamme skriptin, joka pelaa peliä meidän puolestamme. Eli siis:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ⛔️ Ei näin</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Guess a number: &quot;</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># ✅ Vaan näin</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess a number: &quot;</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+</details>
+<details class="question">
+<summary>Tehtävä: Reminder</summary>
+<p>Tämän pitäisi olla sinulle jo tuttua. Luo kaksi ohjelmaa, jotka toimivat yhdessä. Toinen luo, toinen näyttää muistiinpanoja. Lisäksi on olemassa apuohjelma, joka lisää nämä PATH:iin.</p>
+<ul>
+<li><code>install_reminder.py</code><ul>
+<li>Lisää <code>remind</code> ja <code>remember</code> symboliset linkit PATH:iin.</li>
+</ul>
+</li>
+<li><code>remember</code><ul>
+<li>Kysyy käyttäjältä muistutuksia, jotka tallennetaan <code>~/.reminder</code>-tiedostoon.</li>
+<li>Tyhjä syöte lopettaa ohjelman.</li>
+<li>Formaatti: <code>[YYYY-MM-DD HH:MM] Muistutus</code></li>
+</ul>
+</li>
+<li><code>remind</code><ul>
+<li>Tulostaa muistutukset</li>
+<li>Antaa mahdollisuuden poistaa muistutuksia TUI-käyttöliittymällä.</li>
+</ul>
+</li>
+</ul>
+<p>Käytä TUI:n (Text User Interface) luomiseen <code>curses</code>-moduulia. Moduuli tulee Pythonin mukana Unix-like -järjestelmissä, joten sitä ei tarvitse asentaa erikseen.</p>
+<p>Lopulta käyttö näyttää tältä, kun komennot ajetaan kontin sisällä (<code>python runpy.py --bash</code>):</p>
+<p><div class="language-console highlight"><span class="filename">🐳 Bash</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gp"># </span>python<span class="w"> </span>scripts/install_reminder.py
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="go">Created symbolic link: /usr/local/bin/remind -&gt; /app/scripts/remind.py</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">Created symbolic link: /usr/local/bin/remember -&gt; /app/scripts/remember.py</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="gp"># </span>remember
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="go">Enter a reminder: Learn Bash</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="go">Enter a reminder: Learn PowerShell</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="go">Enter a reminder: Learn Python</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="go">Enter a reminder: Eat spam</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="go">Enter a reminder: </span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="go">Goodbye 👋! To view reminders, run: remind</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="gp"># </span>remind
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="go">ks. kuva alta</span>
+</span></code></pre></div>
+<img alt="" src="../../images/py-reminder-tui.png" /></p>
+<p><strong>Kuva 3:</strong> <em>Muistutusten lisääminen ja poistaminen TUI:n avulla.</em></p>
+<details class="tip">
+<summary>Executable</summary>
+<p>Huomaa, että sinun tulee <mark>tehdä skripteistä suoritettavia</mark> host-koneellasi, sillä kontissa kyseinen volume on read-only. Jos teet tätä kurssin osuutta Windowsista käsin, etkä voi tehdä tätä, luo skripti siten, että se luo symbolisen linkin sijasta aliaksen:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">remember</span><span class="o">=</span><span class="s2">&quot;python3 /app/scripts/remember.py&quot;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">remind</span><span class="o">=</span><span class="s2">&quot;python3 /app/scripts/remind.py&quot;</span>
+</span></code></pre></div>
+<p>Kuinkahan tämä onnistuu Pythonissa?</p>
+</details>
+<details class="tip">
+<summary>Opettajan versio</summary>
+<p>Alla on opettajan versio siten, että osa riveistä on jemmattu. Muista, että tällä kurssilla koodin ymmärtäminen on tärkeää. Jos opettaja kysyy sinulta, mitä jokin rivi tekee, osaatko vastata?</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/env python3</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">curses</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">TARGET</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.reminder&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_reminders</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="k">pass</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">save_reminders</span><span class="p">(</span><span class="n">reminders</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="k">pass</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">filter_and_save</span><span class="p">(</span><span class="n">reminders</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">sel</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    <span class="n">kept_reminders</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>        <span class="n">rem</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">rem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reminders</span><span class="p">)</span> <span class="k">if</span> <span class="n">idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sel</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>    <span class="p">]</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    <span class="n">save_reminders</span><span class="p">(</span><span class="n">kept_reminders</span><span class="p">)</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_menu</span><span class="p">(</span><span class="n">stdscr</span><span class="p">:</span> <span class="n">curses</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="n">rem</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">curr</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sel</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>    <span class="n">stdscr</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>    <span class="n">stdscr</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>        <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Press SPACE to mark as done, Q to save and quit&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>    <span class="p">)</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">reminder</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rem</span><span class="p">):</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>        <span class="c1"># Highlight the current row</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>        <span class="n">attr</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span> <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="n">curr</span> <span class="k">else</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>        <span class="c1"># Add checkboxes</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>        <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">sel</span><span class="p">:</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>            <span class="n">button</span> <span class="o">=</span> <span class="s2">&quot;[X] &quot;</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>            <span class="n">button</span> <span class="o">=</span> <span class="s2">&quot;[ ] &quot;</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>        <span class="n">stdscr</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">button</span> <span class="o">+</span> <span class="n">reminder</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="k">def</span><span class="w"> </span><span class="nf">reminder_app</span><span class="p">(</span><span class="n">stdscr</span><span class="p">:</span> <span class="n">curses</span><span class="o">.</span><span class="n">window</span><span class="p">):</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>    <span class="n">curses</span><span class="o">.</span><span class="n">curs_set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Hide text cursor</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>    <span class="n">stdscr</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Enable arrow keys</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>    <span class="n">stdscr</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>    <span class="n">reminders</span> <span class="o">=</span> <span class="n">load_reminders</span><span class="p">()</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">reminders</span><span class="p">:</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">&quot;No reminders found!&quot;</span><span class="p">)</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>    <span class="n">selected</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>    <span class="n">current_row</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a>        <span class="n">draw_menu</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">reminders</span><span class="p">,</span> <span class="n">current_row</span><span class="p">,</span> <span class="n">selected</span><span class="p">)</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a>        <span class="c1"># Get event </span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a>        <span class="n">key</span> <span class="o">=</span> <span class="n">stdscr</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a>        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_UP</span> <span class="ow">and</span> <span class="n">current_row</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a>            <span class="n">current_row</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a>        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_DOWN</span> <span class="ow">and</span> <span class="n">current_row</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">reminders</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a>            <span class="n">current_row</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a>        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_RIGHT</span><span class="p">:</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a>            <span class="n">selected</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">current_row</span><span class="p">)</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a>        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_LEFT</span><span class="p">:</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a>            <span class="n">selected</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">current_row</span><span class="p">)</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a>        <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">)):</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a>            <span class="n">filter_and_save</span><span class="p">(</span><span class="n">reminders</span><span class="p">,</span> <span class="n">selected</span><span class="p">)</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a>            <span class="k">break</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a>    <span class="n">curses</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">reminder_app</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="question">
+<summary>Tehtävä: breakpoint()</summary>
+<p>Koska käytämme Visual Studio Codea, voimme käyttää sen interaktiivista debuggeria CLI-pohjaisen Pdb:n (Python Debugger) sijasta. Tämän käyttö esitellään läsnätunneilla. On kuitenkin suositeltavaa kokeilla Pdb:tä lyhyesti ihan sivistyksen tähden. Vastaavia työkaluja löytyy myös muista kielistä, kuten Pdb:n esikuva GDB, joka voi käyttää useissa kielissä: C, C++, Rust ja moni muu.</p>
+<p>Yksi tapa aktivoida Pdb on sijoittaa skriptiin alla olevassa code snippetissä oleva rivi. Rivin voi tarpeen mukaan ujuttaa useisiin paikkoihin, jolloin debuggeri pysähtyy jokaisen rivin kohdalla.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">breakpoint</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Koodi pysäyttää suorituksen kyseiseen kohtaan ja avaa Pdb:n. Tässä tilassa ei ole tarkoitus kirjoittaa interaktiivisesti Pythonia vaan tarkkailla muuttujien arvoja esimerkiksi looppia ajettaesa.</p>
+<div class="language-python highlight"><span class="filename">breakpoint_practice.py</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="ch">#!/usr/bin/env python3</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="nb">breakpoint</span><span class="p">()</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">$ </span>./runpy.py<span class="w"> </span>scripts/breakpoint_practice.py
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="gp gp-VirtualEnv">(Pdb)</span> <span class="go">p counter</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">0</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="gp gp-VirtualEnv">(Pdb)</span> <span class="go">continue</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="go">&gt; /app/scripts/breakpoint_practice.py(8)&lt;module&gt;()</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="go">-&gt; counter += 1</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="gp gp-VirtualEnv">(Pdb)</span> <span class="go">p counter</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="go">1</span>
+</span></code></pre></div>
+<p>Debuggerissa toimivat muiden muassa seuraavat komennot [^pdb]:</p>
+<p>[^pdb] Python Docs. The Python Debugger. https://docs.python.org/3/library/pdb.html</p>
+<p><strong>Peruskomennot</strong></p>
+<table>
+<thead>
+<tr>
+<th>Komento</th>
+<th>Kuvaus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`h(elp)</td>
+<td>Näytä ohjeet (eli kaikki nämä komennot)</td>
+</tr>
+<tr>
+<td>`q(uit)</td>
+<td>Poistu debuggerista</td>
+</tr>
+<tr>
+<td><code>c(ontinue)</code></td>
+<td>Jatka suoritusta seuraavaan breakpointtiin asti</td>
+</tr>
+<tr>
+<td><code>n(ext)</code></td>
+<td>Suorita seuraava rivi (astu funktiokutsun yli)</td>
+</tr>
+<tr>
+<td><code>s(tep)</code></td>
+<td>Astu funktiokutsuun</td>
+</tr>
+<tr>
+<td><code>r(eturn)</code></td>
+<td>Suorita loppuun nykyinen funktio</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarkastelu</strong></p>
+<table>
+<thead>
+<tr>
+<th>Komento</th>
+<th>Kuvaus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>l(ist)</code></td>
+<td>Näytä koodi breakpointin läheisillä riveillä</td>
+</tr>
+<tr>
+<td><code>p expr</code></td>
+<td>Tulosta lausekkeen arvo</td>
+</tr>
+<tr>
+<td><code>pp expr</code></td>
+<td>Tulosta lausekkeen arvo (prettify)</td>
+</tr>
+<tr>
+<td><code>whatis</code></td>
+<td>Näytä lausekkeen tyyppi</td>
+</tr>
+</tbody>
+</table>
+<p>Lauseke (engl. expression) on usein muuttuja, mutta voi olla myös esimerkiksi funktio tai moduuli.</p>
+</details>
+<details class="question">
+<summary>Tehtävä: IP Address</summary>
+<p>Kirjoita Python-skripti, joka:</p>
+<ol>
+<li>Käyttää built-in kirjastoa <code>ipaddress</code>.</li>
+<li>Kysyy käyttäjältä IP-osoitteen CIDR-notaatiolla (esim. <code>192.168.0.12/24</code>).</li>
+<li>Tulostaa seuraavat sekä desimaali- että binäärimuodossa:<ul>
+<li>Verkon osoite</li>
+<li>Verkon maski</li>
+<li>Ensimmäinen host ip</li>
+<li>Viimeinen host ip</li>
+<li>Broadcast ip</li>
+</ul>
+</li>
+</ol>
+<p>Alla esimerkki käytöstä. Huomaa, että tulosteen ei tarvitse olla merkistä merkkiin muotoiltu samalla tavalla.</p>
+<div class="language-console highlight"><span class="filename">🖥️ Bash</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">./runpy.py scripts/cidr_range.py</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="go">Enter a network (CIDR notation): 10.0.2.42/23</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="go">Label            IP Address       Binary                          </span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="go">---------------------------------------------------------------------</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="go">Network:         10.0.2.0         00001010 00000000 00000010 00000000</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="go">Netmask:         255.255.254.0    11111111 11111111 11111110 00000000</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="go">First IP:        10.0.2.1         00001010 00000000 00000010 00000001</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="go">Last IP:         10.0.3.254       00001010 00000000 00000011 11111110</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="go">Broadcast:       10.0.3.255       00001010 00000000 00000011 11111111</span>
+</span></code></pre></div>
+<details class="tip">
+<summary>Host-ip verkon osoitteeksi</summary>
+<p>Verkon osoite on se osoite, joka on ensimmäinen mahdollinen osoite kyseisessä verkossa. Käyttäjä saattaa ajatuksissaan antaa osoitteen, joka ei ole verkon vaan yksittäisen laitteen ip, kuten yllä olevassa esimerkissä (<code>192.168.0.12/24</code>). Saat muunnettua tämän verkon osoitteeksi käyttämällä <code>network_address</code>-metodin parametrina <code>strict=False</code>.</p>
+</details>
+<details class="tip">
+<summary>Missä IP:t?</summary>
+<p>Huomaa, että <code>network.broadcast_address</code> palauttaa IPv4Network-olion. Kenties keksit käyttöä seuraaville:</p>
+<ul>
+<li><code>network.broadcast_address</code></li>
+<li><code>list(network.hosts())</code> palauttaa <code>list[IPv4Address]</code> sisältäen vain hostit</li>
+<li><code>int(some_ipv4)</code> palauttaa desimaalimuodossa olevan ip:n</li>
+</ul>
+</details>
+<details class="tip">
+<summary>IP neljäksi oktetiksi</summary>
+<p>Mikä tahansa numero on helppo tulostaa 32-bittiä pitkänä binäärinä. Se onnistuu f-stringin avulla (<code>{int(ip):032b}</code>). Sen tulostaminen 4 eri osassa, eli <em>oktetissa</em>, vaatii hieman koodia, mutta parantaa tulosteen luettavuutta. Tämän voi luonnollisesti tehdä monella tapaa. Alla helppolukuinen tapa:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">ip2bin</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Address</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="sd">Convert an IPv4 address to binary format with whitespace between octets, like:</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="sd">10000001 10000001 10000001 10000001</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">bit_32</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span><span class="si">:</span><span class="s2">032b</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="n">octets</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="n">octet</span> <span class="o">=</span> <span class="n">bit_32</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="n">octets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">octet</span><span class="p">)</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

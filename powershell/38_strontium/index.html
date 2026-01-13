@@ -1,0 +1,1675 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../31_gallium/">
+      
+      
+        <link rel="next" href="../96_curium/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>🎆 Strontium - Skriptiohjelmointi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#strontium" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Skriptiohjelmointi" class="md-header__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skriptiohjelmointi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🎆 Strontium
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Skriptiohjelmointi" class="md-nav__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skriptiohjelmointi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tarpit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tärpit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tärpit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format Operator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mukavuus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mukavuus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mukavuus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-coden-kaytto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Studio Coden käyttö
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promptin-muokkaus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Promptin muokkaus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tarpit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tärpit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tärpit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format Operator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mukavuus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mukavuus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mukavuus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-coden-kaytto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Studio Coden käyttö
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promptin-muokkaus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Promptin muokkaus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="strontium">🎆 Strontium</h1>
+<h2 id="tarpit">Tärpit</h2>
+<h3 id="format-operator">Format Operator</h3>
+<p>Löydät tästä lisätietoa <a href="https://learn.microsoft.com/en-gb/powershell/module/microsoft.powershell.core/about/about_operators?view=powershell-7.5#format-operator--f">about_Operators</a>-dokumentaatiosta. Alla lyhyt käyttöohje:</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$a</span> <span class="p">=</span> <span class="n">42</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$b</span> <span class="p">=</span> <span class="s2">&quot;The Universe&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">$c</span> <span class="p">=</span> <span class="s2">&quot;Life&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">$d</span> <span class="p">=</span> <span class="s2">&quot;Everything&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c"># Tulostaessa tarvit sulut</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">Write-Host</span> <span class="p">(</span><span class="s2">&quot;The answer to {0}, {1}, and {2} is: {3}&quot;</span> <span class="o">-f</span> <span class="nv">$c</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$d</span><span class="p">,</span> <span class="nv">$a</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="mukavuus">Mukavuus</h2>
+<h3 id="visual-studio-coden-kaytto">Visual Studio Coden käyttö</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mukavuus-otsikon alla on oletus, että sinulla on käytössä Visual Studio Code, PowerShell Extension ja lokaalisti asennettu PowerShell.</p>
+</div>
+<p>Bash-kielessä on hyvin pieni määrä sisäänrakennettuja komentoja, joten kyseistä kieltä kirjoittaa melko kevyesti ilman <em>code autocompletion</em> ominaisuutta. PowerShellin kanssa tätä kannattaa opetella hyödyntämään. Voit lukea lisää <a href="https://code.visualstudio.com/docs/editor/intellisense">VS Code: IntelliSense</a>-dokumentaatiosta.</p>
+<p><img alt="" src="../image.png" /></p>
+<p><strong>Kuva 1:</strong> Kun kirjoitat <code>Get-</code>, aukeaa valikko, josta voit valita haluamasi cmdletin. PowerShell Extensionin käyttö nopeuttaa kirjoittamista ja vähentää virheitä.</p>
+<p>Muita hyödyllisiä pikaneuvoja ovat:</p>
+<ul>
+<li><span class="keys"><kbd class="key-f8">F8</kbd></span> : Aja maalattu osa komentoa VS Code Terminalissa (ei kontissa!)</li>
+<li><span class="keys"><kbd class="key-f1">F1</kbd></span> : Avaa komentopaneeli.<ul>
+<li>Kirjoita hakukenttään <code>PowerShell</code> ja katso mitä kaikkea löydät.</li>
+</ul>
+</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-comma">,</kbd></span> : Avaa asetukset. <ul>
+<li>Kirjoita hakukenttään <code>@ext:ms-vscode.powershell</code> ja saat esille kaikki PowerShell Extensionin asetukset. (🍎 Mac: <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-comma">,</kbd></span>:)</li>
+</ul>
+</li>
+</ul>
+<p>PowerShell Extensionin asetuksiin pääset painamalla <code>Ctrl+,</code> ja kirjoittamalla hakukenttään <code>PowerShell</code>. Täältä löydät kaikki asetukset, joita voit muokata.</p>
+<h3 id="promptin-muokkaus">Promptin muokkaus</h3>
+<p>Jos/kun käytät lokaalia PowerShelliä syntax highlightingin toimivuuden takaamiseksi tai ympäristöä muokkaamattomien srkriptien ajamiseksi, olet varmasti huomannut, että prompt on tyypillisesti melko pitkä. Se on esimerkiksi:</p>
+<div class="language-pwsh-session highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gp">PS /home/john/Code/johnanderton/skriptiohjelmointi-2025/pwsh&gt;</span>
+</span></code></pre></div>
+<p>Eikö olisi mukavampaa, jos prompt olisi:</p>
+<div class="language-pwsh-session highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gp">PS pwsh&gt;</span>
+</span></code></pre></div>
+<p>Bashistä sinulle pitäisi olla tuttua Start-up -tiedosto <code>.bashrc</code> ja ympäristömuuttuja <code>PS1</code>, joka säätää sinun promptiasi. PowerShellissä hitusen vastaava tiedosto on profiilitiedosto, jonka sijainti sinulle selviää komennolla:</p>
+<div class="language-pwsh-session highlight"><span class="filename">🖥️ PowerShell</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">PS&gt; </span><span class="nv">$profile</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go"># tai ks. kaikki</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="gp">PS&gt; </span><span class="nv">$profile</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="p">*</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="go"># avaa haluamasi VS Codessa</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="gp">PS&gt; </span><span class="n">code</span> <span class="nv">$profile</span><span class="p">.</span><span class="n">CurrentUserAllHosts</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="go"># kun olet muokannut, käynnistä joko shell tai sourcea profiilitiedosto</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="gp">PS&gt; </span><span class="p">.</span> <span class="nv">$profile</span><span class="p">.</span><span class="n">CurrentUserAllHosts</span>
+</span></code></pre></div>
+<p>Promptin muotoilusta vastaa funktio <code>prompt</code>. Voit ylikirjoittaa tämän funktion yhden istunnon ajaksi terminaalissa. Pysyvämpi muutos syntyy muokkaamalla profiilitiedostoa, koska se ladataan joka kerta PowerShellin käynnistyessä. Tutustu tähän liittyviin helppeihin (about_Prompts, about_Profiles).</p>
+<div class="language-powershell highlight"><span class="filename">🖥️ /path/to/your/profile.ps1</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">switch</span> <span class="p">((</span><span class="nb">Get-Location</span><span class="p">).</span><span class="n">Provider</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="n">FileSystem</span> <span class="p">{</span> <span class="nv">$p</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="n">-leaf</span> <span class="n">-path</span> <span class="p">(</span><span class="nb">Get-Location</span><span class="p">)</span> <span class="p">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="k">Default</span> <span class="p">{</span> <span class="nv">$p</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Location</span><span class="p">).</span><span class="n">Drive</span><span class="p">.</span><span class="n">Name</span> <span class="p">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="p">}</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="s2">&quot;PS $p&gt; &quot;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  <span class="p">}</span>
+</span></code></pre></div>
+<p>Pyörää ei kannata keksiä uusiksi. Yllä oleva prompt on muokattu <a href="https://superuser.com/questions/446827/configure-windows-powershell-to-display-only-the-current-folder-name-in-the-shel">superuser: Configure Windows PowerShell to display only the current folder name in the shell prompt</a>-keskustelun vastauksista. Vaihtoehtoinen tapa olisi käyttää valmiita teemoja esimerkiksi <a href="https://ohmyposh.dev/">oh-my-posh</a>:n avulla.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Muista, että sinun on pitänyt ajaa <code>/app/scripts/localhelp.ps1</code>, joka lataa koneelle tallennetun helpin, tai komento <code>Update-Help</code>, joka lataa helpin netistä, jotta help oikeasti sisältää jotakin. Vaihtoehto on toki lukea esimerkiksi <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_prompts">about_Prompts</a> verkosta.</p>
+</div>
+<h2 id="tehtavat">Tehtävät</h2>
+<details class="question">
+<summary>Tehtävä: Arvaa numero</summary>
+<p>Luo ohjelma, joka generoi luvun väliltä 1-1000 ja pyytää käyttäjää arvaamaan sen. Ohjelma antaa vihjeen, onko arvattu luku suurempi vai pienempi kuin generoitu luku. Ohjelma lopettaa, kun käyttäjä arvaa oikein. Tämä on jo kerran tehty Bashilla, joten voit käyttää sitä pohjana logiikan suhteen.</p>
+<p>Lisää ohjelmaan ominaisuus, että se kellottaa käyttäjän peliajan ja tulostaa sen lopuksi ruudulle. Pelatessa tulosteen pitäisi myötäillä alla olevaa esimerkkiä:</p>
+<div class="language-pwsh-session highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">Arvaa luku väliltä 1-1000</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">=================================================</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">Arvaa luku: 369</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="go">📉 Liian pieni </span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="go">Arvaa luku: 371</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="go">📈 Liian suuri </span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="go">Arvaa luku: 370</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="go">🎉 Oikein! Arvasit luvun 370 </span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="go">Peliaika: 00:00:10.1029581</span>
+</span></code></pre></div>
+<p>Varmista, että pelaaja voi halutessaan lopettaa pelin. Minun toteutuksessa mikä tahansa muu syöte kuin kokonaisluvuksi parsittava syöte lopettaa pelin (esim. <code>exit</code> tai tyhjä merkkijono).</p>
+<details class="tip">
+<summary>Vihje</summary>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">help</span> <span class="p">*</span><span class="n">random</span><span class="p">*</span>
+</span></code></pre></div>
+</details>
+<details class="tip">
+<summary>Vihje</summary>
+<p>Peliajan kellottamiseen voit käyttää <code>System.Diagnostics.Stopwatch</code>-luokkaa. Ohje löytyy PowerShell Communityn <a href="https://devblogs.microsoft.com/powershell-community/measuring-download-time/">DevBlogs: Measuring average download time</a> -artikkelista.</p>
+</details>
+</details>
+<details class="question">
+<summary>Tehtävä: Reminder</summary>
+<p>Aivan kuten ylempi, myös tämä tehtävä on sinulle tuttu Bash-osiosta. Luo kaksi ohjelmaa, jotka toimivat yhdessä. Toinen luo, toinen näyttää muistiinpanoja.</p>
+<ul>
+<li><code>install_remind.ps1</code><ul>
+<li>Luo aliakset <code>remind</code> ja <code>remember</code>, jotka suorittavat <code>remind.ps1</code>- ja <code>remember.ps1</code>-skriptit.</li>
+</ul>
+</li>
+<li><code>remember</code><ul>
+<li>Kysyy käyttäjältä muistutuksia, jotka tallennetaan <code>$HOME/.reminder</code>-tiedostoon. </li>
+<li>Tyhjä syöte lopettaa muistutusten kirjoittamisen.</li>
+<li>Formaatti: <code>[timestamp] Muistutus</code></li>
+</ul>
+</li>
+<li><code>reminder</code><ul>
+<li>Tulostaa koko muistutustiedoston sisällön.</li>
+</ul>
+</li>
+</ul>
+<p>Alla esimerkki asennuksen ja kummankin sovelluksen toiminnasta. Komentojen väliin on lisätty tyhjä rivi lukemisen helpottamiseksi:</p>
+<div class="language-pwsh-session highlight"><span class="filename">🐳 PowerShell</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gp">PS /&gt; </span><span class="p">.</span> <span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">remind_install</span><span class="p">.</span><span class="n">ps1</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="gp">PS /&gt; </span><span class="n">remember</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="go">Enter note (quit with empty note)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="go">&gt;&gt;&gt; : Buy an egg</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="go">&gt;&gt;&gt; : Buy a chicken</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="go">&gt;&gt;&gt; : Which one first? Help!</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="go">&gt;&gt;&gt; :</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="gp">PS /&gt; </span><span class="n">remind</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="go">Your reminders are as follows:</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="go">[1739541147]    Buy an egg</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="go">[1739541151]    Buy a chicken</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="go">[1739541156]    Which one first? Help!</span>
+</span></code></pre></div>
+</details>
+<details class="question">
+<summary>Tehtävä: Verb-Noun generaattori</summary>
+<p>Kehitä generaattori, <code>rnd-cmdlet.ps1</code>, joka luo uudenlaisia cmdlet-päteviä nimiä, kuten <code>Get-Pizza</code> tai <code>Set-Spam</code>. Tee ohjelma siten, että, verbi arvotaan PowerShellin käytössä olevista verbeistä. Substantiivi sen sijaan noudattaa seuraavaa logiikkaa:</p>
+<ul>
+<li>Jos käyttäjä antaa argumentin skriptille, käytä sitä.</li>
+<li>Jos ei, yritä noutaa substantiivi REST API:sta.<ul>
+<li>Osoite: <code>https://random-word-api.herokuapp.com/word</code></li>
+</ul>
+</li>
+<li>Jos ei onnistu, poimi satunnainen sana sanakirjasta.</li>
+</ul>
+<p>REST API:n kutsumiseen saat apua alemmasta vinkistä, jos et itse keksi ratkaisua.</p>
+<p>Jos tarvitset helpomman tehtävän</p>
+<details class="tip">
+<summary>Vinkki Verbi</summary>
+<p>Kokeile komentoa <code>Get-Verb</code>.</p>
+</details>
+<details class="tip">
+<summary>Vinkki REST API</summary>
+<div class="language-pwsh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">function</span> <span class="n">getNoun</span> <span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="k">try</span> <span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="nv">$url</span> <span class="p">=</span> <span class="s2">&quot;https://random-word-api.herokuapp.com/word&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="nv">$response</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$url</span> <span class="n">-Method</span> <span class="n">Get</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="nv">$noun</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Culture</span><span class="p">).</span><span class="n">TextInfo</span><span class="p">.</span><span class="n">ToTitleCase</span><span class="p">(</span><span class="nv">$response</span><span class="p">[</span><span class="n">0</span><span class="p">])</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="p">}</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="k">catch</span> <span class="p">{</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="nb">Write-Warning</span> <span class="s2">&quot;Using a predefined list.&quot;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        <span class="nv">$noun</span> <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-InputObject</span> <span class="nv">$nounVocabulary</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="p">}</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="k">return</span> <span class="nv">$noun</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="question">
+<summary>Tehtävä: Staattinen analyysi (PSScriptAnalyzer)</summary>
+<p>Bashin kanssa käytimme ohjelmaa <code>shellcheck</code>, joka analysoi skriptin ja antaa palautetta mahdollisista virheistä. PowerShellille vastaava työkalu on <code>PSScriptAnalyzer</code>. Sen pitäisi olla asennettuna ja aktiivsena, mutta voit tarkistaa, löytyykö se Get-Module cmdletillä:</p>
+<div class="language-pwsh-session highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="gp">PS&gt; </span><span class="nb">Get-Module</span>
+</span></code></pre></div>
+<p>Jos ei ole:</p>
+<div class="language-pwsh-session highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gp">PS&gt; </span><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">PSScriptAnalyzer</span> <span class="n">-Force</span>
+</span></code></pre></div>
+<p>Tämän jälkeen tarkista skriptisi:</p>
+<div class="language-pwsh-session highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="gp">PS&gt; </span><span class="nb">Invoke-ScriptAnalyzer</span> <span class="n">-Path</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/*.</span><span class="n">ps1</span>
+</span></code></pre></div>
+<p>Korjaa kaikki virheet ja varoitukset. Jos jokin virhe toistuu useita kertoja, harkitse Find &amp; Replace -toiminnon käyttöä Visual Studio Codessa. Ole kuitenkin varovainen, ettet korvaa jotain, mitä et halua korvata!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Saatat huomata varoituksia, joiden kuvaus on: <code>Missing BOM encoding for non-ASCII encoded file 'some_file.ps1</code>.</p>
+<p>Nämä liittyvät Windows PowerShell -yhteensopivuuteen. Tällä kurssilla helpoin tapa sivuuttaa ongelma on hiljentää nämä varoitukset. Tämä onnistuu helpoiten luomalla seuraava tiedosto skriptihakemistoon:</p>
+<div class="language-pwsh highlight"><span class="filename">scripts/PSScriptAnalyzerSettings.psd1</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">@{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">ExcludeRules</span><span class="p">=@(</span><span class="s1">&#39;PSUseBOMForUnicodeEncodedFile&#39;</span><span class="p">)</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Huomaa, että tiedoston nimen tulee olla juurikin tuo sama. Muutoin <code>Invoke-ScriptAnalyzer</code> ei osaa etsiä sitä.</p>
+</div>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
