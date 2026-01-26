@@ -1,0 +1,1794 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lukeminen/">
+      
+      
+        <link rel="next" href="../38_strontium/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>💡 Gallium - Skriptiohjelmointi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gallium" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Skriptiohjelmointi" class="md-header__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skriptiohjelmointi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              💡 Gallium
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Skriptiohjelmointi" class="md-nav__button md-logo" aria-label="Skriptiohjelmointi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skriptiohjelmointi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muuttujanimet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Muuttujanimet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#muuttujan-asettaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Muuttujan asettaminen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vianetsinta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vianetsintä
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vianetsintä">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-builtin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Builtin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Echo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaktiivinen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaktiivinen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declare
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible 101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/lukeminen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lukeminen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/31_gallium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 Gallium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/38_strontium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎆 Strontium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/96_curium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👩‍🔬 Curium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/99_einsteinium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍🔬 Einsteinium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muuttujanimet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Muuttujanimet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#muuttujan-asettaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Muuttujan asettaminen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vianetsinta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vianetsintä
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vianetsintä">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-builtin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Builtin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Echo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaktiivinen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaktiivinen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declare
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gallium">💡 Gallium</h1>
+<p>Osaat jo ajaa Hello World -skriptin, ja olet lukenut oikeaa tuotantokoodia. Tässä luvussa harjoittelemme yksinkertaisia skriptejä, jotka eivät odota argumentteja tai käyttäjän syötettä. Ne eivät myöskään luo tai tuohoa tiedostoja. Seuraavassa luvussa siirrymme ajamaan skriptejä Docker-kontissa, jolloin voimme käyttää hitusen riskialttiimpia skriptejä.</p>
+<p>Olet kasannut itsellesi oppimateriaaleja, joten tämä paketti ei keskity esittelemään teoriaa. Alla on kuitenkin muutama tärppi, joista voi olla hyötyä. Varsinkin debug-taidot kannattaa ottaa haltuun.</p>
+<h2 id="muuttujanimet">Muuttujanimet</h2>
+<p>Muuttujien nimet voivat olla mitä tahansa, mutta niiden tulee alkaa kirjaimella tai alaviivalla ja niissä voi olla kirjaimia, numeroita ja alaviivoja. Muuttujanimet ovat case-sensitiivisiä, eli <code>muuttuja</code> ja <code>Muuttuja</code> ovat kaksi eri muuttujaa.</p>
+<p>Bashissa käytetään usein kokonaan pienillä kirjoitettuja muuttujia ja eri sanat irrotetaan toisistaan <code>snake_case</code>-tyylillä. Esimerkiksi <code>max_length</code> on hyvä muuttujanimi.</p>
+<p>Kussakin kielessä on varattuja avainsanoja (engl. reserved keyword). Niitä ei voi käyttää muuttujien niminä. Nämä on listatuna alla.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>if          then        else        elif        
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fi          case        esac        for         
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>select      while       until       do          
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>done        in          function    time        
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>{           }           !           [[          
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>]]          coproc      
+</span></code></pre></div>
+<details class="note">
+<summary>Klikkaa auki skripti, jolla lista muodostettiin</summary>
+<div class="language-bash highlight"><span class="filename">reserved.sh</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Get all reserved keywords</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">keywords</span><span class="o">=(</span><span class="k">$(</span><span class="nb">compgen</span><span class="w"> </span>-k<span class="k">)</span><span class="o">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Define the number of columns</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">columns</span><span class="o">=</span><span class="m">4</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Loop through and print in formatted columns</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span>&lt;<span class="w"> </span><span class="si">${#</span><span class="nv">keywords</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%-12s&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">keywords</span><span class="p">[i]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="c1"># Print a newline after every nth column</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="o">(</span>i<span class="w"> </span>+<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>%<span class="w"> </span><span class="nv">columns</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="nb">echo</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">done</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1"># End the output with a newline</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="nb">echo</span>
+</span></code></pre></div>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Varattujen avainsanojen lisäksi on lista Bashin sisäänrakennettuja komentoja, jotka <em>voit</em> ylikirjoittaa, mutta tämä ei luonnollisesti kannata. Esimerkiksi <code>cd ..</code>-komennon pitäisi vaihtaa hakemistopuussa yksi hakemisto ylöspäin. Katso alta skripti, jossa kyseinen komento tulostaa vain <code>.. by cd()</code>, koska se on korvattu samannimisellä funktiolla kyseisen skriptin sisällä.</p>
+<div class="language-bash highlight"><span class="filename">overwrite_cd.sh</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash -e</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cd<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">var</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">var</span><span class="si">}</span><span class="s2"> by cd()&quot;</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="o">}</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">cd</span><span class="w"> </span>..
+</span></code></pre></div>
+<p>Tämä ei riko skriptin ulkopuolista <code>cd</code>-komennon toimintaa, paitsi jos sen tuo kyseiseen namespaceen <code>source</code>-komennolla. Tämän jälkeen hakemiston muuttuminen muuttuu merkittävän hankalaksi:</p>
+<div class="language-console highlight"><span class="filename">🐳 Bash</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>/app/overwrite_cd.sh<span class="w"> </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">.. by cd()</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/etc/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="go">/etc/ by cd()</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="go">/root by cd()</span>
+</span></code></pre></div>
+</div>
+<h2 id="muuttujan-asettaminen">Muuttujan asettaminen</h2>
+<p>Muuttujan asettaminen tapahtuu seuraavasti:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ✅ Oikein</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">muuttuja</span><span class="o">=</span><span class="s2">&quot;arvo&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">muuttuja</span><span class="o">=</span><span class="s1">&#39;arvo&#39;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">muuttuja</span><span class="o">=</span>arvo
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">muuttuja</span><span class="o">=</span><span class="s2">&quot;moni sanainen arvo&quot;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">muuttuja</span><span class="o">=</span><span class="m">5</span><span class="w">       </span><span class="c1"># Merkkijono &quot;5&quot;, ei varsinainen numero</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># ⛔️ Väärin</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nv">muuttuja</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arvo&quot;</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nv">muuttuja</span><span class="o">=</span>moni<span class="w"> </span>sanainen<span class="w"> </span>arvo
+</span></code></pre></div>
+<p>Lisäksi on mahdollista käyttää <code>declare</code>-komentoa, joka on Bashin sisäänrakennettu komento muuttujien määrittelyyn. <code>declare</code>-komento on hyödyllinen, jos haluat määrittää muuttujan tyypin.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Kokonaisluku</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">muuttuja</span><span class="o">=</span><span class="m">5</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Joukko (array)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">my_array</span><span class="o">=(</span><span class="s2">&quot;eka&quot;</span><span class="w"> </span><span class="s2">&quot;toka&quot;</span><span class="w"> </span><span class="s2">&quot;kolmas&quot;</span><span class="o">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Joukko (assoasiative array)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span><span class="nv">my_dictionary</span><span class="o">=([</span>key1<span class="o">]=</span><span class="s2">&quot;value1&quot;</span><span class="w"> </span><span class="o">[</span>key2<span class="o">]=</span><span class="s2">&quot;value2&quot;</span><span class="o">)</span>
+</span></code></pre></div>
+<p>Jos haluat tulostaa kaikki käyttämäsi muuttujat, kirjoita <code>declare -p</code>.</p>
+<p>Saavutettuja hyötyjä <code>declare -&lt;tyyppi&gt;</code>-käytöstä ovat mm. virheiden välttäminen ja koodin selkeyttäminen. Vahvasti tyyppimääriteltyä kieltä Bashistä ei näin tule, mutta <code>declare</code>-komento auttaa hieman. </p>
+<details class="tip">
+<summary>Aritmeettiset operaatiot?</summary>
+<p>Voit suorittaa kokonaislukumuuttujien avulla laskuoperaatioita esimerkiksi näin:</p>
+<div class="language-bash highlight"><span class="filename">aritmeettinen.sh</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">x</span><span class="o">=</span>a*b
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tulo: </span><span class="nv">$x</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<p>Vaihtoehtoinen tapa on <code>let</code>, joka käsittelee kaikkia <code>=</code>-merkin oikealla puolella olevia muuttujia lukuina.</p>
+<div class="language-bash highlight"><span class="filename">aritmeettinen_let.sh</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">a</span><span class="o">=</span><span class="m">5</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">b</span><span class="o">=</span><span class="m">3</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">let</span><span class="w"> </span><span class="s2">&quot;x=a*b&quot;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tulo: </span><span class="nv">$x</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">aritmeettinen_compound.sh</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">a</span><span class="o">=</span><span class="m">5</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">b</span><span class="o">=</span><span class="m">3</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="o">((</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="w"> </span>*<span class="w"> </span>b<span class="w"> </span><span class="o">))</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tulo: </span><span class="nv">$x</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Huomaa, että luvut ovat <strong>kokonaislukuja</strong>, mikä aiheuttaa sen, että esimerkiksi <code>5 / 3</code> palauttaa luvun <code>1</code>. Jos jostain syystä haluat käyttää liukulukuja, sinun tulee kutsua jotakin ulkoista ohjelmaa, kuten <code>bc</code>-ohjelmaa. Lähtökohtaisesti Bash ei kuitenkaan ole matemaattinen ohjelmointikieli vaan skriptikieli, joten jätämme nämä operaatiot muiden kielien ongelmaksi tällä kurssilla.</p>
+</div>
+<h2 id="vianetsinta">Vianetsintä</h2>
+<p>Virheiden etsiminen on tärkeä osa ohjelmointia. Bashissa on muutamia tapoja, joilla voit helpottaa vianetsintää.</p>
+<h3 id="set-builtin">Set Builtin</h3>
+<p>Jos haluat debugata skriptiäsi, voit käyttää <code>set -x</code> ja <code>set -u</code> -komentoja. Ensimmäinen tulostaa jokaisen komennon ennen sen suorittamista ja jälkimmäinen kaataa skriptin, jos käytät määrittelemätöntä muuttujaa. Jälkimmäinen kaatuu myös silloin, jos yrität esimerkiksi sijoittaa merkkijonon kokonaislukumuuttujaan. Tutustu myös muihin <a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html">The Set Builtin</a> optioihin. Näistä varsinkin <code>-e</code> on hyödyllinen, joka kaataa skriptin, jos jokin komento palauttaa virheen.</p>
+<div class="language-bash highlight"><span class="filename">muuttuja_set_none.sh</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">luku</span><span class="o">=</span><span class="m">5</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">luku</span><span class="o">=</span><span class="s2">&quot;kissa&quot;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$luku</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">muuttuja_set_u.sh</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash -u</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># ...</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">muuttuja_set_ux.sh</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/bin/bash -ux</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># ... </span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Samat optiot voi antaa myös skriptiä ajaessa näin: <code>bash -u muuttuja_set_u.sh</code>.</p>
+</div>
+<h3 id="echo">Echo</h3>
+<p>Yksi luonnollinen tapa debugata lähes mitä tahansa ohjelmointikieltä on käyttää <code>echo</code>-komennon tulostusta. Voit tulostaa muuttujien arvoja ja tarkistaa, että ne ovat oikein.</p>
+<h3 id="interaktiivinen">Interaktiivinen</h3>
+<p>Huomaa, että Bashiä voi ajaa skriptin lisäksi myös interaktiivisesti komentoriviltä. Tämä voi kuulostaa itsestäänselvältä, mutta on helppoa unohtaa, että keskellä 200-rivistä skriptiä olevan rivin voi myös ajaa erikseen ihan vain kopioimalla sen ja liittämällä terminaaliin.</p>
+<h3 id="declare">Declare</h3>
+<p>Ajoittain on tarpeellista katsoa, mitä muuttujia on määritelty ja mitä niiden arvot ovat. Tämä onnistuu <code>declare -p</code>-komennolla. Se tulostaa kaikki määritellyt muuttujat ja niiden arvot - myös sellaiset, jotka Bash on määritellyt jossain sinun skriptin ulkopuolella. Sinun määrittelemät muuttuja-arvot ovat onneksi helposti listan lopussa.</p>
+<div class="language-bash highlight"><span class="filename">declare_p.sh</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span><span class="nv">my_dictionary</span><span class="o">=([</span>key1<span class="o">]=</span><span class="s2">&quot;value1&quot;</span><span class="w"> </span><span class="o">[</span>key2<span class="o">]=</span><span class="s2">&quot;value2&quot;</span><span class="o">)</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>my_dictionary<span class="o">[</span>key3<span class="o">]=</span><span class="s2">&quot;kissa&quot;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">declare</span><span class="w"> </span>-p
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">🖥️ Host</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Komentoa lyhennetty - ks. runbash.sh alemmasta tehtävästä.</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>...<span class="w"> </span>declare_p.sh
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">🐳 stdout</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a># ...
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>declare -x TERM=&quot;xterm&quot;
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>declare -ir UID=&quot;0&quot;
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>declare -- _=&quot;&quot;
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>declare -A my_dictionary=([key2]=&quot;value2&quot; [key3]=&quot;kissa&quot; [key1]=&quot;value1&quot; )
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Jos haluat tulostaa <em>tietyt</em> muuttujat, sinun tulee antaa ne argumentteina.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">declare</span><span class="w"> </span>-p<span class="w"> </span>muuttuja1<span class="w"> </span>muuttuja2<span class="w"> </span>...
+</span></code></pre></div>
+</div>
+<h2 id="tehtavat">Tehtävät</h2>
+<details class="question">
+<summary>Tehtävä: Devausympäristö ja runbash.sh</summary>
+<p>Ensimmäisenä tehtävänä luot itsellesi devausympäristön. Käytännössä luot:</p>
+<ul>
+<li>Hakemistorakenteen tehtävien vastauksia varten</li>
+<li>Skriptin <code>runbash.sh</code>, joka joko:<ul>
+<li>Ajaa valitun skriptin kontissa</li>
+<li>Käynnistää interaktiivisen Bashin kontissa</li>
+</ul>
+</li>
+<li>Varmistat, että kaikki on versionhallinnassa</li>
+</ul>
+<p>Opettaja on antanut sinulle tyhjän repositorion tätä kurssia varten, ja se on esimerkiksi osoitteessa <code>https://gitlab.dclabra.fi/skriptiohjelmointi-2054/johnanderton</code>. Tyhjä repositorio sisältää ohjeet, kuinka voit luoda lokaalin repositorion ja alustaa sen <code>main</code>-haaralla sekä tyhjällä <code>README.md</code>-tiedostolla. Noudata GitLabin ohjeita. Kloonaa repositorio lokaatioon:</p>
+<ul>
+<li>Ⓜ️ win: <code>C:\Users\uname\Code\skriptiohjelmointi-2054\johnanderton</code></li>
+<li>🐧 linux: <code>/home/uname/Code/skriptiohjelmointi-2054/johnanderton</code></li>
+</ul>
+<p>Korvaa 2054 kuluvalla vuodella. Korvaa johnanderton omalla nimelläsi, jossa kirjoitusa on sähköpostisi alku: <code>xxxxxx@kamk.fi</code>)</p>
+<div class="admonition tip">
+<p class="admonition-title">Miksi 2054?</p>
+<p>Minority Report -elokuvan John Anderton seikkailee vuodessa 2054. Käytän fiktionaalista vuotta, jotta tätä materiaalia ei tarvitse päivittää joka toteutuksen yhteydessä.</p>
+</div>
+<p>Luo repositorion sisällle seuraava rakenne:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>johnanderton
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├── README.md
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>├── bash
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>│   ├── README.md
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>│   ├── runbash.sh
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>│   └── scripts
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>│       ├── kaikki.sh
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>│       ├── skriptit.sh
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>│       └── tanne.sh
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>├── pwsh
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>│   └── .gitkeep 
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>└── python
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    └── .gitkeep
+</span></code></pre></div>
+<p>Tiedosto <code>runbash.sh</code>:n luominen olisi hyvä tehtävä viikon päästä, mutta tarvitset sitä jo nyt, joten tarjoan sen valmiina. Voit ladata sen Githubista osoitteesta <a href="https://raw.githubusercontent.com/sourander/skriptiohjelmointi/refs/heads/main/exercise-assets/scripts/runbash.sh">gh:sourander/skriptiohjelmointi/exercise-assets/scripts/runbash.sh</a>. Lataa tiedosto ja sijoita se oikeaan hakemistoon.</p>
+</details>
+<details class="question">
+<summary>Tehtävä: Bash Hello World</summary>
+<p>Luo skripti <code>hello.sh</code>, joka tulostaa tekstin "Hello World". </p>
+<p>Huomaa, että sijoita se oikeaan hakemistoon, kuten <code>~/Code/skriptiohjelmointi-2054/johnanderton/bash/scripts/hello.sh</code>. Voit ajaa tiedoston äsken lataamallasi apuri-skriptillä.</p>
+<div class="language-bash highlight"><span class="filename">🖥️ Host</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Vaihda hakemistoon, missä on runbash.sh</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">cd</span><span class="w"> </span>~/Code/skriptiohjelmointi-2054/johnanderton/bash/
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Aja</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>./runbash.sh<span class="w"> </span>scripts/hello.sh
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">🐳 stdout</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Hello World
+</span></code></pre></div>
+</details>
+<details class="question">
+<summary>Tehtävä: Turboahdettu Bash Hello World</summary>
+<p>Luo skripti, joka tulostaa absoluuttisen polun työhakemistoon ja siihen hakemistoon, missä skripti sijaitsee. Skriptin runko on alla:</p>
+<div class="language-bash highlight"><span class="filename">hello_turbo.sh</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">source</span><span class="w"> </span>/etc/os-release
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nv">distro_version</span><span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="k">:-</span><span class="s2">&quot;Unknown distribution&quot;</span><span class="si">}</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nv">cwd_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w">  </span><span class="c1"># IMPLEMENT</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">src_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w">  </span><span class="c1"># IMPLEMENT</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;========= Turbo Hello World! =========\n&quot;</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%-30s %s\n&quot;</span><span class="w"> </span><span class="s2">&quot;Current working directory:&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$cwd_path</span><span class="s2">&quot;</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%-30s %s\n&quot;</span><span class="w"> </span><span class="s2">&quot;Script directory:&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$src_path</span><span class="s2">&quot;</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%-30s %s\n&quot;</span><span class="w"> </span><span class="s2">&quot;Kernel name:&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$distro_version</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<p>Rivit, joiden perässä on kommentti <code># IMPLEMENT</code>, vaativat sinulta toimia. Lisää näihin toiminnallisuus. Testaa yllä olevan tehtävän neuvoilla. Kutsu skriptiä <code>hello_turbo.sh</code> ja katso, että se tulostaa oikeat tiedot.</p>
+<p><strong>HUOM!</strong> Pelkkä <code>src_path=$0</code> sattuu toimimaan, koska skripti ajetaan absoluuttisella polulla. Tämän tulet kuitenkin huomaamaan vääräksi vastaukseksi viimeistään seuraavaa tehtävää tehdessä. Selvitä, kuinka saat käännettyä <mark>relatiivisen polun absoluuttiseksi</mark>.</p>
+<details class="tip">
+<summary>Apuja absolutisointiin</summary>
+<p>GNU:n <code>readlink</code>-komento auttaa tässä. Ota selvää, minkä flagin ja parametrin avulla saat haluamasi tuloksen. Tarvitset tässä tiedonhakutaitoja:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Mitä ? ja ???? tilalle tulee?</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nv">src_path</span><span class="o">=</span><span class="k">$(</span>readlink<span class="w"> </span>-?<span class="w"> </span>????<span class="k">)</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="question">
+<summary>Tehtävä: Interaktiivinen Bash</summary>
+<p>Harjoittele tässä tehtävässä interaktiivista Bashin käyttöä. Tämä on tarpeellista, jos haluat luoda kontin sisälle esimerkiksi testitiedostoja, tai haluat tarkkailla, mitä ajettu skripti oikeastaan tekikään. Tarvitset tässä tehtävässä ylempänä mainitun <code>runbash.sh</code>-skriptin. Huomaa, että se löytyy <code>/app/scripts/</code>-hakemistosta kontin sisällä. Tämä johtuu <code>runbash.sh</code>-skriptin rivistä: <code>--mount type=bind,source="$(pwd)/${SCRIPT_DIR}",target=/app,readonly</code>.</p>
+<p>Jos muokkaat <code>hello_turbo.sh</code>-tiedostoa Host-koneella, sinun ei tarvitse poistua kontista ja käynnistää sitä uudelleen, koska polku on bindattu kontin sisään. Tallenna tiedosto ja aja se uudelleen kontissa - tiedosto on päivittynyt! Myös alla komennoissa luotava tiedosto <code>/root/a/b/c/hello_turbo.sh</code>-päivittyy samalla kertaa, koska se on symbolinen linkki eli pointteri alkuperäiseen tiedostoon.</p>
+<p>Käynnistä istunto alla olevalla komennolla. Pois pääset komennolla <code>exit</code> tai pikanäppäimellä <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span>.</p>
+<div class="language-bash highlight"><span class="filename">🖥️ Host</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Ilman parametriä skripti ajaa kontin vakio CMD:n, joka on</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># haluamamme: /bin/bash</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>./runbash.sh
+</span></code></pre></div>
+<p><strong>Vaihe 1: Aja missä oletkin</strong></p>
+<div class="language-bash highlight"><span class="filename">🐳 Bash</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>/app/scripts/hello_turbo.sh
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">🐳 stdout</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>========= Turbo Hello World! =========
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>Current working directory:     /
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Script directory:              /app/scripts/hello_turbo.sh
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>Kernel name:                   24.04.1 LTS (Noble Numbat)
+</span></code></pre></div>
+<p>Huomaa, että vakiona työhakemisto on <code>/</code> eli juurihakemisto.</p>
+<p><strong>Vaihe 2: Aja toisaalla ja toisaalta</strong></p>
+<div class="language-bash highlight"><span class="filename">🐳 Bash</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/root/a/b/c
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>ln<span class="w"> </span>-s<span class="w"> </span>/app/hello_turbo.sh<span class="w"> </span>/root/a/b/c/hello_turbo.sh
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nb">cd</span><span class="w"> </span>/root/a
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>./b/c/hello_turbo.sh
+</span></code></pre></div>
+<p>Huomaa, että <code>hello_turbo.sh</code>-skripti tulostaa nyt oikeat tiedot. Symbolinen linkki tosiaan sijaitsee hakemistossa <code>/root/a/b/c/</code>, eli <code>src_path</code>-muuttuja on määritelty oikein. Samaten <code>cwd_path</code>-muuttuja on määritelty oikein, koska kun ajoit skritin, olit hakemistossa <code>/root/a</code>.</p>
+<div class="language-text highlight"><span class="filename">🐳 stdout</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>========= Turbo Hello World! =========
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>Current working directory:     /root/a
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>Script directory:              /root/a/b/c/hello_turbo.sh
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>Kernel name:                   24.04.1 LTS (Noble Numbat)
+</span></code></pre></div>
+</details>
+<details class="question">
+<summary>Tehtävä: Bash vianetsintä</summary>
+<p>Luo yllä esitellyt kolme skriptiä: <code>muuttuja_set_{none,u,ux}.sh</code>.</p>
+<ol>
+<li>Tarkastele, kuinka optiot vaikuttavat outputtiin.</li>
+<li>Kokeile myös vaihtoehtoista tapaa. Aja <code>bash -ux muuttuja_set_none.sh</code>.</li>
+</ol>
+<p>Ajathan nämä kontissa aiempien tehtävien oppien avulla.</p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
