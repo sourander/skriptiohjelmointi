@@ -49,10 +49,10 @@ Virtuaaliympäristö kuulostanee monimutkaiselta, mutta käytännön tasolla se 
     ```bash title="🖥️ Bash"
     # Varmista, että olet projektisi hakemistossa
     $ cd mene/sinun/projektisi/hakemistoon
-    
+
     # Mene ALIHAKEMISTOON python/
     $ cd python
-    
+
     # Asenna haluamasi Python
     $ uv install 3.12
     $ uv pin 3.12
@@ -113,9 +113,9 @@ Huomaa, että on kaksi eri asiaa: käyttää virtuaaliympäristöä shell-istunn
 
 ```json title="$HOME/.config/Code/User/settings.json"
 {
-    // ...
-    "python.terminal.activateEnvironment": false,
-    // ...
+  // ...
+  "python.terminal.activateEnvironment": false
+  // ...
 }
 ```
 
@@ -123,11 +123,11 @@ Sen sijaan VS Coden GUI-editorin, eli ei siis integroidun terminaalin, käyttäm
 
 ![](../images/py-vscode-venv-created-popup.png)
 
-**Kuva 1:** *Visual Studio Code ilmoittaa, että se on havainnut uuden virtuaaliympäristön, ja tarjoaa sinun valita sen kyseistä worskpacea varten. Klikkaa **Yes**.*
+**Kuva 1:** _Visual Studio Code ilmoittaa, että se on havainnut uuden virtuaaliympäristön, ja tarjoaa sinun valita sen kyseistä worskpacea varten. Klikkaa **Yes**._
 
 #### Intellisense
 
-Aivan kuten PowerShell, myös Python on hyvin vahvasti *object-oriented* -kieli. Tämä tarkoittaa, että Pythonissa kaikki on objekteja, ja objekteilla on metodeja ja ominaisuuksia. Olet jo kokeillut samaa ominaisuutta PowerShellin kanssa, mutta kokeile uusiksi Pythonin kanssa. Luo esimerkiksi seuraava skripti:
+Aivan kuten PowerShell, myös Python on hyvin vahvasti _object-oriented_ -kieli. Tämä tarkoittaa, että Pythonissa kaikki on objekteja, ja objekteilla on metodeja ja ominaisuuksia. Olet jo kokeillut samaa ominaisuutta PowerShellin kanssa, mutta kokeile uusiksi Pythonin kanssa. Luo esimerkiksi seuraava skripti:
 
 ```python title="testing_context_menu.py"
 name = "John Anderton"
@@ -146,7 +146,7 @@ Joskus voi olla tarpeen ajaa valittu koodinpätkä lokaalin koneen terminaalissa
 
 ![](../images/py-vscode-run-in-terminal.png)
 
-**Kuva 2:** *Skripistä on valittuna vain yksi funktio, `function_i_wanna_test`, ja se ajetaan terminaalissa.*
+**Kuva 2:** _Skripistä on valittuna vain yksi funktio, `function_i_wanna_test`, ja se ajetaan terminaalissa._
 
 Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Python**-niminen terminaali, jossa koodi suoritetaan REPL-tilassa. Tämä on vastaava tapa kuin ajaa aiemmin näkemäsi `python -i scripts/some.py`, mutta voit valita juuri ne rivit, jotka haluat suoritettavaksi. Kuten alla olevasta snippetistä näet, funktio on jatkossa kutsuttavissa kyseisessä terminaalissa.
 
@@ -192,7 +192,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
         # ✅ Vaan näin
         print("Guess a number: ")
         guess = input()
-        ``` 
+        ```
 
 ??? question "Tehtävä: Reminder"
 
@@ -216,13 +216,13 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
     # python scripts/install_reminder.py
     Created symbolic link: /usr/local/bin/remind -> /app/scripts/remind.py
     Created symbolic link: /usr/local/bin/remember -> /app/scripts/remember.py
-    
+
     # remember
     Enter a reminder: Learn Bash
     Enter a reminder: Learn PowerShell
     Enter a reminder: Learn Python
     Enter a reminder: Eat spam
-    Enter a reminder: 
+    Enter a reminder:
     Goodbye 👋! To view reminders, run: remind
 
     # remind
@@ -294,7 +294,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
             reminders = load_reminders()
             if not reminders:
                 raise SystemExit("No reminders found!")
-            
+
             selected = set()
             current_row = 0
 
@@ -302,7 +302,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
 
                 draw_menu(stdscr, reminders, current_row, selected)
 
-                # Get event 
+                # Get event
                 key = stdscr.getch()
 
                 if key == curses.KEY_UP and current_row > 0:
@@ -324,7 +324,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
 ??? question "Tehtävä: breakpoint()"
 
     Koska käytämme Visual Studio Codea, voimme käyttää sen interaktiivista debuggeria CLI-pohjaisen Pdb:n (Python Debugger) sijasta. Tämän käyttö esitellään läsnätunneilla. On kuitenkin suositeltavaa kokeilla Pdb:tä lyhyesti ihan sivistyksen tähden. Vastaavia työkaluja löytyy myös muista kielistä, kuten Pdb:n esikuva GDB, joka voi käyttää useissa kielissä: C, C++, Rust ja moni muu.
-    
+
     Yksi tapa aktivoida Pdb on sijoittaa skriptiin alla olevassa code snippetissä oleva rivi. Rivin voi tarpeen mukaan ujuttaa useisiin paikkoihin, jolloin debuggeri pysähtyy jokaisen rivin kohdalla.
 
     ```python
@@ -354,10 +354,10 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
     (Pdb) p counter
     1
     ```
-    
+
     Debuggerissa toimivat muiden muassa seuraavat komennot [^pdb]:
 
-    [^pdb] Python Docs. The Python Debugger. https://docs.python.org/3/library/pdb.html
+    [^pdb]: Python Docs. The Python Debugger. https://docs.python.org/3/library/pdb.html
 
     **Peruskomennot**
 
@@ -369,7 +369,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
     | `n(ext)`     | Suorita seuraava rivi (astu funktiokutsun yli)  |
     | `s(tep)`     | Astu funktiokutsuun                             |
     | `r(eturn)`   | Suorita loppuun nykyinen funktio                |
-    
+
 
     **Tarkastelu**
 
@@ -401,7 +401,7 @@ Kun ajat koodin näin, huomaat, että alle Terminal-kohtaan ilmestyy uusi **Pyth
     ./runpy.py scripts/cidr_range.py
     Enter a network (CIDR notation): 10.0.2.42/23
 
-    Label            IP Address       Binary                          
+    Label            IP Address       Binary
     ---------------------------------------------------------------------
     Network:         10.0.2.0         00001010 00000000 00000010 00000000
     Netmask:         255.255.254.0    11111111 11111111 11111110 00000000
